@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Pagination, Parallax } from 'swiper/modules';
 import { ArrowRight } from 'lucide-react';
@@ -22,11 +22,13 @@ interface Slide {
 interface HeroCarouselProps {
   slides: Slide[];
   brandColor?: string;
+  contactButtonText: string;
 }
 
 export default function HeroCarousel({
   slides,
   brandColor = '#007aff',
+  contactButtonText,
 }: HeroCarouselProps) {
   // Statik stil bloğu (sadece CSS değişkeni kullanır)
   const styleTagContent = `
@@ -118,18 +120,7 @@ export default function HeroCarousel({
                         className="rounded-full px-8 py-3 text-[17px] font-semibold text-white shadow-md transition-all hover:shadow-lg"
                         style={{ backgroundColor: brandColor }}
                       >
-                        Bize Ulaşın
-                      </Link>
-                      <Link
-                        href="/hizmetler"
-                        className="group flex items-center gap-1 text-[17px] font-medium hover:underline hover:underline-offset-4"
-                        style={{ color: brandColor }}
-                      >
-                        Hizmetleri Keşfet
-                        <ArrowRight
-                          size={18}
-                          className="transition-transform group-hover:translate-x-1"
-                        />
+                        {contactButtonText}
                       </Link>
                     </div>
                   </div>
@@ -146,7 +137,7 @@ export default function HeroCarousel({
                             className="object-cover transition-transform duration-700 group-hover:scale-105"
                             priority={index === 0}
                             sizes="(max-width: 768px) 100vw, 50vw"
-                            // quality prop'u kaldırıldı
+                          // quality prop'u kaldırıldı
                           />
                         </div>
                       </div>

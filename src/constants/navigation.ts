@@ -11,32 +11,32 @@ export const NAV_LINKS = [
 
 export const SERVICES_CONTENT = {
   software: {
-    title: 'Yazılım Çözümleri',
-    description: 'Dijital dünyada yerinizi alın.',
+    t_title: 'soft_title',
+    t_desc: 'soft_desc',
     icon: Code,
     items: [
-      { label: 'Web Tasarım', href: '/services/web-design' },
-      { label: 'E-Ticaret Sistemleri', href: '/services/ecommerce' },
-      { label: 'Mobil Uygulama', href: '/services/mobile-app' },
-      { label: 'Özel Yazılım', href: '/services/software' },
+      { t_label: 'soft_web', href: '/services/web-design' },
+      { t_label: 'soft_ecom', href: '/services/ecommerce' },
+      { t_label: 'soft_mob', href: '/services/mobile-app' },
+      { t_label: 'soft_custom', href: '/services/software' },
     ],
   },
   cnc: {
-    title: 'CNC & Lazer Kesim',
-    description: 'Endüstriyel imalat çözümleri.',
+    t_title: 'cnc_title',
+    t_desc: 'cnc_desc',
     icon: Scissors,
     items: [
-      { label: 'Alüminyum Lazer Kesim', href: '/services/aluminum-cutting' },
-      { label: 'Sac Lazer Kesim', href: '/services/sheet-cutting' },
-      { label: 'Abkant Büküm', href: '/services/bending' },
-      { label: 'CNC İşleme', href: '/services/cnc' },
+      { t_label: 'cnc_alum', href: '/services/aluminum-cutting' },
+      { t_label: 'cnc_sheet', href: '/services/sheet-cutting' },
+      { t_label: 'cnc_bend', href: '/services/bending' },
+      { t_label: 'cnc_mill', href: '/services/cnc' },
     ],
   },
   featured: {
-    title: 'Endüstri 4.0 Çözümleri',
-    description: 'Yapay zeka ve otomasyon teknolojileriyle işletmenizin dönüşümünü başlatın.',
+    t_title: 'feat_title',
+    t_desc: 'feat_desc',
+    t_tag: 'feat_tag',
     href: '/services/industry40',
-    tag: 'YENİ',
     icon: Factory,
   },
 };

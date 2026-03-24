@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link, usePathname } from '@/i18n/routing';
+import { useLocale, useTranslations } from 'next-intl';
 import { 
   Menu, 
   X, 
@@ -21,6 +21,8 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const pathname = usePathname();
+  const locale = useLocale();
+  const t = useTranslations('Navigation');
   const servicesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -79,20 +81,30 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center gap-10">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-[14px] font-medium tracking-wide transition-all duration-300 relative group py-2 ${
-                isActive(link.href) ? 'text-neutral-900' : 'text-neutral-500 hover:text-neutral-900'
-              }`}
-            >
-              {link.name}
-              <span className={`absolute bottom-1 left-1/2 -translate-x-1/2 h-[2px] rounded-full transition-all duration-300 ${
-                isActive(link.href) ? 'w-full bg-neutral-900' : 'w-0 bg-neutral-200 group-hover:w-full'
-              }`} />
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const keyMap: Record<string, string> = {
+              '/': 'home',
+              '/about': 'about',
+              '/references': 'references',
+              '/blog': 'blog',
+              '/contact': 'contact'
+            };
+            const translatedName = keyMap[link.href] ? t(keyMap[link.href]) : link.name;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-[14px] font-medium tracking-wide transition-all duration-300 relative group py-2 ${
+                  isActive(link.href) ? 'text-neutral-900' : 'text-neutral-500 hover:text-neutral-900'
+                }`}
+              >
+                {translatedName}
+                <span className={`absolute bottom-1 left-1/2 -translate-x-1/2 h-[2px] rounded-full transition-all duration-300 ${
+                  isActive(link.href) ? 'w-full bg-neutral-900' : 'w-0 bg-neutral-200 group-hover:w-full'
+                }`} />
+              </Link>
+            );
+          })}
 
           {/* Hizmetler Trigger */}
           <div 
@@ -105,7 +117,7 @@ const Navbar = () => {
                 isServicesActive() || activeSubmenu === 'services' ? 'text-neutral-900' : 'text-neutral-500 hover:text-neutral-900'
               }`}
             >
-              Hizmetler
+              {t('services_nav')}
               <ChevronDown 
                 size={14} 
                 className={`transition-transform duration-300 ${activeSubmenu === 'services' ? '-rotate-180 text-neutral-900' : ''}`} 
@@ -131,8 +143,8 @@ const Navbar = () => {
                       <Code size={18} />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-neutral-900 text-sm tracking-tight">{SERVICES_CONTENT.software.title}</h4>
-                      <p className="text-[12px] text-neutral-500 mt-0.5">{SERVICES_CONTENT.software.description}</p>
+                      <h4 className="font-semibold text-neutral-900 text-sm tracking-tight">{t('soft_title')}</h4>
+                      <p className="text-[12px] text-neutral-500 mt-0.5">{t('soft_desc')}</p>
                     </div>
                   </div>
                   <ul className="space-y-3 flex-1">
@@ -140,7 +152,7 @@ const Navbar = () => {
                       <li key={item.href}>
                         <Link href={item.href} onClick={closeMenu} className="text-[13px] font-medium text-neutral-500 hover:text-neutral-900 transition-colors flex items-center gap-3 group/item">
                           <span className="w-1 h-1 rounded-full bg-neutral-300 group-hover/item:bg-[#4f46e5] transition-all" />
-                          {item.label}
+                          {t((item as any).t_label)}
                         </Link>
                       </li>
                     ))}
@@ -154,8 +166,8 @@ const Navbar = () => {
                       <Scissors size={18} />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-neutral-900 text-sm tracking-tight">{SERVICES_CONTENT.cnc.title}</h4>
-                      <p className="text-[12px] text-neutral-500 mt-0.5">{SERVICES_CONTENT.cnc.description}</p>
+                      <h4 className="font-semibold text-neutral-900 text-sm tracking-tight">{t('cnc_title')}</h4>
+                      <p className="text-[12px] text-neutral-500 mt-0.5">{t('cnc_desc')}</p>
                     </div>
                   </div>
                   <ul className="space-y-3 flex-1">
@@ -163,7 +175,7 @@ const Navbar = () => {
                       <li key={item.href}>
                         <Link href={item.href} onClick={closeMenu} className="text-[13px] font-medium text-neutral-500 hover:text-neutral-900 transition-colors flex items-center gap-3 group/item">
                           <span className="w-1 h-1 rounded-full bg-neutral-300 group-hover/item:bg-[#4f46e5] transition-all" />
-                          {item.label}
+                          {t((item as any).t_label)}
                         </Link>
                       </li>
                     ))}
@@ -175,15 +187,15 @@ const Navbar = () => {
                   <div className="h-full bg-neutral-50 border border-neutral-200/60 rounded-2xl p-6 flex flex-col justify-between group/card transition-colors hover:bg-neutral-100/50">
                     <div>
                       <span className="text-[10px] font-bold tracking-widest bg-white border border-neutral-200 px-2.5 py-1 rounded-full uppercase mb-4 inline-block text-neutral-500">
-                        {SERVICES_CONTENT.featured.tag}
+                        {t('feat_tag')}
                       </span>
-                      <h4 className="font-semibold text-lg mb-2 text-neutral-900">{SERVICES_CONTENT.featured.title}</h4>
+                      <h4 className="font-semibold text-lg mb-2 text-neutral-900">{t('feat_title')}</h4>
                       <p className="text-[13px] text-neutral-500 leading-relaxed font-light">
-                        {SERVICES_CONTENT.featured.description}
+                        {t('feat_desc')}
                       </p>
                     </div>
                     <Link href={SERVICES_CONTENT.featured.href} onClick={closeMenu} className="mt-6 flex items-center gap-2 text-[13px] font-semibold text-neutral-900 hover:gap-3 transition-all">
-                      Detaylı Bilgi <ArrowRight size={14} />
+                      {t('btn_details')} <ArrowRight size={14} />
                     </Link>
                   </div>
                 </div>
@@ -195,10 +207,17 @@ const Navbar = () => {
         {/* CTA & Mobile Button */}
         <div className="flex items-center gap-5">
           <Link 
+            href={pathname} 
+            locale={locale === 'tr' ? 'en' : 'tr'}
+            className="hidden lg:flex items-center justify-center font-bold text-neutral-500 hover:text-neutral-900 transition-all text-[14px]"
+          >
+            {locale === 'tr' ? 'EN' : 'TR'}
+          </Link>
+          <Link 
             href="/contact" 
             className="hidden lg:flex items-center justify-center bg-neutral-900 text-white px-6 py-2.5 rounded-full text-[13px] font-medium hover:bg-neutral-800 transition-all active:scale-95 shadow-lg shadow-neutral-200/50"
           >
-            Teklif Al
+            {t('btn_quote')}
           </Link>
           <button 
             onClick={() => setIsOpen(!isOpen)} 
@@ -217,55 +236,65 @@ const Navbar = () => {
       >
         <div className="flex flex-col h-full pt-24 px-8 pb-12 overflow-y-auto">
           <div className="space-y-6">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={closeMenu}
-                className={`block text-3xl font-bold tracking-tight ${
-                  isActive(link.href) ? 'text-neutral-900' : 'text-neutral-400'
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const keyMap: Record<string, string> = {
+                '/': 'home',
+                '/about': 'about',
+                '/references': 'references',
+                '/blog': 'blog',
+                '/contact': 'contact'
+              };
+              const translatedName = keyMap[link.href] ? t(keyMap[link.href]) : link.name;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={closeMenu}
+                  className={`block text-3xl font-bold tracking-tight ${
+                    isActive(link.href) ? 'text-neutral-900' : 'text-neutral-400'
+                  }`}
+                >
+                  {translatedName}
+                </Link>
+              );
+            })}
 
             <div className="pt-2">
               <button 
                 onClick={() => setActiveSubmenu(activeSubmenu === 'services' ? null : 'services')}
                 className="flex items-center justify-between w-full text-3xl font-bold tracking-tight text-neutral-900"
               >
-                Hizmetler
-                <ChevronDown size={28} className={`transition-transform ${activeSubmenu === 'services' ? '-rotate-180' : ''}`} />
+                {t('services_nav')}
+              <ChevronDown size={28} className={`transition-transform ${activeSubmenu === 'services' ? '-rotate-180' : ''}`} />
               </button>
               
               <div className={`overflow-hidden transition-all duration-300 ${activeSubmenu === 'services' ? 'max-h-[500px] mt-6 opacity-100' : 'max-h-0 opacity-0'}`}>
                 <div className="space-y-6 pl-4 border-l-2 border-neutral-100">
                   {/* Yazılım Çözümleri */}
                   <div>
-                    <h4 className="text-sm font-semibold text-neutral-500 mb-2 uppercase tracking-wider">{SERVICES_CONTENT.software.title}</h4>
+                    <h4 className="text-sm font-semibold text-neutral-500 mb-2 uppercase tracking-wider">{t('soft_title')}</h4>
                     <div className="space-y-3">
                       {SERVICES_CONTENT.software.items.map(item => (
                         <Link key={item.href} href={item.href} onClick={closeMenu} className="block text-lg font-medium text-neutral-500 hover:text-neutral-900">
-                          {item.label}
+                          {t((item as any).t_label)}
                         </Link>
                       ))}
                     </div>
                   </div>
                   {/* CNC & Lazer Kesim */}
                   <div>
-                    <h4 className="text-sm font-semibold text-neutral-500 mb-2 uppercase tracking-wider">{SERVICES_CONTENT.cnc.title}</h4>
+                    <h4 className="text-sm font-semibold text-neutral-500 mb-2 uppercase tracking-wider">{t('cnc_title')}</h4>
                     <div className="space-y-3">
                       {SERVICES_CONTENT.cnc.items.map(item => (
                         <Link key={item.href} href={item.href} onClick={closeMenu} className="block text-lg font-medium text-neutral-500 hover:text-neutral-900">
-                          {item.label}
+                          {t((item as any).t_label)}
                         </Link>
                       ))}
                     </div>
                   </div>
                   {/* Öne Çıkan */}
                   <Link href={SERVICES_CONTENT.featured.href} onClick={closeMenu} className="block text-lg font-medium text-neutral-500 hover:text-neutral-900">
-                    {SERVICES_CONTENT.featured.title}
+                    {t('feat_title')}
                   </Link>
                 </div>
               </div>
@@ -278,7 +307,7 @@ const Navbar = () => {
               onClick={closeMenu}
               className="block w-full text-center bg-neutral-900 text-white py-5 rounded-2xl font-semibold text-lg shadow-xl shadow-neutral-200"
             >
-              Teklif Al
+              {t('btn_quote')}
             </Link>
           </div>
         </div>

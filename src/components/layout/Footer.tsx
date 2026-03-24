@@ -1,10 +1,12 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 
 const Footer = () => {
   const year = new Date().getFullYear();
+  const t = useTranslations('Footer');
 
   return (
     <footer className="bg-[#fafafc] text-[#1d1d1f] font-sans border-t border-neutral-100">
@@ -19,21 +21,27 @@ const Footer = () => {
               SEZKON<span className="text-indigo-500">.</span>
             </Link>
             <p className="text-[13px] leading-relaxed text-[#6e6e73] font-medium">
-              Üretim ve yazılım dünyasında "İki Uzmanlık, Tek Standart" anlayışıyla geleceği şekillendiriyoruz.
+              {t('desc')}
             </p>
           </div>
 
           {/* Column 1: Navigation */}
           <div className="space-y-4">
-            <h4 className="text-[13px] font-semibold text-[#1d1d1f] uppercase tracking-wide">Navigasyon</h4>
+            <h4 className="text-[13px] font-semibold text-[#1d1d1f] uppercase tracking-wide">{t('nav')}</h4>
             <ul className="space-y-3">
-              {['Anasayfa', 'Kurumsal', 'Referanslar', 'Blog', 'İletişim'].map((item) => (
-                <li key={item}>
+              {[
+                { name: t('nav_home'), href: '/' },
+                { name: t('nav_corp'), href: '/about' },
+                { name: t('nav_ref'), href: '/references' },
+                { name: t('nav_blog'), href: '/blog' },
+                { name: t('nav_contact'), href: '/contact' }
+              ].map((item) => (
+                <li key={item.name}>
                   <Link 
-                    href={`/${item.toLowerCase()}`} 
+                    href={item.href} 
                     className="text-[13px] text-[#6e6e73] hover:text-indigo-500 transition-colors duration-200"
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}
@@ -42,9 +50,9 @@ const Footer = () => {
 
           {/* Column 2: Services */}
           <div className="space-y-4">
-            <h4 className="text-[13px] font-semibold text-[#1d1d1f] uppercase tracking-wide">Hizmetler</h4>
+            <h4 className="text-[13px] font-semibold text-[#1d1d1f] uppercase tracking-wide">{t('services')}</h4>
             <ul className="space-y-3">
-              {['Yazılım Çözümleri', 'CNC Torna & İşleme', 'Endüstri 4.0', 'ERP Sistemleri'].map((service) => (
+              {[t('srv_soft'), t('srv_cnc'), t('srv_ind'), t('srv_erp')].map((service) => (
                 <li key={service}>
                   <Link 
                     href="#" 
@@ -59,10 +67,10 @@ const Footer = () => {
 
           {/* Column 3: Contact */}
           <div className="space-y-4">
-            <h4 className="text-[13px] font-semibold text-[#1d1d1f] uppercase tracking-wide">İletişim</h4>
+            <h4 className="text-[13px] font-semibold text-[#1d1d1f] uppercase tracking-wide">{t('contact')}</h4>
             <div className="space-y-3">
               <p className="text-[13px] text-[#6e6e73] leading-snug">
-                Kartal, İstanbul / Türkiye
+                {t('address')}
               </p>
               <div className="flex flex-col gap-2">
                 <a 
@@ -86,18 +94,18 @@ const Footer = () => {
         <div className="border-t border-neutral-200 pt-8 space-y-4">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pt-4">
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[12px] text-[#6e6e73]">
-              <span>Copyright © {year} SEZKON LTD. Tüm hakları saklıdır.</span>
+              <span>{t('copyright', { year })}</span>
               <div className="hidden md:block h-3 w-[1px] bg-neutral-300" />
-              <Link href="#" className="hover:text-indigo-500 transition-colors">Gizlilik Politikası</Link>
+              <Link href="#" className="hover:text-indigo-500 transition-colors">{t('privacy')}</Link>
               <div className="hidden md:block h-3 w-[1px] bg-neutral-300" />
-              <Link href="#" className="hover:text-indigo-500 transition-colors">Çerez Kullanımı</Link>
+              <Link href="#" className="hover:text-indigo-500 transition-colors">{t('cookies')}</Link>
               <div className="hidden md:block h-3 w-[1px] bg-neutral-300" />
-              <Link href="#" className="hover:text-indigo-500 transition-colors">Kullanım Şartları</Link>
+              <Link href="#" className="hover:text-indigo-500 transition-colors">{t('terms')}</Link>
             </div>
             
             <div className="text-[12px] font-medium text-[#6e6e73] flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-indigo-500" />
-              Türkiye
+              {t('country')}
             </div>
           </div>
         </div>
