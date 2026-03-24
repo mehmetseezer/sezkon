@@ -1,0 +1,145 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { ArrowRight, CheckCircle2, Layers, Zap, Target, Clock } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Sac Lazer Kesim | Sezkon – Çelik ve Paslanmaz Çelik Lazer Kesim',
+  description: 'Siyah sac, paslanmaz çelik ve galvanizli sac lazer kesim hizmetleri. 30mm kalınlığa kadar yüksek hassasiyetli lazer kesim ve bükme.',
+  keywords: ['sac lazer kesim', 'paslanmaz çelik lazer', 'çelik lazer kesim', 'galvaniz lazer kesim', 'metal kesim'],
+  openGraph: { title: 'Sac Lazer Kesim | Sezkon', description: 'Çelik ve paslanmaz çelik lazer kesim hizmetleri.', type: 'website' },
+};
+
+const specs = [
+  { label: 'Siyah Sac Maks.', value: '30mm' },
+  { label: 'Paslanmaz Maks.', value: '20mm' },
+  { label: 'Galvaniz Maks.', value: '12mm' },
+  { label: 'Hassasiyet', value: '±0.1mm' },
+  { label: 'Maks. Plaka', value: '3000×1500' },
+  { label: 'Lazer Gücü', value: '12kW Fiber' },
+];
+
+const capabilities = [
+  { icon: Layers, title: 'Geniş Malzeme Yelpazesi', desc: 'Siyah sac, paslanmaz çelik, galvaniz, Hardox ve kaplı malzemelerin tümünü işliyoruz.' },
+  { icon: Target, title: 'Yüksek Hassasiyet', desc: '±0.1mm toleransla karmaşık profiller, dar kenar mesafeleri ve küçük delikler dahil hassas kesim.' },
+  { icon: Zap, title: '12kW Fiber Lazer', desc: '12.000W fiber lazer kaynağı ile kalın sacları yüksek hızda düzgün yüzey kalitesiyle kesiyor.' },
+  { icon: Clock, title: 'Esnek Üretim', desc: 'Prototipten seri üretime tek parçadan binlerce adet siparişe esnek üretim kapasitesi.' },
+];
+
+const materials = [
+  { name: 'Siyah Sac (S235/S355)', thickness: '0.5 – 30mm' },
+  { name: 'Paslanmaz Çelik (304/316)', thickness: '0.5 – 20mm' },
+  { name: 'Galvanizli Sac', thickness: '0.5 – 12mm' },
+  { name: 'Hardox / Wear Plate', thickness: '3 – 25mm' },
+  { name: 'Elektro Galvaniz', thickness: '0.5 – 8mm' },
+  { name: 'Aluzinc Kaplı', thickness: '0.5 – 6mm' },
+];
+
+export default function SheetCuttingPage() {
+  return (
+    <main className="flex flex-col items-center overflow-x-hidden bg-white">
+      {/* Hero */}
+      <section className="w-full pt-36 pb-24 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-100/60 rounded-full blur-[80px]" />
+        <div className="container relative mx-auto px-6 max-w-5xl">
+          <div className="flex items-center gap-2 mb-6">
+            <Link href="/" className="text-sm text-gray-400 hover:text-indigo-600 transition-colors">Anasayfa</Link>
+            <span className="text-gray-300">/</span>
+            <span className="text-sm text-gray-600 font-medium">Sac Lazer Kesim</span>
+          </div>
+          <div className="inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-sm font-semibold text-indigo-600 italic mb-6">CNC & Lazer Kesim</div>
+          <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-gray-900 leading-[1.05] mb-8">
+            Sac Kesimde{' '}
+            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">12kW Güç</span>
+          </h1>
+          <p className="text-xl text-gray-500 font-light leading-relaxed max-w-3xl mb-10">
+            Siyah sac, paslanmaz çelik ve galvaniz malzemeleri 30mm kalınlığa kadar yüksek hassasiyetle kesiyor, istenildiğinde bükme ve kaynak hizmetleriyle destekliyoruz.
+          </p>
+          <Link href="/contact" className="inline-flex items-center gap-3 px-8 py-4 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-indigo-200">
+            Fiyat Teklifi Al <ArrowRight size={18} />
+          </Link>
+        </div>
+      </section>
+
+      {/* Specs */}
+      <section className="w-full py-16 bg-white border-y border-gray-100">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {specs.map((spec, i) => (
+              <div key={i} className="text-center group">
+                <div className="text-xl font-black text-indigo-600 tracking-tighter mb-1 group-hover:scale-105 transition-transform">{spec.value}</div>
+                <div className="text-xs font-medium text-gray-500 leading-tight">{spec.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Capabilities */}
+      <section className="w-full py-24 bg-white">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-gray-900 mb-4">
+              Neden <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Sezkon?</span>
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {capabilities.map((cap, i) => (
+              <div key={i} className="group relative bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-gray-100 hover:border-indigo-200 hover:shadow-2xl transition-all duration-500">
+                <div className="mb-6 p-3 bg-indigo-50 rounded-2xl text-indigo-600 w-fit group-hover:scale-105 transition-transform duration-300"><cap.icon size={28} /></div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3 tracking-tight">{cap.title}</h3>
+                <p className="text-gray-600 leading-relaxed font-light">{cap.desc}</p>
+                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-500 group-hover:w-full rounded-full" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Material Table */}
+      <section className="w-full py-24 bg-gradient-to-b from-neutral-50 to-white">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-black tracking-tighter text-gray-900">
+              Malzeme <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Kapasitesi</span>
+            </h2>
+          </div>
+          <div className="bg-white/70 backdrop-blur-sm rounded-3xl border border-gray-100 overflow-hidden">
+            <div className="grid grid-cols-2 bg-indigo-50 px-6 py-3 text-xs font-bold uppercase tracking-widest text-indigo-600">
+              <span>Malzeme</span>
+              <span>Maks. Kalınlık</span>
+            </div>
+            {materials.map((mat, i) => (
+              <div key={i} className={`grid grid-cols-2 px-6 py-4 border-b border-gray-100 last:border-0 hover:bg-indigo-50/50 transition-colors ${i % 2 === 0 ? '' : 'bg-gray-50/50'}`}>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-indigo-400" />
+                  <span className="text-sm font-medium text-gray-800">{mat.name}</span>
+                </div>
+                <span className="text-sm font-bold text-indigo-600">{mat.thickness}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="w-full py-24 relative overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="relative bg-indigo-950 rounded-[3rem] p-12 lg:p-20 overflow-hidden shadow-2xl text-center">
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-indigo-400/10 z-0" />
+            <div className="absolute -top-20 -right-20 w-80 h-80 bg-indigo-600/20 rounded-full blur-[100px]" />
+            <div className="relative z-10">
+              <h2 className="text-4xl lg:text-5xl font-black text-white tracking-tighter italic mb-6">
+                Tekniğinizi Bize Gönderin,<br /><span className="text-indigo-400">Anında Teklif Alın.</span>
+              </h2>
+              <p className="text-indigo-100/80 text-lg mb-8 max-w-xl mx-auto">DXF veya DWG dosyanızla iletişime geçin, mühendislerimiz en verimli kesim planını hazırlasın.</p>
+              <Link href="/contact" className="inline-flex items-center gap-3 px-10 py-5 text-xl font-bold text-indigo-600 bg-white rounded-full hover:bg-indigo-50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                Fiyat Teklifi Al <ArrowRight size={22} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
