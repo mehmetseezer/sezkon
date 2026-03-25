@@ -46,7 +46,6 @@ export default function AboutPage() {
   const team = [
     { name: t('team_1_n'), role: t('team_1_r'), desc: t('team_1_d') },
     { name: t('team_2_n'), role: t('team_2_r'), desc: t('team_2_d') },
-    { name: t('team_3_n'), role: t('team_3_r'), desc: t('team_3_d') },
   ];
 
   return (
