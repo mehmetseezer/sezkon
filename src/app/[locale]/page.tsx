@@ -107,46 +107,6 @@ export default function Home() {
       {/* Carousel */}
       <HeroCarousel slides={slides} brandColor="#4f46e5" contactButtonText={contactButtonText} />
 
-      {/* Apple-style features */}
-      <section className="w-full py-32 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-        <div className="container relative mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-5xl md:text-6xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
-              {t("why_t1")} <span className="text-indigo-600 relative inline-block font-bold italic">
-                {t("why_t2")}
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-200 rounded-full -mb-1" />
-              </span>
-            </h2>
-            <p className="mt-6 text-xl text-gray-500 font-light leading-relaxed">
-              {t("why_sub")}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto">
-            {features.map((feature, idx) => (
-              <div
-                key={idx}
-                className="group relative bg-white/70 backdrop-blur-sm rounded-3xl p-8 transition-all duration-500 hover:shadow-2xl hover:bg-white/90 border border-gray-100 hover:border-indigo-200"
-              >
-                <div className="flex flex-col items-start">
-                  <div className="mb-6 p-3 bg-indigo-50 rounded-2xl text-indigo-600 group-hover:scale-105 transition-transform duration-300">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3 tracking-tight">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed text-lg font-light">
-                    {feature.desc}
-                  </p>
-                </div>
-                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-500 group-hover:w-full" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* DUAL EXPERTISE */}
       <section className="w-full py-24 bg-white relative">
         <div className="container mx-auto px-6">
@@ -234,6 +194,46 @@ export default function Home() {
                 <Code size={160} />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Apple-style features */}
+      <section className="w-full py-32 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+        <div className="container relative mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-5xl md:text-6xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
+              {t("why_t1")} <span className="text-indigo-600 relative inline-block font-bold italic">
+                {t("why_t2")}
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-200 rounded-full -mb-1" />
+              </span>
+            </h2>
+            <p className="mt-6 text-xl text-gray-500 font-light leading-relaxed">
+              {t("why_sub")}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto">
+            {features.map((feature, idx) => (
+              <div
+                key={idx}
+                className="group relative bg-white/70 backdrop-blur-sm rounded-3xl p-8 transition-all duration-500 hover:shadow-2xl hover:bg-white/90 border border-gray-100 hover:border-indigo-200"
+              >
+                <div className="flex flex-col items-start">
+                  <div className="mb-6 p-3 bg-indigo-50 rounded-2xl text-indigo-600 group-hover:scale-105 transition-transform duration-300">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3 tracking-tight">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed text-lg font-light">
+                    {feature.desc}
+                  </p>
+                </div>
+                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-500 group-hover:w-full" />
+              </div>
+            ))}
           </div>
         </div>
       </section>
