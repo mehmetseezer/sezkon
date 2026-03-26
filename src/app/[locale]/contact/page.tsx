@@ -5,42 +5,46 @@ import { Link } from '@/i18n/routing';
 import { MapPin, Phone, Mail, Clock, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-// SEO is handled via metadata export – but this is a client component,
-// so we export metadata separately via a layout or a server wrapper.
-// For simplicity we keep this page server-safe by using default export only.
-
 const serviceKeys = ['web', 'software', 'cnc', 'industry4', 'mobile', 'other'];
 
 export default function ContactPage() {
   const t = useTranslations('Contact');
+
+  // İletişim bilgileri – Telefon için iki numara, altında tek bir alt açıklama
   const contactInfo = [
     {
       icon: MapPin,
       label: t('address_label'),
-      value: t('address_value'),
-      sub: t('address_sub'),
+      values: [t('address_value')],
+      sub: t('address_full'),
+      hrefs: [null],
     },
     {
       icon: Phone,
       label: t('phone_label'),
-      value: t('phone_value'),
-      sub: t('phone_sub'),
-      href: `tel:${t('phone_value').replace(/[^0-9+]/g, '')}`, // temiz telefon numarası
+      values: [t('phone_value'), t('phone2_value')],
+      sub: t('phone_sub'), // tek alt açıklama (örnek: "Ara veya WhatsApp")
+      hrefs: [
+        `tel:${t('phone_value').replace(/[^0-9+]/g, '')}`,
+        `tel:${t('phone2_value').replace(/[^0-9+]/g, '')}`,
+      ],
     },
     {
       icon: Mail,
       label: t('email_label'),
-      value: t('email_value'),
+      values: [t('email_value')],
       sub: t('email_sub'),
-      href: `mailto:${t('email_value')}`,
+      hrefs: [`mailto:${t('email_value')}`],
     },
     {
       icon: Clock,
       label: t('hours_label'),
-      value: t('hours_value'),
+      values: [t('hours_value')],
       sub: t('hours_sub'),
+      hrefs: [null],
     },
   ];
+
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', company: '', service: '', message: '' });
 
@@ -72,7 +76,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Info Cards */}
+      {/* İletişim Kartları */}
       <section className="w-full py-12 bg-white">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -81,13 +85,29 @@ export default function ContactPage() {
                 <div className="mb-4 p-3 bg-indigo-50 rounded-2xl text-indigo-600 w-fit group-hover:scale-105 transition-transform duration-300">
                   <item.icon size={22} />
                 </div>
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">{item.label}</p>
-                {item.href ? (
-                  <a href={item.href} className="font-bold text-gray-900 text-sm leading-snug block hover:text-indigo-600 transition-colors">{item.value}</a>
-                ) : (
-                  <p className="font-bold text-gray-900 text-sm leading-snug">{item.value}</p>
-                )}
-                <p className="text-xs text-gray-500 mt-1">{item.sub}</p>
+                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">{item.label}</p>
+
+                {/* Değerleri listele (telefon için iki numara) */}
+                <div className="space-y-2 mb-2">
+                  {item.values.map((value, idx) => (
+                    <div key={idx}>
+                      {item.hrefs?.[idx] ? (
+                        <a
+                          href={item.hrefs[idx]}
+                          className="font-bold text-gray-900 text-sm leading-snug block hover:text-indigo-600 transition-colors"
+                        >
+                          {value}
+                        </a>
+                      ) : (
+                        <p className="font-bold text-gray-900 text-sm leading-snug">{value}</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Alt açıklama – tüm değerlerden sonra tek bir kez */}
+                {item.sub && <p className="text-xs text-gray-500 mt-1">{item.sub}</p>}
+
                 <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-500 group-hover:w-full rounded-full" />
               </div>
             ))}
@@ -95,7 +115,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Form + Map */}
+      {/* Form + Harita */}
       <section className="w-full py-16 bg-white">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="grid lg:grid-cols-5 gap-12">
@@ -198,7 +218,7 @@ export default function ContactPage() {
 
             {/* Sidebar */}
             <div className="lg:col-span-2 space-y-6">
-              {/* Quick CTA */}
+              {/* Hızlı İletişim */}
               <div className="bg-indigo-950 rounded-3xl p-8 relative overflow-hidden">
                 <div className="absolute -top-10 -right-10 w-40 h-40 bg-indigo-600/20 rounded-full blur-[40px]" />
                 <div className="relative z-10">
@@ -215,13 +235,13 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Map Embed Placeholder */}
+              {/* Harita */}
               <div className="bg-white rounded-3xl border border-gray-100 overflow-hidden h-64 flex items-center justify-center">
                 <div className="text-center">
                   <MapPin size={32} className="text-indigo-300 mx-auto mb-3" />
-                  <p className="text-sm font-medium text-gray-500">Kartal, İstanbul</p>
+                  <p className="text-sm font-medium text-gray-500">{t('address_value')}</p>
                   <a
-                    href="https://maps.google.com/?q=Kartal,İstanbul"
+                    href="https://maps.app.goo.gl/xrCjNLPqb4vA2wtt5?g_st=ic"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-3 inline-flex items-center gap-2 text-indigo-600 font-semibold text-sm hover:gap-3 transition-all"
@@ -231,7 +251,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* FAQ */}
+              {/* SSS */}
               <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-6 border border-gray-100">
                 <h4 className="font-bold text-gray-900 mb-4">{t('faq_title')}</h4>
                 {[

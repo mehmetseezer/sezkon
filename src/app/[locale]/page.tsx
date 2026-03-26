@@ -199,8 +199,8 @@ export default function Home() {
       </section>
 
       {/* Apple-style features */}
-      <section className="w-full py-32 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+      <section className="w-full py-32 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center bg-repeat bg-white [mask-image:linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))] mask-repeat-[no-repeat] mask-[linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))]" />
         <div className="container relative mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-5xl md:text-6xl font-semibold tracking-tight text-gray-900 leading-[1.1]">

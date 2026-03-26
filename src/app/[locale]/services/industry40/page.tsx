@@ -139,8 +139,8 @@ export default function Industry40Page() {
       </section>
 
       {/* Roadmap */}
-      <section className="w-full py-24 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+      <section className="w-full py-24 bg-gradient-to-b from-white via-neutral-50 to-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-white/0 bg-[url('/grid.svg')] bg-center bg-repeat [mask-image:linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))] mask-repeat-[no-repeat] mask-[linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))]" />
         <div className="container relative mx-auto px-6 max-w-5xl">
           <div className="text-center max-w-3xl mx-auto mb-20 relative z-10">
             <div className="inline-flex items-center rounded-full bg-emerald-50/50 px-4 py-1 text-sm font-semibold text-emerald-400 italic mb-6 backdrop-blur-sm border border-emerald-200/20">{t('road_tag')}</div>

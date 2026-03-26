@@ -52,7 +52,7 @@ export default function AboutPage() {
     <main className="flex flex-col items-center overflow-x-hidden bg-white">
 
       {/* Hero */}
-      <section className="w-full pt-36 pb-24 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
+      <section className="w-full pt-36 pb-24 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-indigo-100/60 rounded-full blur-[80px]" />
         <div className="container relative mx-auto px-6 max-w-5xl">
@@ -94,7 +94,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission */}
-      <section className="w-full py-24 bg-gradient-to-b from-white to-neutral-50 relative">
+      <section className="w-full py-24 bg-white relative">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -127,8 +127,8 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="w-full py-24 bg-neutral-50 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+      <section className="w-full py-24 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center bg-repeat bg-white [mask-image:linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))] mask-repeat-[no-repeat] mask-[linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))]" />
         <div className="container relative mx-auto px-6 max-w-6xl">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <div className="inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-sm font-semibold text-indigo-600 italic mb-6">
@@ -190,7 +190,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="w-full py-24 bg-gradient-to-b from-neutral-50 to-white">
+      <section className="w-full py-24 bg-white">
         <div className="container mx-auto px-6 max-w-5xl">
           <div className="text-center mb-20">
             <div className="inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-sm font-semibold text-indigo-600 italic mb-6">

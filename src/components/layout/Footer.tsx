@@ -11,10 +11,10 @@ const Footer = () => {
   return (
     <footer className="bg-[#fafafc] text-[#1d1d1f] font-sans border-t border-neutral-100">
       <div className="mx-auto max-w-[1024px] px-6 py-12 lg:py-16">
-        
+
         {/* Main Content Area */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12">
-          
+
           {/* Brand & Concept */}
           <div className="md:col-span-1 space-y-4">
             <Link href="/" className="text-xl font-semibold tracking-tight hover:opacity-70 transition-opacity">
@@ -37,8 +37,8 @@ const Footer = () => {
                 { name: t('nav_contact'), href: '/contact' }
               ].map((item) => (
                 <li key={item.name}>
-                  <Link 
-                    href={item.href} 
+                  <Link
+                    href={item.href}
                     className="text-[13px] text-[#6e6e73] hover:text-indigo-500 transition-colors duration-200"
                   >
                     {item.name}
@@ -54,8 +54,8 @@ const Footer = () => {
             <ul className="space-y-3">
               {[t('srv_soft'), t('srv_cnc'), t('srv_ind'), t('srv_erp')].map((service) => (
                 <li key={service}>
-                  <Link 
-                    href="#" 
+                  <Link
+                    href="#"
                     className="text-[13px] text-[#6e6e73] hover:text-indigo-500 transition-colors duration-200"
                   >
                     {service}
@@ -73,17 +73,23 @@ const Footer = () => {
                 {t('address')}
               </p>
               <div className="flex flex-col gap-2">
-                <a 
-                  href="tel:+905522403705" 
+                <a
+                  href="tel:+905522403705"
                   className="text-[13px] font-medium text-indigo-500 hover:opacity-80 transition-opacity"
                 >
                   +90 (552) 240 37 05
                 </a>
-                <a 
-                  href="mailto:official@sezkon.com" 
+                <a
+                  href="tel:+905343913934"
+                  className="text-[13px] font-medium text-indigo-500 hover:opacity-80 transition-opacity"
+                >
+                  +90 (534) 391 39 34
+                </a>
+                <a
+                  href="mailto:info@sezkon.com"
                   className="text-[13px] text-[#6e6e73] hover:text-indigo-500 transition-colors"
                 >
-                  official@sezkon.com
+                  info@sezkon.com
                 </a>
               </div>
             </div>
@@ -102,7 +108,7 @@ const Footer = () => {
               <div className="hidden md:block h-3 w-[1px] bg-neutral-300" />
               <Link href="#" className="hover:text-indigo-500 transition-colors">{t('terms')}</Link>
             </div>
-            
+
             <div className="text-[12px] font-medium text-[#6e6e73] flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-indigo-500" />
               {t('country')}

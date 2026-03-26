@@ -187,8 +187,8 @@ export default function ReferencesPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="w-full py-24 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+      <section className="w-full py-24 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center bg-repeat bg-white [mask-image:linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))] mask-repeat-[no-repeat] mask-[linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))]" />
         <div className="container relative mx-auto px-6 max-w-5xl">
           <div className="text-center mb-20">
             <div className="inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-sm font-semibold text-indigo-600 italic mb-6">

@@ -75,7 +75,7 @@ export default function BlogPage() {
   return (
     <main className="flex flex-col items-center overflow-x-hidden bg-white">
       {/* Hero */}
-      <section className="w-full pt-36 pb-16 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
+      <section className="w-full pt-36 pb-16 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-indigo-100/60 rounded-full blur-[80px]" />
         <div className="container relative mx-auto px-6 max-w-5xl text-center">
@@ -165,18 +165,30 @@ export default function BlogPage() {
       </section>
 
       {/* Newsletter */}
-      <section className="w-full py-24 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+      <section className="w-full py-24 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center bg-repeat bg-white [mask-image:linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))] mask-repeat-[no-repeat] mask-[linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))]" />
         <div className="container relative mx-auto px-6 max-w-3xl text-center">
-          <div className="inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-sm font-semibold text-indigo-600 italic mb-6">{t('nl_tag')}</div>
+          <div className="inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-sm font-semibold text-indigo-600 italic mb-6">
+            {t('nl_tag')}
+          </div>
           <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-gray-900 mb-6">
             {t('nl_t1')}{' '}
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">{t('nl_t2')}</span>
+            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              {t('nl_t2')}
+            </span>
           </h2>
           <p className="text-gray-500 font-light mb-10 text-lg">{t('nl_desc')}</p>
-          <div className="flex gap-3 max-w-md mx-auto">
-            <input type="email" placeholder={t('nl_ph')} className="flex-1 px-6 py-4 rounded-full border border-gray-200 focus:outline-none focus:border-indigo-400 text-gray-800 font-medium" />
-            <button className="px-8 py-4 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 transition-colors whitespace-nowrap">{t('nl_btn')}</button>
+
+          {/* Responsive form: mobilde dikey, tablet/bilgisayarda yatay */}
+          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder={t('nl_ph')}
+              className="flex-1 px-6 py-4 rounded-full border border-gray-200 focus:outline-none focus:border-indigo-400 text-gray-800 font-medium"
+            />
+            <button className="px-8 py-4 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 transition-colors whitespace-nowrap sm:w-auto w-full">
+              {t('nl_btn')}
+            </button>
           </div>
         </div>
       </section>
