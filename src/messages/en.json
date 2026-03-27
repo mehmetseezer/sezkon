@@ -344,7 +344,9 @@
       "reach us",
       "address",
       "phone"
-    ]
+    ],
+    "btn_sending": "Sending...",
+    "error_msg": "Something went wrong. Please try again later."
   },
   "SrvCnc": {
     "meta_title": "CNC Machining – 5‑Axis Milling & Turning",

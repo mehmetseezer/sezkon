@@ -343,7 +343,9 @@
       "bize ulaşın",
       "adres",
       "telefon"
-    ]
+    ],
+    "btn_sending": "Gönderiliyor...",
+    "error_msg": "Bir şeyler yanlış gitti. Lütfen daha sonra tekrar deneyin."
   },
   "SrvCnc": {
     "meta_title": "CNC İşleme – 5 Eksen Frezeleme ve Torna",
