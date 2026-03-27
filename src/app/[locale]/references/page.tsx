@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 // Referans Listesi
 const references = [
-  { name: 'Andesan Savunma Sanayi LTD. ŞTİ.', logo: '/logos/andesan_metal.png' },
+  { name: 'Andesan Savunma Sanayi LTD. ŞTİ.', logo: '/logos/andesan_metal.jpeg' },
   { name: 'Jeojem Mühendislik', logo: '/logos/jeojem.png' },
   { name: 'KESKA Zemin Yapı Laboratuvarı ve Mühendislik', logo: '/logos/keska.png' },
   { name: 'Neu Europa Group', logo: '/logos/ne_group.png' },
@@ -15,6 +15,7 @@ const references = [
   { name: 'Rivia Mühendislik', logo: '/logos/rivia.png' },
   { name: 'Teknodrom', logo: '/logos/teknodrom.png' },
   { name: 'Yeşil Sağlık Tıbbi Cihazlar', logo: '/logos/yesil_saglik.png' },
+  { name: 'Yalçın Trans', logo: '/logos/yalcin_trans.png' },
 ];
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -68,7 +69,7 @@ export default function ReferencesPage() {
         </div>
       </section>
 
-      {/* Logo Grid - Yeni Sistem (Orijinal kart stili ile) */}
+      {/* Logo Grid - Grayscale kaldırıldı */}
       <section className="w-full py-24 bg-white">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -77,8 +78,8 @@ export default function ReferencesPage() {
                 key={i}
                 className="group relative bg-white/70 backdrop-blur-sm rounded-3xl p-8 transition-all duration-500 hover:shadow-2xl hover:bg-white border border-gray-100 hover:border-indigo-200 flex flex-col items-center justify-center text-center"
               >
-                {/* Logo Alanı */}
-                <div className="relative w-full h-24 flex items-center justify-center grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 transition-all duration-500">
+                {/* Logo Alanı - grayscale ve opacity kaldırıldı */}
+                <div className="relative w-full h-24 flex items-center justify-center transition-all duration-500">
                   <Image
                     src={ref.logo}
                     alt={`${ref.name} Logo`}
@@ -125,6 +126,6 @@ export default function ReferencesPage() {
         </div>
       </section>
 
-    </main>
+    </main> 
   );
 }
