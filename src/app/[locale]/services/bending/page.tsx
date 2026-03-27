@@ -1,18 +1,36 @@
 import type { Metadata } from 'next';
 import { Link } from '@/i18n/routing';
 import { ArrowRight, CheckCircle2, Layers, Target, Zap, Settings } from 'lucide-react';
-
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
+import { generateSEO } from '@/lib/seo';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const { locale } = params;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'SrvBend' });
+  const title = t('meta_title');
+  const description = t('meta_desc');
+
+  const baseUrl = 'https://www.sezkon.com';
+  const path = '/services/bending'; // her iki dilde aynı yol
+  const canonical = `${baseUrl}/${locale}${path}`;
+  const alternateLanguages = {
+    tr: `${baseUrl}/tr${path}`,
+    en: `${baseUrl}/en${path}`,
+  };
+
+  const seo = generateSEO({
+    title,
+    description,
+    canonical,
+    locale,
+    alternateLanguages,
+    ogImage: '/og-bending.jpg', // sayfaya özel bir görsel kullanabilirsiniz
+  });
+
   return {
-    title: t('meta_title'),
-    description: t('meta_desc'),
+    ...seo,
     keywords: ['abkant büküm', 'CNC büküm', 'sac büküm', 'press brake', 'metal şekillendirme'],
-    openGraph: { title: t('meta_title'), description: t('meta_desc'), type: 'website' },
   };
 }
 

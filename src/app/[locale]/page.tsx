@@ -2,6 +2,27 @@ import HeroCarousel from "@/components/ui/HeroCarousel";
 import { Link } from "@/i18n/routing";
 import { Scissors, Code, CheckCircle2, ArrowRight, Shield } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { generateSEO } from "@/lib/seo";
+
+// SEO metadata
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Home' });
+  const title = t('meta_title');
+  const description = t('meta_desc');
+  const alternateLanguages = {
+    tr: '/tr',
+    en: '/en',
+  };
+  return generateSEO({
+    title,
+    description,
+    canonical: `/${locale}`,
+    locale,
+    alternateLanguages,
+  });
+}
 
 export default function Home() {
   const t = useTranslations("Home");

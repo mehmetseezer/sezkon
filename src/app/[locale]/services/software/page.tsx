@@ -1,18 +1,36 @@
 import type { Metadata } from 'next';
 import { Link } from '@/i18n/routing';
 import { ArrowRight, CheckCircle2, Code, Database, GitBranch, BarChart2, Shield, Cpu } from 'lucide-react';
-
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
+import { generateSEO } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'SrvSoft' });
+  const title = t('meta_title');
+  const description = t('meta_desc');
+
+  const baseUrl = 'https://www.sezkon.com';
+  const path = '/services/software-development';
+  const canonical = `${baseUrl}/${locale}${path}`;
+  const alternateLanguages = {
+    tr: `${baseUrl}/tr${path}`,
+    en: `${baseUrl}/en${path}`,
+  };
+
+  const seo = generateSEO({
+    title,
+    description,
+    canonical,
+    locale,
+    alternateLanguages,
+    ogImage: '/og-software.jpg', // sayfaya özel görsel varsa kullanın
+  });
+
   return {
-    title: t('meta_title'),
-    description: t('meta_desc'),
+    ...seo,
     keywords: ['özel yazılım', 'ERP geliştirme', 'CRM yazılımı', 'kurumsal yazılım', 'MES sistemi', 'yazılım geliştirme İstanbul'],
-    openGraph: { title: t('meta_title'), description: t('meta_desc'), type: 'website' },
   };
 }
 

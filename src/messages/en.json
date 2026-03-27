@@ -26,6 +26,8 @@
     "btn_quote": "Get Quote"
   },
   "Home": {
+    "meta_title": "Sezkon | Software & CNC Manufacturing – Industry 4.0 Solutions",
+    "meta_desc": "Industry 4.0, custom software development, and CNC machining services. Shape the future with Sezkon, your trusted partner combining technology and manufacturing.",
     "title": "Building the Future, Starting Today",
     "subtitle": "We create modern spaces with high-performance infrastructure and superstructure solutions.",
     "explore": "Explore Projects",
@@ -89,6 +91,24 @@
     "bot_title": "Build the Future with Sezkon",
     "carousel_contact_btn": "Contact Us",
     "carousel_services_btn": "Explore Services"
+  },
+  "Privacy": {
+    "meta_title": "Privacy Policy | Sezkon – Your Data Security",
+    "meta_desc": "Sezkon values your privacy. Detailed information on what data we collect, how we use it, and your rights under data protection laws.",
+    "title": "Privacy Policy",
+    "content": "Sezkon is committed to protecting your personal data and privacy. This policy explains what information we collect when you visit our website or use our services, how we use it, and your rights.\n\n1. Data Controller\nUnder the Turkish Personal Data Protection Law (KVKK No. 6698), the data controller is: Sezkon Makine ve Yazılım San. Tic. Ltd. Şti.\nAddress: Pera Residence, Yeşilbağlar Mah. D100 Bulvarı No:20, A Blok Kat:6 Ofis:29, Pendik/İstanbul, Turkey\nEmail: info@sezkon.com\n\n2. Personal Data Collected\nWhen you visit our website, we automatically collect technical data such as IP address, browser type, visit duration, and click behavior (via cookies). When you fill out a contact form, request a quote, or apply for a reference, we collect your name, email address, phone number, and company name with your explicit consent.\n\n3. Purposes of Processing\nYour personal data is processed for the following purposes:\n- Providing information about our services and preparing quotes\n- Offering technical support\n- Executing contracts and invoicing\n- Fulfilling legal obligations\n- Marketing activities (with your explicit consent)\n- Improving and securing our website\n\n4. Transfer of Data\nYour personal data may be shared with third parties only when required by law or with our service providers (hosting, email infrastructure, accounting software). Data may be transferred within Turkey or to countries with adequate protection as determined by KVKK. Under no circumstances is your data sold for commercial purposes.\n\n5. Data Security\nWe use up-to-date security technologies (SSL, encryption, access controls) to protect your data against unauthorized access, loss, or alteration.\n\n6. Your Rights\nUnder KVKK, you have the following rights:\n- Learn whether your personal data is processed\n- Request information about the processing\n- Learn the purpose of processing and whether it is used appropriately\n- Know the third parties to whom data is transferred (domestic or foreign)\n- Request correction if incomplete or inaccurate\n- Request deletion or destruction within the framework of the law\n- Object to automated decision-making\n- Claim compensation if you suffer damage due to unlawful processing\n\nTo exercise these rights, please email info@sezkon.com. Your request will be processed as soon as possible (within 30 days at the latest).\n\n7. Policy Changes\nThis privacy policy may be updated from time to time. Changes become effective when posted on this page. For significant changes, we will notify you via email or a website notice.\n\nLast updated: March 27, 2025"
+  },
+  "Cookies": {
+    "meta_title": "Cookie Policy | Sezkon – Cookie Usage on Our Website",
+    "meta_desc": "Information about the types of cookies we use on the Sezkon website, their purposes, and how you can manage your preferences.",
+    "title": "Cookie Policy",
+    "content": "Sezkon uses cookies to ensure our website functions properly and to provide you with a personalized experience. This policy explains what cookies we use, why we use them, and how you can control your cookie preferences.\n\n1. What Are Cookies?\nCookies are small text files stored on your device (computer, tablet, phone) by your browser when you visit a website. They help us recognize you on subsequent visits and remember your preferences.\n\n2. Types of Cookies We Use\n\n2.1. Strictly Necessary Cookies\nThese cookies are essential for the basic functions of our website, such as login, security, and access validation. Without them, the site will not function properly. They do not require your consent.\n\n2.2. Performance and Analytics Cookies\nThese cookies collect anonymous data about how visitors use our site – which pages are visited most, error messages, time spent on site. This helps us improve our website. We use services like Google Analytics for this purpose.\n\n2.3. Functionality Cookies\nThese cookies remember your preferences (e.g., language selection, region) to provide a more personalized experience. Without them, you might need to re-enter your preferences each time you visit.\n\n2.4. Targeting / Advertising Cookies\nThese cookies are used to show you advertisements based on your interests and to measure the effectiveness of our advertising campaigns. They are placed by third-party advertising networks (e.g., Google Ads) and require your explicit consent.\n\n3. How to Control Cookies\nMost browsers accept cookies automatically. You can change your browser settings to block cookies or to notify you when a cookie is being set. However, if you disable cookies, some features of our site may not work properly.\n\nBrowser instructions:\n- Google Chrome: Settings > Privacy and Security > Cookies\n- Mozilla Firefox: Settings > Privacy & Security > Cookies\n- Safari: Preferences > Privacy > Cookies\n- Microsoft Edge: Settings > Cookies and Site Permissions\n\n4. Cookie Consent Management\nUpon your first visit, a cookie consent banner will appear. You can choose to accept or reject non-essential cookies. You may change your preferences at any time via the \"Cookie Preferences\" link in the footer of our site.\n\n5. Third-Party Cookies\nOur website may include cookies placed by third-party service providers such as Google Analytics, Google Ads, YouTube, and Vimeo. We have no direct control over these cookies; their use is governed by the privacy policies of the respective third parties.\n\n6. Policy Changes\nThis cookie policy may be updated from time to time. Changes become effective when posted on this page. For significant changes, we will notify you via email or a website notice.\n\nLast updated: March 27, 2025"
+  },
+  "Terms": {
+    "meta_title": "Terms of Use | Sezkon – Site & Service Conditions",
+    "meta_desc": "Terms and conditions for using the Sezkon website and services. User responsibilities, intellectual property, and legal provisions explained.",
+    "title": "Terms of Use",
+    "content": "By accessing or using the Sezkon website (sezkon.com) and our services, you agree to be bound by these Terms of Use. Please read them carefully.\n\n1. Definitions\nIn these Terms, \"Sezkon\" refers to Sezkon Makine ve Yazılım San. Tic. Ltd. Şti., \"Site\" refers to the website at sezkon.com, and \"User\" refers to any individual or entity visiting or using the Site.\n\n2. Use of the Site\n- You may use the Site only for lawful purposes.\n- You may not use the Site in any way that violates the rights of others, engages in illegal activities, or damages the Site.\n- You may not copy, distribute, modify, reverse engineer, or commercially exploit any content of the Site without prior written consent.\n\n3. Intellectual Property\nAll content on the Site (text, graphics, logos, software, design, etc.) is owned by Sezkon or its licensors and is protected by copyright, trademark, and other intellectual property laws. Unauthorized use is prohibited.\n\n4. User Responsibility\n- You are solely responsible for any content you upload or transmit to the Site.\n- Content must not infringe upon the rights of third parties.\n- Sezkon assumes no responsibility for the accuracy, legality, or reliability of user‑submitted content.\n\n5. Third‑Party Links\nOur Site may contain links to third‑party websites. These links are provided for convenience only. Sezkon does not endorse or assume responsibility for the content or privacy practices of such sites.\n\n6. Use of Services\n- Services offered by Sezkon (software, CNC, consulting, etc.) are subject to separate agreements.\n- These Terms govern only the use of the Site; they do not override any service‑specific contracts.\n- You agree to provide accurate and current information when requested for any service.\n\n7. Limitation of Liability\nSezkon shall not be liable for any direct or indirect damages arising from:\n- Interruptions, errors, or delays in access to the Site\n- Viruses or other harmful components\n- Actions of third parties\n- Misuse of the Site by users\n\nThe Site is provided \"as is,\" without warranties of merchantability, fitness for a particular purpose, or uninterrupted access.\n\n8. Privacy\nOur handling of personal data is described in our Privacy Policy and Cookie Policy. By using the Site, you consent to those practices.\n\n9. Changes to Terms\nSezkon reserves the right to modify these Terms at any time without prior notice. Changes become effective upon posting. Continued use of the Site constitutes acceptance of the modified Terms.\n\n10. Governing Law and Jurisdiction\nThese Terms are governed by the laws of the Republic of Turkey. Any disputes arising out of or relating to these Terms shall be resolved exclusively by the courts of Istanbul (Çağlayan), Turkey.\n\n11. Contact\nIf you have any questions about these Terms, please contact us:\nEmail: info@sezkon.com\nAddress: Pera Residence, Yeşilbağlar Mah. D100 Bulvarı No:20, A Blok Kat:6 Ofis:29, Pendik/İstanbul, Turkey\n\nLast updated: March 27, 2025"
   },
   "Footer": {
     "desc": "Shaping the future in the world of production and software with the \"Two Expertise, One Standard\" approach.",
@@ -178,12 +198,12 @@
     "cta_t3": "Together.",
     "cta_p": "Our experts will contact you within 24 hours.",
     "cta_btn": "Get in Touch",
-    "meta_title": "Corporate | Sezkon – Two Expertise, One Standard",
-    "meta_desc": "Learn about Sezkon. Serving with 10+ years of experience in software and CNC production as the industry's reliable tech partner."
+    "meta_title": "About Us | Sezkon – Two Expertise, One Standard",
+    "meta_desc": "Learn about Sezkon. Over 10 years of experience in software development and CNC manufacturing – your reliable technology partner."
   },
   "Ref": {
-    "meta_title": "References | Sezkon – Customer Success Stories",
-    "meta_desc": "Success stories of our 50+ corporate clients.",
+    "meta_title": "References | Sezkon – Client Success Stories",
+    "meta_desc": "Discover 50+ enterprise client success stories. Explore our references across defense, aerospace, automotive, and technology sectors.",
     "hero_tag": "Success Stories",
     "hero_t1": "Reliable",
     "hero_t2": "Partnerships",
@@ -198,8 +218,8 @@
     "cta_btn": "Tell Us About Your Project"
   },
   "Blog": {
-    "meta_title": "Blog | Sezkon – Tech, Production & Software Content",
-    "meta_desc": "Expert insights on CNC production, software dev, Industry 4.0 and AI.",
+    "meta_title": "Blog | Sezkon – Technology, Manufacturing & Software Insights",
+    "meta_desc": "Expert insights on CNC manufacturing, software development, Industry 4.0, and AI. Stay updated with the latest trends in the industry.",
     "hero_tag": "Sezkon Blog",
     "hero_t1": "From the World of",
     "hero_t2": "Tech & Production",
@@ -230,16 +250,16 @@
     "address_sub": "Head Office",
     "phone_label": "Phone",
     "phone_value": "+90 (552) 240 37 05",
-    "phone_sub": "Weekdays 09:00 – 18:00",
+    "phone_sub": "Phone & WhatsApp",
     "phone2_value": "+90 (534) 391 39 34",
     "email_label": "Email",
-    "email_value": "official@sezkon.com",
+    "email_value": "info@sezkon.com",
     "email_sub": "Response within 24 hours",
     "hours_label": "Working Hours",
     "hours_value": "Mon – Fri: 09:00 – 18:00",
     "hours_sub": "Saturday by appointment",
-    "meta_title": "Contact | Sezkon",
-    "meta_desc": "Contact us. Get a quote for your projects.",
+    "meta_title": "Contact | Sezkon – Get a Quote for Your Project",
+    "meta_desc": "Reach out to Sezkon. Request a quote for software, CNC machining, or Industry 4.0 projects. Our experts will respond within 24 hours.",
     "hero_tag": "Contact",
     "hero_t1": "Let's Discuss Your",
     "hero_t2": "Project",
@@ -272,8 +292,8 @@
     "faq_3_a": "Yes, we also accept prototype and small batch works."
   },
   "SrvCnc": {
-    "meta_title": "CNC Machining | Sezkon – 5-Axis Milling and Turning",
-    "meta_desc": "5-axis CNC milling, turning, and complex part production for defense, aviation, and automotive.",
+    "meta_title": "CNC Machining | Sezkon – 5‑Axis Milling & Turning",
+    "meta_desc": "5‑axis CNC milling, turning, and complex part production. ±0.005mm precision machining for defense, aerospace, and automotive industries.",
     "bc_label": "CNC Machining",
     "hero_tag": "CNC & Laser Cutting",
     "hero_t1": "5-Axis",
@@ -345,7 +365,7 @@
   },
   "SrvSoft": {
     "meta_title": "Custom Software Development | Sezkon – Enterprise Solutions",
-    "meta_desc": "Custom software development for ERP, CRM, MES. Enterprise software with Agile methodology and modern tech stack.",
+    "meta_desc": "Custom ERP, CRM, MES, and business software. Agile development, modern tech stack, and 24/7 support for your enterprise needs.",
     "bc_label": "Custom Software",
     "hero_tag": "Software Solutions",
     "hero_t1": "Tailor-Made Software",
@@ -393,8 +413,8 @@
     "p4_d": "Extensive QA processes and secure release after closed betas."
   },
   "SrvSheet": {
-    "meta_title": "Sheet Metal Laser Cutting | Sezkon",
-    "meta_desc": "High-precision laser cutting up to 30mm for mild steel, stainless, and galvanized sheets.",
+    "meta_title": "Sheet Metal Laser Cutting | Sezkon – Steel & Stainless Steel",
+    "meta_desc": "High‑precision laser cutting for black steel, stainless steel, and galvanized sheets. Up to 30mm thickness with bending services.",
     "bc_label": "Laser Cutting",
     "hero_tag": "CNC & Laser Cutting",
     "hero_t1": "12kW Power",
@@ -448,7 +468,7 @@
   },
   "SrvWeb": {
     "meta_title": "Web Design Services | Sezkon – Corporate Web Solutions",
-    "meta_desc": "Corporate, SEO-friendly, high-performance web design with Next.js and React.",
+    "meta_desc": "SEO‑friendly, high‑performance website design that reflects your corporate identity. Modern web experiences with Next.js and React.",
     "bc_label": "Web Design",
     "hero_tag": "Software Solutions",
     "hero_t1": "Impressive",
@@ -518,7 +538,7 @@
   },
   "SrvApp": {
     "meta_title": "Mobile App Development | Sezkon – iOS & Android Solutions",
-    "meta_desc": "Native performance mobile app development for iOS and Android with React Native.",
+    "meta_desc": "React Native cross‑platform apps with native performance. Enterprise mobile solutions for ERP, CRM, and business operations.",
     "bc_label": "Mobile App",
     "hero_tag": "Software Solutions",
     "hero_t1": "Management",
@@ -566,8 +586,8 @@
     ]
   },
   "SrvEcom": {
-    "meta_title": "E-Commerce Systems | Sezkon",
-    "meta_desc": "B2B and B2C e-commerce infrastructure, payment integration, stock management.",
+    "meta_title": "E‑Commerce Systems | Sezkon – Powerful Online Sales",
+    "meta_desc": "B2B and B2C e‑commerce platforms, payment integrations, inventory management, and mobile‑friendly online stores. Boost your digital sales.",
     "bc_label": "E-Commerce",
     "hero_tag": "Software Solutions",
     "hero_t1": "Take Your Sales",
@@ -630,7 +650,7 @@
   },
   "SrvInd": {
     "meta_title": "Industry 4.0 Solutions | Sezkon – Smart Factory & IoT",
-    "meta_desc": "IoT sensor networks, AI-based quality control, OPC-UA protocol, and digital twin technologies.",
+    "meta_desc": "IoT sensor networks, AI‑based quality control, OPC‑UA protocols, and digital twin technologies. Transform your factory for the future.",
     "bc_label": "Industry 4.0",
     "hero_tag": "NEW · Industry 4.0 Solutions",
     "hero_t1": "Take Your Factory",
@@ -701,8 +721,8 @@
     ]
   },
   "SrvBend": {
-    "meta_title": "Bending | Sezkon – CNC Press Brake Services",
-    "meta_desc": "Precision sheet metal bending with CNC press brake. Tolerances of ±0.2° with 320-ton capacity presses.",
+    "meta_title": "Press Brake Bending | Sezkon – CNC Sheet Metal Bending",
+    "meta_desc": "CNC press brake bending services. ±0.2° angular tolerance with 320‑ton capacity, single‑operation complex profiles.",
     "bc_label": "Bending",
     "hero_tag": "CNC & Laser Cutting",
     "hero_t1": "320-Ton",
@@ -758,8 +778,8 @@
     ]
   },
   "SrvAlum": {
-    "meta_title": "Aluminum Laser Cutting | Sezkon – Industrial Laser Processing",
-    "meta_desc": "High-precision aluminum laser cutting services. Industrial aluminum processing with 0.05mm tolerance.",
+    "meta_title": "Aluminum Laser Cutting | Sezkon – High‑Precision Processing",
+    "meta_desc": "High‑precision aluminum laser cutting with ±0.05mm tolerance. Fast turnaround, oxide‑free surface, and competitive pricing.",
     "bc_label": "Aluminum Laser Cutting",
     "hero_tag": "CNC & Laser Cutting",
     "hero_t1": "Micron Precision",

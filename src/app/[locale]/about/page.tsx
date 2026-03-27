@@ -2,20 +2,22 @@ import { Link } from '@/i18n/routing';
 import { ArrowRight, Target, Zap, Award, Users, CheckCircle2, Shield } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
+import { generateSEO } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'About' });
-  return {
+  const alternateLanguages = {
+    tr: '/tr/about',
+    en: '/en/about',
+  };
+  return generateSEO({
     title: t('meta_title'),
     description: t('meta_desc'),
-    keywords: ['Sezkon kurumsal', 'hakkımızda', 'yazılım şirketi', 'CNC üretim', 'Türkiye teknoloji'],
-    openGraph: {
-      title: t('meta_title'),
-      description: t('meta_desc'),
-      type: 'website',
-    },
-  };
+    canonical: `/${locale}/about`,
+    locale,
+    alternateLanguages,
+  });
 }
 
 export default function AboutPage() {

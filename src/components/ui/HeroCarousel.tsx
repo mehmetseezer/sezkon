@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Pagination, Parallax } from 'swiper/modules';
-import { ArrowRight } from 'lucide-react';
 
 import 'swiper/css';
 import 'swiper/css/effect-fade';

@@ -1,18 +1,36 @@
 import type { Metadata } from 'next';
 import { Link } from '@/i18n/routing';
 import { ArrowRight, CheckCircle2, Cpu, Wifi, BarChart2, Bot, Shield, Zap, Factory } from 'lucide-react';
-
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
+import { generateSEO } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'SrvInd' });
+  const title = t('meta_title');
+  const description = t('meta_desc');
+
+  const baseUrl = 'https://www.sezkon.com';
+  const path = '/services/industry40';
+  const canonical = `${baseUrl}/${locale}${path}`;
+  const alternateLanguages = {
+    tr: `${baseUrl}/tr${path}`,
+    en: `${baseUrl}/en${path}`,
+  };
+
+  const seo = generateSEO({
+    title,
+    description,
+    canonical,
+    locale,
+    alternateLanguages,
+    ogImage: '/og-industry40.jpg', // sayfaya özel görsel varsa kullanın
+  });
+
   return {
-    title: t('meta_title'),
-    description: t('meta_desc'),
+    ...seo,
     keywords: ['Endüstri 4.0', 'Akıllı Fabrika', 'IoT entegrasyonu', 'Dijital ikiz', 'Kestirimci bakım', 'Üretim verimliliği'],
-    openGraph: { title: t('meta_title'), description: t('meta_desc'), type: 'website' },
   };
 }
 

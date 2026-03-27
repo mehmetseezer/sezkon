@@ -26,6 +26,8 @@
     "btn_quote": "Teklif Al"
   },
   "Home": {
+    "meta_title": "Sezkon | Yazılım & CNC Üretim – Endüstri 4.0 Çözümleri",
+    "meta_desc": "Endüstri 4.0, özel yazılım geliştirme ve CNC işleme hizmetleri. Teknoloji ile üretimi birleştiren güvenilir ortağınız Sezkon ile geleceği şekillendirin.",
     "title": "Geleceğin İnşaatı, Bugünden Başlar",
     "subtitle": "Yüksek performanslı altyapı projeleri ve üst yapı çözümleriyle modern mekanlar üretiyoruz.",
     "explore": "Projeleri Keşfedin",
@@ -90,12 +92,30 @@
     "carousel_contact_btn": "Bize Ulaşın",
     "carousel_services_btn": "Hizmetleri Keşfet"
   },
+  "Privacy": {
+    "meta_title": "Gizlilik Politikası | Sezkon – Kişisel Verilerinizin Güvenliği",
+    "meta_desc": "Sezkon olarak kişisel verilerinizin korunmasına önem veriyoruz. Hangi verileri topladığımız, nasıl kullandığımız ve haklarınız hakkında detaylı bilgi.",
+    "title": "Gizlilik Politikası",
+    "content": "Sezkon olarak, kişisel verilerinizin gizliliğini ve güvenliğini en üst düzeyde tutmayı taahhüt ediyoruz. Bu politika, web sitemizi ziyaret ettiğinizde veya hizmetlerimizden yararlandığınızda hangi kişisel verilerinizin toplandığını, bu verilerin nasıl kullanıldığını ve haklarınızı açıklar.\n\n1. Veri Sorumlusu\n6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında veri sorumlusu: Sezkon Makine ve Yazılım San. Tic. Ltd. Şti.\nAdres: Pera Residence, Yeşilbağlar Mah. D100 Bulvarı No:20, A Blok Kat:6 Ofis:29, Pendik/İstanbul\nE-posta: info@sezkon.com\n\n2. Toplanan Kişisel Veriler\nWeb sitemizi ziyaret ettiğinizde otomatik olarak toplanan veriler: IP adresi, tarayıcı türü, ziyaret süresi, tıklama hareketleri gibi teknik veriler (çerezler aracılığıyla). İletişim formu, teklif talebi veya referans başvurusu yaptığınızda ise ad, soyad, e-posta adresi, telefon numarası, şirket adı gibi bilgileri sizden açık rıza ile toplarız.\n\n3. Verilerin İşlenme Amaçları\nKişisel verileriniz aşağıdaki amaçlarla işlenir:\n- Hizmetlerimiz hakkında bilgi vermek ve teklif hazırlamak\n- Teknik destek sağlamak\n- Sözleşmelerin ifası ve fatura süreçlerini yürütmek\n- Yasal yükümlülükleri yerine getirmek\n- Pazarlama faaliyetlerinde bulunmak (açık rıza ile)\n- Web sitemizi iyileştirmek ve güvenliğini sağlamak\n\n4. Verilerin Aktarılması\nKişisel verileriniz, yasal zorunluluklar veya hizmet sağlayıcılarımız (barındırma, e-posta altyapısı, muhasebe yazılımları) ile sınırlı olmak üzere üçüncü taraflarla paylaşılabilir. Veriler, yurtiçinde ve KVKK’nın yeterli koruma sağladığı yurtdışındaki hizmet sağlayıcılara aktarılabilir. Hiçbir durumda verileriniz ticari amaçla satılmaz.\n\n5. Veri Güvenliği\nVerilerinizin yetkisiz erişime, kayba veya değişikliğe karşı korunması için güncel güvenlik teknolojileri (SSL, şifreleme, erişim kontrolleri) kullanılmaktadır.\n\n6. Kullanıcı Hakları\nKVKK kapsamında aşağıdaki haklara sahipsiniz:\n- Kişisel verilerinizin işlenip işlenmediğini öğrenme\n- İşlenmişse buna ilişkin bilgi talep etme\n- İşleme amacını ve amaca uygun kullanılıp kullanılmadığını öğrenme\n- Yurt içinde / yurt dışında aktarıldığı üçüncü kişileri bilme\n- Eksik veya yanlış işlenmişse düzeltilmesini isteme\n- İlgili mevzuat çerçevesinde silinmesini / yok edilmesini isteme\n- İşlemlerin kişiye özel otomatik sistemlerle yapılması halinde buna itiraz etme\n- Kanuna aykırı işlem nedeniyle zarara uğramanız halinde tazminat talep etme\n\nBu haklarınızı kullanmak için info@sezkon.com adresine e-posta gönderebilirsiniz. Talepleriniz en kısa sürede (en geç 30 gün içinde) sonuçlandırılacaktır.\n\n7. Politika Değişiklikleri\nGizlilik politikamız zaman zaman güncellenebilir. Değişiklikler bu sayfada yayınlandığı tarihte yürürlüğe girer. Önemli değişikliklerde e-posta veya site duyurusu ile bilgilendirme yapılır.\n\nSon güncelleme: 27 Mart 2025"
+  },
+  "Cookies": {
+    "meta_title": "Çerez Politikası | Sezkon – Web Sitemizde Çerez Kullanımı",
+    "meta_desc": "Sezkon web sitesinde kullanılan çerez türleri, amaçları ve tercihlerinizi nasıl yönetebileceğiniz hakkında bilgi. Gizliliğiniz bizim için önemlidir.",
+    "title": "Çerez Politikası",
+    "content": "Sezkon olarak, web sitemizin daha iyi çalışmasını sağlamak ve size kişiselleştirilmiş bir deneyim sunmak için çerezler kullanıyoruz. Bu politika, hangi çerezleri kullandığımızı, bunların amaçlarını ve çerez tercihlerinizi nasıl kontrol edebileceğinizi açıklar.\n\n1. Çerez Nedir?\nÇerezler, bir web sitesini ziyaret ettiğinizde tarayıcınız aracılığıyla cihazınıza (bilgisayar, tablet, telefon) depolanan küçük metin dosyalarıdır. Bu dosyalar, siteyi tekrar ziyaret ettiğinizde sizi tanımamıza ve tercihlerinizi hatırlamamıza olanak tanır.\n\n2. Kullandığımız Çerez Türleri\n\n2.1. Zorunlu Çerezler\nBu çerezler, web sitemizin temel işlevlerini yerine getirebilmesi için gereklidir. Örneğin, oturum açma bilgileri, güvenlik, erişim doğrulaması gibi işlemleri sağlarlar. Bu çerezler olmadan site düzgün çalışmaz. Onayınıza bağlı değildirler.\n\n2.2. Performans ve Analiz Çerezleri\nBu çerezler, ziyaretçilerin siteyi nasıl kullandığına dair anonim veriler toplar. Hangi sayfaların daha çok ziyaret edildiğini, hata mesajlarını, sitede geçirilen süreyi analiz ederek sitemizi iyileştirmemize yardımcı olur. Google Analytics gibi hizmetler aracılığıyla toplanır.\n\n2.3. İşlevsellik Çerezleri\nDil tercihi, bölge seçimi gibi kullanıcı tercihlerini hatırlayarak siteyi kişiselleştirmeye yarar. Bu çerezler olmadan, her ziyaretinizde aynı tercihleri yeniden yapmanız gerekebilir.\n\n2.4. Hedefleme / Reklam Çerezleri\nBu çerezler, ilgi alanlarınıza göre reklamlar göstermek ve reklam kampanyalarımızın etkinliğini ölçmek için kullanılır. Üçüncü taraf reklam ağları (örneğin Google Ads) tarafından yerleştirilir. Bu çerezler için açık rıza alınır.\n\n3. Çerezleri Nasıl Kontrol Edebilirsiniz?\nÇoğu tarayıcı, çerezleri otomatik olarak kabul eder. Ancak, isterseniz tarayıcı ayarlarınızı değiştirerek çerezleri engelleyebilir veya size bildirim gönderilmesini sağlayabilirsiniz. Çerezleri devre dışı bırakmanız durumunda sitemizin bazı özellikleri düzgün çalışmayabilir.\n\nTarayıcınıza göre ayarlar:\n- Google Chrome: Ayarlar > Gizlilik ve Güvenlik > Çerezler\n- Mozilla Firefox: Ayarlar > Gizlilik ve Güvenlik > Çerezler\n- Safari: Tercihler > Gizlilik > Çerezler\n- Microsoft Edge: Ayarlar > Çerezler ve Site İzinleri\n\n4. Çerez Yönetim Paneli\nSitemize ilk girişinizde bir çerez onayı paneli ile karşılaşırsınız. Bu panel üzerinden, zorunlu olmayan çerezler için onay verip vereceğinizi seçebilirsiniz. İstediğiniz zaman bu tercihleri sayfamızın alt kısmındaki “Çerez Tercihleri” linkinden değiştirebilirsiniz.\n\n5. Üçüncü Taraf Çerezleri\nSitemizde, üçüncü taraf hizmet sağlayıcılar (Google Analytics, Google Ads, YouTube, Vimeo gibi) tarafından yerleştirilen çerezler bulunabilir. Bu çerezler üzerinde doğrudan kontrolümüz yoktur; bunların kullanımı ilgili üçüncü tarafların gizlilik politikalarına tabidir.\n\n6. Politika Değişiklikleri\nBu çerez politikası zaman zaman güncellenebilir. Değişiklikler bu sayfada yayınlandığı tarihte yürürlüğe girer. Önemli değişikliklerde sizi e-posta veya site duyurusu ile bilgilendiririz.\n\nSon güncelleme: 27 Mart 2025"
+  },
+  "Terms": {
+    "meta_title": "Kullanım Şartları | Sezkon – Site ve Hizmet Kullanım Koşulları",
+    "meta_desc": "Sezkon web sitesi ve hizmetlerini kullanım koşulları. Kullanıcı sorumlulukları, fikri mülkiyet hakları ve yasal hükümler hakkında detaylı bilgi.",
+    "title": "Kullanım Şartları",
+    "content": "Sezkon web sitesini (sezkon.com) ve sunduğumuz hizmetleri ziyaret etmek, kullanmak veya bunlardan yararlanmakla aşağıdaki kullanım şartlarını kabul etmiş sayılırsınız. Lütfen bu şartları dikkatlice okuyunuz.\n\n1. Tanımlar\nBu şartlarda geçen \"Sezkon\" ifadesi, Sezkon Makine ve Yazılım San. Tic. Ltd. Şti.’ni, \"Site\" ifadesi sezkon.com adresindeki web sitesini, \"Kullanıcı\" ifadesi siteyi ziyaret eden gerçek veya tüzel kişileri ifade eder.\n\n2. Sitenin Kullanımı\n- Siteyi yalnızca yasal amaçlarla kullanabilirsiniz.\n- Başkalarının haklarını ihlal edecek, yasa dışı faaliyetlerde bulunacak veya siteye zarar verecek şekilde kullanamazsınız.\n- Site içeriğini kopyalamak, dağıtmak, değiştirmek, tersine mühendislik yapmak veya ticari amaçlarla kullanmak yasaktır.\n\n3. Fikri Mülkiyet Hakları\nSitede yer alan tüm içerikler (metin, grafik, logo, yazılım, tasarım vb.) Sezkon veya lisans verenlerinin mülkiyetindedir ve telif hakkı, marka hakları ve diğer fikri mülkiyet kanunlarıyla korunmaktadır. İzin almadan kullanılamaz.\n\n4. Kullanıcı Sorumluluğu\n- Siteye yüklediğiniz veya ilettiğiniz her türlü içerikten siz sorumlusunuz.\n- İçeriklerin üçüncü kişilerin haklarını ihlal etmemesi gerekir.\n- Sezkon, bu içeriklerin doğruluğu, yasallığı veya güvenilirliği konusunda sorumluluk kabul etmez.\n\n5. Üçüncü Taraf Bağlantıları\nSitemizde, üçüncü taraflara ait web sitelerine bağlantılar bulunabilir. Bu bağlantılar yalnızca kolaylık sağlamak içindir. Sezkon, bu sitelerin içeriğinden veya gizlilik uygulamalarından sorumlu değildir.\n\n6. Hizmetlerin Kullanımı\n- Sezkon’un sunduğu hizmetler (yazılım, CNC, danışmanlık vb.) ayrı sözleşmelere tabidir.\n- Bu şartlar, ana sözleşmelerin yerini almaz; sadece site kullanımını düzenler.\n- Hizmetlerden yararlanmak için talep ettiğimiz bilgilerin doğru ve güncel olması gereklidir.\n\n7. Sorumluluk Sınırlaması\nSezkon, aşağıdaki durumlardan kaynaklanan doğrudan veya dolaylı zararlardan sorumlu değildir:\n- Siteye erişimde kesintiler, hatalar, gecikmeler\n- Virüsler veya diğer zararlı bileşenler\n- Üçüncü tarafların eylemleri\n- Kullanıcıların siteyi kötüye kullanması\n\nSitemiz “olduğu gibi” sağlanmaktadır; belirli bir amaca uygunluk, ticari değer veya kesintisiz erişim garantisi verilmez.\n\n8. Gizlilik\nKişisel verilerinizin işlenmesi, Gizlilik Politikamız ve Çerez Politikamızda açıklanmıştır. Siteyi kullanarak bu politikaları kabul etmiş sayılırsınız.\n\n9. Değişiklikler\nSezkon, bu kullanım şartlarını önceden bildirimde bulunmaksızın değiştirme hakkını saklı tutar. Değişiklikler yayınlandığı anda yürürlüğe girer. Siteyi kullanmaya devam etmeniz değişiklikleri kabul ettiğiniz anlamına gelir.\n\n10. Uygulanacak Hukuk ve Yetki\nBu şartlar Türkiye Cumhuriyeti kanunlarına tabidir. Doğabilecek uyuşmazlıklarda İstanbul (Çağlayan) Mahkemeleri ve İcra Daireleri yetkilidir.\n\n11. İletişim\nBu şartlarla ilgili sorularınız için:\nE-posta: info@sezkon.com\nAdres: Pera Residence, Yeşilbağlar Mah. D100 Bulvarı No:20, A Blok Kat:6 Ofis:29, Pendik/İstanbul, Türkiye\n\nSon güncelleme: 27 Mart 2025"
+  },
   "Footer": {
     "desc": "Üretim ve yazılım dünyasında \"İki Uzmanlık, Tek Standart\" anlayışıyla geleceği şekillendiriyoruz.",
     "nav": "Navigasyon",
     "services": "Hizmetler",
     "contact": "İletişim",
-    "address": "Pera Residence, Pendik / Istanbul",
+    "address": "Pera Rezidans, Pendik / Istanbul",
     "copyright": "Copyright © {year} SEZKON Tüm hakları saklıdır.",
     "privacy": "Gizlilik Politikası",
     "cookies": "Çerez Kullanımı",
@@ -183,7 +203,7 @@
   },
   "Ref": {
     "meta_title": "Referanslar | Sezkon – Müşteri Başarı Hikayeleri",
-    "meta_desc": "50+ kurumsal müşterimizin başarı hikayeleri.",
+    "meta_desc": "50+ kurumsal müşterimizin başarı hikayeleri. Savunma sanayi, havacılık, otomotiv ve teknoloji sektörlerinde referanslarımızı inceleyin.",
     "hero_tag": "Başarı Hikayeleri",
     "hero_t1": "Güvenilir",
     "hero_t2": "Ortaklıklar",
@@ -199,7 +219,7 @@
   },
   "Blog": {
     "meta_title": "Blog | Sezkon – Teknoloji, Üretim ve Yazılım İçerikleri",
-    "meta_desc": "CNC üretim teknolojileri, yazılım geliştirme, Endüstri 4.0 ve yapay zeka konularında uzman görüşleri.",
+    "meta_desc": "CNC üretim teknolojileri, yazılım geliştirme, Endüstri 4.0 ve yapay zeka konularında uzman görüşleri. Sektördeki yenilikleri takip edin.",
     "hero_tag": "Sezkon Blog",
     "hero_t1": "Teknoloji &",
     "hero_t2": "Üretim",
@@ -227,19 +247,18 @@
     "address_label": "Adres",
     "address_value": "Pera Rezidans, Pendik / İstanbul",
     "address_sub": "Merkez Ofis",
-    "address_full": "Pera Residence, Yeşilbağlar Mahallesi, D100 Bulvarı No:20, Blok A, Kat 6, Ofis 29, Pendik / İstanbul, Türkiye",
+    "address_full": "Pera Rezidans, Yeşilbağlar Mahallesi, D100 Bulvarı No:20, Blok A, Kat 6, Ofis 29, Pendik / İstanbul, Türkiye",
     "phone_label": "Telefon",
     "phone_value": "+90 (552) 240 37 05",
     "phone2_value": "+90 (534) 391 39 34",
-    "phone_sub": "Hafta içi 09:00 – 18:00",
+    "phone_sub": "Telefon ve WhatsApp",
     "email_label": "E-posta",
-    "email_value": "official@sezkon.com",
+    "email_value": "info@sezkon.com",
     "email_sub": "24 saat içinde yanıt",
     "hours_label": "Çalışma Saatleri",
     "hours_value": "Pzt – Cum: 09:00 – 18:00",
-    "hours_sub": "Cumartesi randevuyla",
-    "meta_title": "İletişim | Sezkon",
-    "meta_desc": "Bize ulaşın. Projeleriniz için teklif alın.",
+    "meta_title": "İletişim | Sezkon – Projeniz İçin Teklif Alın",
+    "meta_desc": "Bize ulaşın. Yazılım, CNC işleme veya Endüstri 4.0 projeleriniz için teklif alın. Uzmanlarımız 24 saat içinde yanıt verir.",
     "hero_tag": "İletişim",
     "hero_t1": "Projenizi",
     "hero_t2": "Konuşalım",
@@ -273,7 +292,7 @@
   },
   "SrvCnc": {
     "meta_title": "CNC İşleme | Sezkon – 5 Eksen CNC Frezeleme ve Torna",
-    "meta_desc": "5 eksen CNC frezeleme, CNC torna ve kompleks parça üretimi. Savunma sanayi, havacılık ve otomotiv için yüksek hassasiyetli CNC işleme.",
+    "meta_desc": "5 eksen CNC frezeleme, CNC torna ve kompleks parça üretimi. Savunma sanayi, havacılık ve otomotiv için ±0.005mm hassasiyetle işleme.",
     "bc_label": "CNC İşleme",
     "hero_tag": "CNC & Lazer Kesim",
     "hero_t1": "5 Eksen",
@@ -393,7 +412,7 @@
     "p4_d": "Kapsamlı QA süreçleri ve kapalı beta testleri sonrası güvenli geçiş."
   },
   "SrvSheet": {
-    "meta_title": "Sac Lazer Kesim | Sezkon – Çelik ve Paslanmaz Çelik Lazer Kesim",
+    "meta_title": "Sac Lazer Kesim | Sezkon – Çelik ve Paslanmaz Lazer Kesim",
     "meta_desc": "Siyah sac, paslanmaz çelik ve galvanizli sac lazer kesim hizmetleri. 30mm kalınlığa kadar yüksek hassasiyetli lazer kesim ve bükme.",
     "bc_label": "Sac Lazer Kesim",
     "hero_tag": "CNC & Lazer Kesim",
@@ -629,7 +648,7 @@
     ]
   },
   "SrvInd": {
-    "meta_title": "Endüstri 4.0 Çözümleri | Sezkon – Akıllı Fabrika ve IoT Entegrasyonu",
+    "meta_title": "Endüstri 4.0 Çözümleri | Sezkon – Akıllı Fabrika ve IoT",
     "meta_desc": "IoT sensör ağları, yapay zeka tabanlı kalite kontrol, OPC-UA protokolü ve dijital ikiz teknolojileriyle fabrikanızı geleceğe taşıyın.",
     "bc_label": "Endüstri 4.0",
     "hero_tag": "YENİ · Endüstri 4.0 Çözümleri",
@@ -759,7 +778,7 @@
   },
   "SrvAlum": {
     "meta_title": "Alüminyum Lazer Kesim | Sezkon – Endüstriyel Lazer İşleme",
-    "meta_desc": "Yüksek hassasiyetli alüminyum lazer kesim hizmetleri. 0.05mm tolerans, hızlı teslimat ve rekabetçi fiyatlarla endüstriyel alüminyum işleme.",
+    "meta_desc": "Yüksek hassasiyetli alüminyum lazer kesim hizmetleri. ±0.05mm tolerans, hızlı teslimat ve rekabetçi fiyatlarla endüstriyel alüminyum işleme.",
     "bc_label": "Alüminyum Lazer Kesim",
     "hero_tag": "CNC & Lazer Kesim",
     "hero_t1": "Alüminyumda",

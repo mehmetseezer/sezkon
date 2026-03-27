@@ -1,23 +1,30 @@
-import type { Metadata } from 'next';
+import { generateSEO } from "@/lib/seo";
 import { Link } from '@/i18n/routing';
 import { ArrowRight, Star, Quote } from 'lucide-react';
-
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Ref' });
-  return {
-    title: t('meta_title'),
-    description: t('meta_desc'),
-    keywords: ['Sezkon referanslar', 'müşteri hikayeleri', 'başarı hikayeleri', 'kurumsal referans', 'CNC üretim referans'],
-    openGraph: {
-      title: t('meta_title'),
-      description: t('meta_desc'),
-      type: 'website',
-    },
+  const title = t('meta_title');
+  const description = t('meta_desc');
+
+  const basePath = '/references';
+  const canonical = `/${locale}${basePath}`;
+  const alternateLanguages = {
+    tr: `/tr/references`,
+    en: `/en/references`,
   };
+
+  return generateSEO({
+    title,
+    description,
+    canonical,
+    locale,
+    alternateLanguages,
+    ogImage: '/og-references.jpg', // opsiyonel
+  });
 }
 
 const sectors = [
@@ -142,11 +149,10 @@ export default function ReferencesPage() {
             {sectors.map((s, i) => (
               <span
                 key={i}
-                className={`flex-shrink-0 px-5 py-2 rounded-full text-sm font-medium cursor-pointer transition-all duration-200 ${
-                  i === 0
+                className={`flex-shrink-0 px-5 py-2 rounded-full text-sm font-medium cursor-pointer transition-all duration-200 ${i === 0
                     ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
+                  }`}
               >
                 {s.label}
               </span>

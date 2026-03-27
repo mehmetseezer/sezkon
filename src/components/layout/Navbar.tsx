@@ -24,6 +24,7 @@ const Navbar = () => {
   const t = useTranslations('Navigation');
   const servicesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Mobil menü açıkken arkadaki sayfanın kaymasını engelle
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -35,10 +36,30 @@ const Navbar = () => {
     };
   }, [isOpen]);
 
+  // Performanslı Scroll Dinleyicisi (passive: true)
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // ESC tuşu ile menüleri kapatma (UX & Erişilebilirlik)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+        setActiveSubmenu(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  // Bileşen unmount olduğunda timeout'u temizle (Memory Leak önlemi)
+  useEffect(() => {
+    return () => {
+      if (servicesTimeoutRef.current) clearTimeout(servicesTimeoutRef.current);
+    };
   }, []);
 
   const closeMenu = () => {
@@ -55,9 +76,14 @@ const Navbar = () => {
   };
 
   const handleServicesMouseLeave = () => {
+    // Süre 300ms yapıldı: Çapraz fare hareketlerinde menünün hemen kapanmaması için daha affedici UX
     servicesTimeoutRef.current = setTimeout(() => {
       setActiveSubmenu(null);
-    }, 200);
+    }, 300);
+  };
+
+  const toggleServicesDesktop = () => {
+    setActiveSubmenu(activeSubmenu === 'services' ? null : 'services');
   };
 
   return (
@@ -74,6 +100,7 @@ const Navbar = () => {
           href="/"
           onClick={closeMenu}
           className="text-[26px] font-bold tracking-[-0.04em] text-neutral-900 flex items-baseline relative group"
+          aria-label="Ana Sayfa"
         >
           SEZKON
           <span className="text-[#4f46e5] w-2 h-2 rounded-full bg-[#4f46e5] ml-0.5 shadow-[0_0_8px_rgba(79,70,229,0.4)]"></span>
@@ -94,6 +121,7 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={isActive(link.href) ? 'page' : undefined}
                 className={`text-[14px] font-medium tracking-wide transition-all duration-300 relative group py-2 ${
                   isActive(link.href) ? 'text-neutral-900' : 'text-neutral-500 hover:text-neutral-900'
                 }`}
@@ -115,6 +143,9 @@ const Navbar = () => {
             onMouseLeave={handleServicesMouseLeave}
           >
             <button
+              onClick={toggleServicesDesktop} // Tıklamayı tercih eden kullanıcılar için
+              aria-expanded={activeSubmenu === 'services'}
+              aria-controls="services-dropdown"
               className={`flex items-center gap-1.5 text-[14px] font-medium tracking-wide py-2 relative group transition-all duration-300 ${
                 isServicesActive() || activeSubmenu === 'services'
                   ? 'text-neutral-900'
@@ -137,6 +168,7 @@ const Navbar = () => {
 
             {/* Dropdown */}
             <div
+              id="services-dropdown"
               className={`absolute top-[calc(100%+0.5rem)] left-1/2 -translate-x-1/2 w-[900px] bg-white border border-neutral-200 shadow-[0_30px_60px_rgba(0,0,0,0.12)] rounded-3xl p-8 transition-all duration-400 ease-out origin-top ${
                 activeSubmenu === 'services'
                   ? 'opacity-100 visible translate-y-0 scale-100'
@@ -235,6 +267,7 @@ const Navbar = () => {
           <Link
             href={pathname}
             locale={locale === 'tr' ? 'en' : 'tr'}
+            aria-label="Dili Değiştir"
             className="hidden lg:flex items-center justify-center font-bold text-neutral-500 hover:text-neutral-900 transition-all text-[14px]"
           >
             {locale === 'tr' ? 'EN' : 'TR'}
@@ -247,6 +280,8 @@ const Navbar = () => {
           </Link>
           <button
             onClick={() => setIsOpen(!isOpen)}
+            aria-expanded={isOpen}
+            aria-label={isOpen ? 'Menüyü kapat' : 'Menüyü aç'}
             className="lg:hidden p-2 -mr-2 text-neutral-800 relative z-[1001]"
           >
             {isOpen ? <X size={26} /> : <Menu size={26} />}
@@ -276,6 +311,7 @@ const Navbar = () => {
                   key={link.href}
                   href={link.href}
                   onClick={closeMenu}
+                  aria-current={isActive(link.href) ? 'page' : undefined}
                   className={`block text-3xl font-bold tracking-tight ${
                     isActive(link.href) ? 'text-neutral-900' : 'text-neutral-400'
                   }`}
@@ -288,6 +324,7 @@ const Navbar = () => {
             <div className="pt-2">
               <button
                 onClick={() => setActiveSubmenu(activeSubmenu === 'services' ? null : 'services')}
+                aria-expanded={activeSubmenu === 'services'}
                 className={`flex items-center justify-between w-full text-3xl font-bold tracking-tight transition-colors ${
                   isServicesActive() || activeSubmenu === 'services'
                     ? 'text-neutral-900'
@@ -297,20 +334,20 @@ const Navbar = () => {
                 {t('services_nav')}
                 <ChevronDown
                   size={28}
-                  className={`transition-transform ${
+                  className={`transition-transform duration-300 ${
                     activeSubmenu === 'services' ? '-rotate-180' : ''
                   }`}
                 />
               </button>
 
               <div
-                className={`overflow-hidden transition-all duration-300 ${
+                className={`overflow-hidden transition-all duration-400 ease-in-out ${
                   activeSubmenu === 'services'
-                    ? 'max-h-[500px] mt-6 opacity-100'
+                    ? 'max-h-[800px] mt-6 opacity-100'
                     : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="space-y-6 pl-4 border-l-2 border-neutral-100">
+                <div className="space-y-6 pl-4 border-l-2 border-neutral-100 pb-4">
                   {/* Yazılım Çözümleri */}
                   <div>
                     <h4 className="text-base font-semibold text-neutral-800 mb-3 flex items-center gap-2">
@@ -358,9 +395,9 @@ const Navbar = () => {
                     <Link
                       href={SERVICES_CONTENT.featured.href}
                       onClick={closeMenu}
-                      className="block text-lg font-medium text-neutral-500 hover:text-neutral-900 transition-colors"
+                      className="inline-flex items-center justify-center w-full bg-neutral-900 text-white py-3 px-6 rounded-xl font-semibold text-base hover:bg-neutral-800 transition-colors mt-2"
                     >
-                      {t('feat_desc')}
+                      {t('feat_title')} <ArrowRight size={18} className="ml-2" />
                     </Link>
                   </div>
                 </div>
@@ -390,7 +427,7 @@ const Navbar = () => {
             <Link
               href="/contact"
               onClick={closeMenu}
-              className="block w-full text-center bg-neutral-900 text-white py-5 rounded-2xl font-semibold text-lg shadow-xl shadow-neutral-200"
+              className="block w-full text-center bg-neutral-900 text-white py-5 rounded-2xl font-semibold text-lg shadow-xl shadow-neutral-200 active:scale-[0.98] transition-transform"
             >
               {t('btn_quote')}
             </Link>

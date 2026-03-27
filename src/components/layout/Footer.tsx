@@ -3,10 +3,19 @@
 import React from 'react';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
+import { SERVICES_CONTENT } from '@/constants/navigation'; // same data as navbar
 
 const Footer = () => {
   const year = new Date().getFullYear();
   const t = useTranslations('Footer');
+  const navT = useTranslations('Navigation'); // for service titles & items
+
+  // Collect all service items from both categories
+  const allServices = [
+    ...SERVICES_CONTENT.software.items,
+    ...SERVICES_CONTENT.cnc.items,
+    // optionally add featured if you want a separate entry
+  ];
 
   return (
     <footer className="bg-[#fafafc] text-[#1d1d1f] font-sans border-t border-neutral-100">
@@ -48,17 +57,17 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 2: Services */}
+          {/* Column 2: Services - dynamically generated */}
           <div className="space-y-4">
             <h4 className="text-[13px] font-semibold text-[#1d1d1f] uppercase tracking-wide">{t('services')}</h4>
             <ul className="space-y-3">
-              {[t('srv_soft'), t('srv_cnc'), t('srv_ind'), t('srv_erp')].map((service) => (
-                <li key={service}>
+              {allServices.map((service) => (
+                <li key={service.href}>
                   <Link
-                    href="#"
+                    href={service.href}
                     className="text-[13px] text-[#6e6e73] hover:text-indigo-500 transition-colors duration-200"
                   >
-                    {service}
+                    {navT((service as any).t_label)} {/* same translation key as navbar */}
                   </Link>
                 </li>
               ))}
@@ -102,11 +111,11 @@ const Footer = () => {
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[12px] text-[#6e6e73]">
               <span>{t('copyright', { year })}</span>
               <div className="hidden md:block h-3 w-[1px] bg-neutral-300" />
-              <Link href="#" className="hover:text-indigo-500 transition-colors">{t('privacy')}</Link>
+              <Link href="/privacy" className="hover:text-indigo-500 transition-colors">{t('privacy')}</Link>
               <div className="hidden md:block h-3 w-[1px] bg-neutral-300" />
-              <Link href="#" className="hover:text-indigo-500 transition-colors">{t('cookies')}</Link>
+              <Link href="/cookies" className="hover:text-indigo-500 transition-colors">{t('cookies')}</Link>
               <div className="hidden md:block h-3 w-[1px] bg-neutral-300" />
-              <Link href="#" className="hover:text-indigo-500 transition-colors">{t('terms')}</Link>
+              <Link href="/terms" className="hover:text-indigo-500 transition-colors">{t('terms')}</Link>
             </div>
 
             <div className="text-[12px] font-medium text-[#6e6e73] flex items-center gap-2">
