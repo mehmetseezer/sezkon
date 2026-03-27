@@ -26,7 +26,7 @@
     "btn_quote": "Teklif Al"
   },
   "Home": {
-    "meta_title": "Sezkon | Yazılım & CNC Üretim – Endüstri 4.0 Çözümleri",
+    "meta_title": "Yazılım & CNC Üretim – Endüstri 4.0 Çözümleri",
     "meta_desc": "Endüstri 4.0, özel yazılım geliştirme ve CNC işleme hizmetleri. Teknoloji ile üretimi birleştiren güvenilir ortağınız Sezkon ile geleceği şekillendirin.",
     "title": "Geleceğin İnşaatı, Bugünden Başlar",
     "subtitle": "Yüksek performanslı altyapı projeleri ve üst yapı çözümleriyle modern mekanlar üretiyoruz.",
@@ -90,22 +90,35 @@
     "cta_note": "24 Saat İçinde Teknik Teklif",
     "bot_title": "Geleceği Sezkon ile İnşa Edin",
     "carousel_contact_btn": "Bize Ulaşın",
-    "carousel_services_btn": "Hizmetleri Keşfet"
+    "carousel_services_btn": "Hizmetleri Keşfet",
+    "keywords": [
+      "Sezkon",
+      "yazılım",
+      "CNC",
+      "lazer kesim",
+      "abkant büküm",
+      "Endüstri 4.0",
+      "akıllı fabrika",
+      "özel yazılım",
+      "ERP",
+      "CRM",
+      "hassas işleme"
+    ]
   },
   "Privacy": {
-    "meta_title": "Gizlilik Politikası | Sezkon – Kişisel Verilerinizin Güvenliği",
+    "meta_title": "Gizlilik Politikası – Kişisel Verilerinizin Güvenliği",
     "meta_desc": "Sezkon olarak kişisel verilerinizin korunmasına önem veriyoruz. Hangi verileri topladığımız, nasıl kullandığımız ve haklarınız hakkında detaylı bilgi.",
     "title": "Gizlilik Politikası",
     "content": "Sezkon olarak, kişisel verilerinizin gizliliğini ve güvenliğini en üst düzeyde tutmayı taahhüt ediyoruz. Bu politika, web sitemizi ziyaret ettiğinizde veya hizmetlerimizden yararlandığınızda hangi kişisel verilerinizin toplandığını, bu verilerin nasıl kullanıldığını ve haklarınızı açıklar.\n\n1. Veri Sorumlusu\n6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında veri sorumlusu: Sezkon Makine ve Yazılım San. Tic. Ltd. Şti.\nAdres: Pera Residence, Yeşilbağlar Mah. D100 Bulvarı No:20, A Blok Kat:6 Ofis:29, Pendik/İstanbul\nE-posta: info@sezkon.com\n\n2. Toplanan Kişisel Veriler\nWeb sitemizi ziyaret ettiğinizde otomatik olarak toplanan veriler: IP adresi, tarayıcı türü, ziyaret süresi, tıklama hareketleri gibi teknik veriler (çerezler aracılığıyla). İletişim formu, teklif talebi veya referans başvurusu yaptığınızda ise ad, soyad, e-posta adresi, telefon numarası, şirket adı gibi bilgileri sizden açık rıza ile toplarız.\n\n3. Verilerin İşlenme Amaçları\nKişisel verileriniz aşağıdaki amaçlarla işlenir:\n- Hizmetlerimiz hakkında bilgi vermek ve teklif hazırlamak\n- Teknik destek sağlamak\n- Sözleşmelerin ifası ve fatura süreçlerini yürütmek\n- Yasal yükümlülükleri yerine getirmek\n- Pazarlama faaliyetlerinde bulunmak (açık rıza ile)\n- Web sitemizi iyileştirmek ve güvenliğini sağlamak\n\n4. Verilerin Aktarılması\nKişisel verileriniz, yasal zorunluluklar veya hizmet sağlayıcılarımız (barındırma, e-posta altyapısı, muhasebe yazılımları) ile sınırlı olmak üzere üçüncü taraflarla paylaşılabilir. Veriler, yurtiçinde ve KVKK’nın yeterli koruma sağladığı yurtdışındaki hizmet sağlayıcılara aktarılabilir. Hiçbir durumda verileriniz ticari amaçla satılmaz.\n\n5. Veri Güvenliği\nVerilerinizin yetkisiz erişime, kayba veya değişikliğe karşı korunması için güncel güvenlik teknolojileri (SSL, şifreleme, erişim kontrolleri) kullanılmaktadır.\n\n6. Kullanıcı Hakları\nKVKK kapsamında aşağıdaki haklara sahipsiniz:\n- Kişisel verilerinizin işlenip işlenmediğini öğrenme\n- İşlenmişse buna ilişkin bilgi talep etme\n- İşleme amacını ve amaca uygun kullanılıp kullanılmadığını öğrenme\n- Yurt içinde / yurt dışında aktarıldığı üçüncü kişileri bilme\n- Eksik veya yanlış işlenmişse düzeltilmesini isteme\n- İlgili mevzuat çerçevesinde silinmesini / yok edilmesini isteme\n- İşlemlerin kişiye özel otomatik sistemlerle yapılması halinde buna itiraz etme\n- Kanuna aykırı işlem nedeniyle zarara uğramanız halinde tazminat talep etme\n\nBu haklarınızı kullanmak için info@sezkon.com adresine e-posta gönderebilirsiniz. Talepleriniz en kısa sürede (en geç 30 gün içinde) sonuçlandırılacaktır.\n\n7. Politika Değişiklikleri\nGizlilik politikamız zaman zaman güncellenebilir. Değişiklikler bu sayfada yayınlandığı tarihte yürürlüğe girer. Önemli değişikliklerde e-posta veya site duyurusu ile bilgilendirme yapılır.\n\nSon güncelleme: 27 Mart 2025"
   },
   "Cookies": {
-    "meta_title": "Çerez Politikası | Sezkon – Web Sitemizde Çerez Kullanımı",
+    "meta_title": "Çerez Politikası – Web Sitemizde Çerez Kullanımı",
     "meta_desc": "Sezkon web sitesinde kullanılan çerez türleri, amaçları ve tercihlerinizi nasıl yönetebileceğiniz hakkında bilgi. Gizliliğiniz bizim için önemlidir.",
     "title": "Çerez Politikası",
     "content": "Sezkon olarak, web sitemizin daha iyi çalışmasını sağlamak ve size kişiselleştirilmiş bir deneyim sunmak için çerezler kullanıyoruz. Bu politika, hangi çerezleri kullandığımızı, bunların amaçlarını ve çerez tercihlerinizi nasıl kontrol edebileceğinizi açıklar.\n\n1. Çerez Nedir?\nÇerezler, bir web sitesini ziyaret ettiğinizde tarayıcınız aracılığıyla cihazınıza (bilgisayar, tablet, telefon) depolanan küçük metin dosyalarıdır. Bu dosyalar, siteyi tekrar ziyaret ettiğinizde sizi tanımamıza ve tercihlerinizi hatırlamamıza olanak tanır.\n\n2. Kullandığımız Çerez Türleri\n\n2.1. Zorunlu Çerezler\nBu çerezler, web sitemizin temel işlevlerini yerine getirebilmesi için gereklidir. Örneğin, oturum açma bilgileri, güvenlik, erişim doğrulaması gibi işlemleri sağlarlar. Bu çerezler olmadan site düzgün çalışmaz. Onayınıza bağlı değildirler.\n\n2.2. Performans ve Analiz Çerezleri\nBu çerezler, ziyaretçilerin siteyi nasıl kullandığına dair anonim veriler toplar. Hangi sayfaların daha çok ziyaret edildiğini, hata mesajlarını, sitede geçirilen süreyi analiz ederek sitemizi iyileştirmemize yardımcı olur. Google Analytics gibi hizmetler aracılığıyla toplanır.\n\n2.3. İşlevsellik Çerezleri\nDil tercihi, bölge seçimi gibi kullanıcı tercihlerini hatırlayarak siteyi kişiselleştirmeye yarar. Bu çerezler olmadan, her ziyaretinizde aynı tercihleri yeniden yapmanız gerekebilir.\n\n2.4. Hedefleme / Reklam Çerezleri\nBu çerezler, ilgi alanlarınıza göre reklamlar göstermek ve reklam kampanyalarımızın etkinliğini ölçmek için kullanılır. Üçüncü taraf reklam ağları (örneğin Google Ads) tarafından yerleştirilir. Bu çerezler için açık rıza alınır.\n\n3. Çerezleri Nasıl Kontrol Edebilirsiniz?\nÇoğu tarayıcı, çerezleri otomatik olarak kabul eder. Ancak, isterseniz tarayıcı ayarlarınızı değiştirerek çerezleri engelleyebilir veya size bildirim gönderilmesini sağlayabilirsiniz. Çerezleri devre dışı bırakmanız durumunda sitemizin bazı özellikleri düzgün çalışmayabilir.\n\nTarayıcınıza göre ayarlar:\n- Google Chrome: Ayarlar > Gizlilik ve Güvenlik > Çerezler\n- Mozilla Firefox: Ayarlar > Gizlilik ve Güvenlik > Çerezler\n- Safari: Tercihler > Gizlilik > Çerezler\n- Microsoft Edge: Ayarlar > Çerezler ve Site İzinleri\n\n4. Çerez Yönetim Paneli\nSitemize ilk girişinizde bir çerez onayı paneli ile karşılaşırsınız. Bu panel üzerinden, zorunlu olmayan çerezler için onay verip vereceğinizi seçebilirsiniz. İstediğiniz zaman bu tercihleri sayfamızın alt kısmındaki “Çerez Tercihleri” linkinden değiştirebilirsiniz.\n\n5. Üçüncü Taraf Çerezleri\nSitemizde, üçüncü taraf hizmet sağlayıcılar (Google Analytics, Google Ads, YouTube, Vimeo gibi) tarafından yerleştirilen çerezler bulunabilir. Bu çerezler üzerinde doğrudan kontrolümüz yoktur; bunların kullanımı ilgili üçüncü tarafların gizlilik politikalarına tabidir.\n\n6. Politika Değişiklikleri\nBu çerez politikası zaman zaman güncellenebilir. Değişiklikler bu sayfada yayınlandığı tarihte yürürlüğe girer. Önemli değişikliklerde sizi e-posta veya site duyurusu ile bilgilendiririz.\n\nSon güncelleme: 27 Mart 2025"
   },
   "Terms": {
-    "meta_title": "Kullanım Şartları | Sezkon – Site ve Hizmet Kullanım Koşulları",
+    "meta_title": "Kullanım Şartları – Site ve Hizmet Kullanım Koşulları",
     "meta_desc": "Sezkon web sitesi ve hizmetlerini kullanım koşulları. Kullanıcı sorumlulukları, fikri mülkiyet hakları ve yasal hükümler hakkında detaylı bilgi.",
     "title": "Kullanım Şartları",
     "content": "Sezkon web sitesini (sezkon.com) ve sunduğumuz hizmetleri ziyaret etmek, kullanmak veya bunlardan yararlanmakla aşağıdaki kullanım şartlarını kabul etmiş sayılırsınız. Lütfen bu şartları dikkatlice okuyunuz.\n\n1. Tanımlar\nBu şartlarda geçen \"Sezkon\" ifadesi, Sezkon Makine ve Yazılım San. Tic. Ltd. Şti.’ni, \"Site\" ifadesi sezkon.com adresindeki web sitesini, \"Kullanıcı\" ifadesi siteyi ziyaret eden gerçek veya tüzel kişileri ifade eder.\n\n2. Sitenin Kullanımı\n- Siteyi yalnızca yasal amaçlarla kullanabilirsiniz.\n- Başkalarının haklarını ihlal edecek, yasa dışı faaliyetlerde bulunacak veya siteye zarar verecek şekilde kullanamazsınız.\n- Site içeriğini kopyalamak, dağıtmak, değiştirmek, tersine mühendislik yapmak veya ticari amaçlarla kullanmak yasaktır.\n\n3. Fikri Mülkiyet Hakları\nSitede yer alan tüm içerikler (metin, grafik, logo, yazılım, tasarım vb.) Sezkon veya lisans verenlerinin mülkiyetindedir ve telif hakkı, marka hakları ve diğer fikri mülkiyet kanunlarıyla korunmaktadır. İzin almadan kullanılamaz.\n\n4. Kullanıcı Sorumluluğu\n- Siteye yüklediğiniz veya ilettiğiniz her türlü içerikten siz sorumlusunuz.\n- İçeriklerin üçüncü kişilerin haklarını ihlal etmemesi gerekir.\n- Sezkon, bu içeriklerin doğruluğu, yasallığı veya güvenilirliği konusunda sorumluluk kabul etmez.\n\n5. Üçüncü Taraf Bağlantıları\nSitemizde, üçüncü taraflara ait web sitelerine bağlantılar bulunabilir. Bu bağlantılar yalnızca kolaylık sağlamak içindir. Sezkon, bu sitelerin içeriğinden veya gizlilik uygulamalarından sorumlu değildir.\n\n6. Hizmetlerin Kullanımı\n- Sezkon’un sunduğu hizmetler (yazılım, CNC, danışmanlık vb.) ayrı sözleşmelere tabidir.\n- Bu şartlar, ana sözleşmelerin yerini almaz; sadece site kullanımını düzenler.\n- Hizmetlerden yararlanmak için talep ettiğimiz bilgilerin doğru ve güncel olması gereklidir.\n\n7. Sorumluluk Sınırlaması\nSezkon, aşağıdaki durumlardan kaynaklanan doğrudan veya dolaylı zararlardan sorumlu değildir:\n- Siteye erişimde kesintiler, hatalar, gecikmeler\n- Virüsler veya diğer zararlı bileşenler\n- Üçüncü tarafların eylemleri\n- Kullanıcıların siteyi kötüye kullanması\n\nSitemiz “olduğu gibi” sağlanmaktadır; belirli bir amaca uygunluk, ticari değer veya kesintisiz erişim garantisi verilmez.\n\n8. Gizlilik\nKişisel verilerinizin işlenmesi, Gizlilik Politikamız ve Çerez Politikamızda açıklanmıştır. Siteyi kullanarak bu politikaları kabul etmiş sayılırsınız.\n\n9. Değişiklikler\nSezkon, bu kullanım şartlarını önceden bildirimde bulunmaksızın değiştirme hakkını saklı tutar. Değişiklikler yayınlandığı anda yürürlüğe girer. Siteyi kullanmaya devam etmeniz değişiklikleri kabul ettiğiniz anlamına gelir.\n\n10. Uygulanacak Hukuk ve Yetki\nBu şartlar Türkiye Cumhuriyeti kanunlarına tabidir. Doğabilecek uyuşmazlıklarda İstanbul (Çağlayan) Mahkemeleri ve İcra Daireleri yetkilidir.\n\n11. İletişim\nBu şartlarla ilgili sorularınız için:\nE-posta: info@sezkon.com\nAdres: Pera Residence, Yeşilbağlar Mah. D100 Bulvarı No:20, A Blok Kat:6 Ofis:29, Pendik/İstanbul, Türkiye\n\nSon güncelleme: 27 Mart 2025"
@@ -198,11 +211,20 @@
     "cta_t3": "Geçirelim.",
     "cta_p": "Uzmanlarımız 24 saat içinde sizinle iletişime geçecektir.",
     "cta_btn": "İletişime Geçin",
-    "meta_title": "Kurumsal | Sezkon – İki Uzmanlık, Tek Standart",
-    "meta_desc": "Sezkon hakkında bilgi edinin. Yazılım ve CNC üretim alanlarında 10+ yıllık deneyimimizle endüstrinin güvenilir teknoloji ortağı olmaya devam ediyoruz."
+    "meta_title": "Kurumsal – İki Uzmanlık, Tek Standart",
+    "meta_desc": "Sezkon hakkında bilgi edinin. Yazılım ve CNC üretim alanlarında 10+ yıllık deneyimimizle endüstrinin güvenilir teknoloji ortağı olmaya devam ediyoruz.",
+    "keywords": [
+      "Sezkon hakkında",
+      "kurumsal",
+      "yazılım firması",
+      "CNC üretim",
+      "Endüstri 4.0",
+      "ISO 9001",
+      "hakkımızda"
+    ]
   },
   "Ref": {
-    "meta_title": "Referanslar | Sezkon – Müşteri Başarı Hikayeleri",
+    "meta_title": "Referanslar – Müşteri Başarı Hikayeleri",
     "meta_desc": "50+ kurumsal müşterimizin başarı hikayeleri. Savunma sanayi, havacılık, otomotiv ve teknoloji sektörlerinde referanslarımızı inceleyin.",
     "hero_tag": "Başarı Hikayeleri",
     "hero_t1": "Güvenilir",
@@ -215,10 +237,18 @@
     "cta_t2": "Parçası",
     "cta_t3": "Olun.",
     "cta_desc": "Projenizi paylaşın, 24 saat içinde uzman ekibimiz size ulaşsın.",
-    "cta_btn": "Projenizden Bahsedin"
+    "cta_btn": "Projenizden Bahsedin",
+    "keywords": [
+      "Sezkon referansları",
+      "müşteri referansları",
+      "iş ortakları",
+      "savunma sanayi",
+      "yazılım müşterileri",
+      "CNC müşterileri"
+    ]
   },
   "Blog": {
-    "meta_title": "Blog | Sezkon – Teknoloji, Üretim ve Yazılım İçerikleri",
+    "meta_title": "Blog – Teknoloji, Üretim ve Yazılım İçerikleri",
     "meta_desc": "CNC üretim teknolojileri, yazılım geliştirme, Endüstri 4.0 ve yapay zeka konularında uzman görüşleri. Sektördeki yenilikleri takip edin.",
     "hero_tag": "Sezkon Blog",
     "hero_t1": "Teknoloji &",
@@ -233,7 +263,22 @@
     "nl_desc": "Ayda bir, özenle seçilmiş teknoloji ve üretim içerikleri e-posta kutunuzda.",
     "nl_ph": "E-posta adresiniz",
     "nl_btn": "Abone Ol",
-    "read": "Oku"
+    "read": "Oku",
+    "soon_title": "Çok Yakında Yayındayız",
+    "soon_desc": "Sektörel deneyimlerimizi ve mühendislik çözümlerimizi paylaşacağımız blog sayfamız şu an hazırlık aşamasında.",
+    "back_home": "Ana Sayfa",
+    "notify_me": "Haber Ver",
+    "keywords": [
+      "Sezkon blog",
+      "CNC teknoloji",
+      "yazılım geliştirme",
+      "Endüstri 4.0",
+      "akıllı fabrika",
+      "lazer kesim",
+      "abkant büküm",
+      "hassas işleme",
+      "yazılım makale"
+    ]
   },
   "Contact": {
     "services": {
@@ -257,7 +302,7 @@
     "email_sub": "24 saat içinde yanıt",
     "hours_label": "Çalışma Saatleri",
     "hours_value": "Pzt – Cum: 09:00 – 18:00",
-    "meta_title": "İletişim | Sezkon – Projeniz İçin Teklif Alın",
+    "meta_title": "İletişim – Projeniz İçin Teklif Alın",
     "meta_desc": "Bize ulaşın. Yazılım, CNC işleme veya Endüstri 4.0 projeleriniz için teklif alın. Uzmanlarımız 24 saat içinde yanıt verir.",
     "hero_tag": "İletişim",
     "hero_t1": "Projenizi",
@@ -288,10 +333,20 @@
     "faq_2_q": "Ne kadar sürede yanıt alırım?",
     "faq_2_a": "İş günleri içinde 24 saat içinde yanıt veriyoruz.",
     "faq_3_q": "Küçük siparişler alıyor musunuz?",
-    "faq_3_a": "Evet, prototip ve küçük seri işleri de alıyoruz."
+    "faq_3_a": "Evet, prototip ve küçük seri işleri de alıyoruz.",
+    "keywords": [
+      "Sezkon iletişim",
+      "iletişim",
+      "teklif al",
+      "yazılım teklifi",
+      "CNC teklif",
+      "bize ulaşın",
+      "adres",
+      "telefon"
+    ]
   },
   "SrvCnc": {
-    "meta_title": "CNC İşleme | Sezkon – 5 Eksen CNC Frezeleme ve Torna",
+    "meta_title": "CNC İşleme – 5 Eksen Frezeleme ve Torna",
     "meta_desc": "5 eksen CNC frezeleme, CNC torna ve kompleks parça üretimi. Savunma sanayi, havacılık ve otomotiv için ±0.005mm hassasiyetle işleme.",
     "bc_label": "CNC İşleme",
     "hero_tag": "CNC & Lazer Kesim",
@@ -360,10 +415,20 @@
       "Prototip parçalar",
       "Kalıp ve fixture",
       "Motor bileşenleri"
+    ],
+    "keywords": [
+      "CNC işleme",
+      "5 eksen CNC",
+      "CNC frezeleme",
+      "CNC torna",
+      "savunma sanayi CNC",
+      "hassas işleme",
+      "CNC tornalama",
+      "5 eksen işleme"
     ]
   },
   "SrvSoft": {
-    "meta_title": "Özel Yazılım Geliştirme | Sezkon – Kurumsal Yazılım Çözümleri",
+    "meta_title": "Özel Yazılım Geliştirme – Kurumsal Yazılım Çözümleri",
     "meta_desc": "ERP, CRM, MES ve iş süreçlerinize özel yazılım geliştirme. Agile metodoloji, modern teknoloji yığını ve 7/24 destek ile kurumsal yazılım.",
     "bc_label": "Özel Yazılım",
     "hero_tag": "Yazılım Çözümleri",
@@ -409,10 +474,44 @@
     "p3_t": "Sprint Geliştirme",
     "p3_d": "Agile metodoloji ile modüler geliştirme ve düzenli geri bildirim toplantıları.",
     "p4_t": "Test & Canlıya Alma",
-    "p4_d": "Kapsamlı QA süreçleri ve kapalı beta testleri sonrası güvenli geçiş."
+    "p4_d": "Kapsamlı QA süreçleri ve kapalı beta testleri sonrası güvenli geçiş.",
+    "feat_1_title": "ERP & CRM Sistemleri",
+    "feat_1_desc": "Üretim, satış, finans ve insan kaynakları süreçlerini tek platformda yöneten özel ERP/CRM çözümleri.",
+    "feat_2_title": "Gerçek Zamanlı Analitik",
+    "feat_2_desc": "Canlı dashboard, özelleştirilebilir raporlar ve iş zekası araçları ile veriye dayalı kararlar alın.",
+    "feat_3_title": "API & Entegrasyon",
+    "feat_3_desc": "Mevcut sistemlerinizle REST/GraphQL API entegrasyonu. Üçüncü taraf servisler ve ERP bağlantıları.",
+    "feat_4_title": "MES (Üretim Yürütme)",
+    "feat_4_desc": "Fabrika zemininden gelen verileri anlık takip eden, iş emirlerini yöneten üretim yazılımı.",
+    "feat_5_title": "Kurumsal Güvenlik",
+    "feat_5_desc": "RBAC, çok faktörlü kimlik doğrulama, veri şifreleme ve KVKK uyumlu altyapı.",
+    "feat_6_title": "Modern Teknoloji",
+    "feat_6_desc": "React, Next.js, Node.js, PostgreSQL ve TypeScript ile ölçeklenebilir, sürdürülebilir kod tabanı.",
+    "stack_cat_frontend": "Frontend",
+    "stack_items_frontend": "React,Next.js,TypeScript,Tailwind CSS",
+    "stack_cat_backend": "Backend",
+    "stack_items_backend": "Node.js,Python,PostgreSQL,Redis",
+    "stack_cat_mobile": "Mobil",
+    "stack_items_mobile": "React Native,iOS,Android,Expo",
+    "stack_cat_devops": "DevOps",
+    "stack_items_devops": "Docker,CI/CD,AWS,Vercel",
+    "proc_step_1_title": "Keşif & Analiz",
+    "proc_step_1_desc": "İş süreçlerinizi, teknik kısıtlamaları ve kullanıcı ihtiyaçlarını derinlemesine analiz ediyoruz.",
+    "proc_step_2_title": "Geliştirme Sprintleri",
+    "proc_step_2_desc": "2 haftalık sprint döngüleriyle somut ilerleme, düzenli demo ve geri bildirim ile şeffaf süreç.",
+    "proc_step_3_title": "Teslim & Destek",
+    "proc_step_3_desc": "Test, eğitim, canlı ortam geçişi ve sonrasında süregelen teknik destek.",
+    "keywords": [
+      "özel yazılım",
+      "ERP geliştirme",
+      "CRM yazılımı",
+      "kurumsal yazılım",
+      "MES sistemi",
+      "yazılım geliştirme İstanbul"
+    ]
   },
   "SrvSheet": {
-    "meta_title": "Sac Lazer Kesim | Sezkon – Çelik ve Paslanmaz Lazer Kesim",
+    "meta_title": "Sac Lazer Kesim – Çelik ve Paslanmaz Lazer Kesim",
     "meta_desc": "Siyah sac, paslanmaz çelik ve galvanizli sac lazer kesim hizmetleri. 30mm kalınlığa kadar yüksek hassasiyetli lazer kesim ve bükme.",
     "bc_label": "Sac Lazer Kesim",
     "hero_tag": "CNC & Lazer Kesim",
@@ -463,10 +562,18 @@
     "mat5_n": "Elektro Galvaniz",
     "mat5_t": "0.5 – 8mm",
     "mat6_n": "Aluzinc Kaplı",
-    "mat6_t": "0.5 – 6mm"
+    "mat6_t": "0.5 – 6mm",
+    "keywords": [
+      "sac lazer kesim",
+      "paslanmaz çelik lazer",
+      "çelik lazer kesim",
+      "galvaniz lazer kesim",
+      "metal kesim",
+      "lazer kesim hizmeti"
+    ]
   },
   "SrvWeb": {
-    "meta_title": "Web Tasarım Hizmetleri | Sezkon – Kurumsal Web Çözümleri",
+    "meta_title": "Web Tasarım – Kurumsal Web Çözümleri",
     "meta_desc": "Kurumsal kimliğinizi yansıtan, SEO uyumlu ve yüksek performanslı web sitesi tasarımı. Next.js ve React ile modern web deneyimi.",
     "bc_label": "Web Tasarım",
     "hero_tag": "Yazılım Çözümleri",
@@ -527,16 +634,26 @@
     ],
     "pkg3_n": "Enterprise",
     "pkg3_d": "Büyük kurumlar için",
+    "pkg3_p": "Özel Fiyatlandırma",
     "pkg3_f": [
       "Sınırsız sayfa",
       "Özel backend",
       "API entegrasyonları",
       "A/B testi",
       "7/24 destek"
+    ],
+    "keywords": [
+      "web tasarım",
+      "kurumsal web sitesi",
+      "Next.js",
+      "React",
+      "SEO uyumlu web tasarım",
+      "İstanbul web ajansı",
+      "web geliştirme"
     ]
   },
   "SrvApp": {
-    "meta_title": "Mobil Uygulama Geliştirme | Sezkon – iOS & Android Çözümleri",
+    "meta_title": "Mobil Uygulama Geliştirme – iOS & Android Çözümleri",
     "meta_desc": "React Native ile iOS ve Android için native performanslı mobil uygulama geliştirme. ERP, CRM ve kurumsal iş uygulamaları.",
     "bc_label": "Mobil Uygulama",
     "hero_tag": "Yazılım Çözümleri",
@@ -582,10 +699,18 @@
       "Sağlık & Klinik",
       "İnşaat & Proje Yönetimi",
       "Perakende & Depo"
+    ],
+    "keywords": [
+      "mobil uygulama",
+      "iOS geliştirme",
+      "Android uygulama",
+      "React Native",
+      "kurumsal mobil uygulama",
+      "native mobil uygulama"
     ]
   },
   "SrvEcom": {
-    "meta_title": "E-Ticaret Sistemleri | Sezkon – Güçlü Online Satış Altyapısı",
+    "meta_title": "E-Ticaret Sistemleri – Güçlü Online Satış Altyapısı",
     "meta_desc": "B2B ve B2C e-ticaret altyapısı, ödeme entegrasyonu, stok yönetimi ve mobil uyumlu online mağaza çözümleri. Satışlarınızı dijitale taşıyın.",
     "bc_label": "E-Ticaret Sistemleri",
     "hero_tag": "Yazılım Çözümleri",
@@ -645,10 +770,19 @@
       "Google Analytics",
       "E-fatura entegrasyonu",
       "Stok bildirimi"
+    ],
+    "keywords": [
+      "e-ticaret sistemi",
+      "online mağaza",
+      "B2B e-ticaret",
+      "ödeme entegrasyonu",
+      "e-ticaret yazılımı",
+      "sanal mağaza",
+      "e-ticaret çözümleri"
     ]
   },
   "SrvInd": {
-    "meta_title": "Endüstri 4.0 Çözümleri | Sezkon – Akıllı Fabrika ve IoT",
+    "meta_title": "Endüstri 4.0 Çözümleri – Akıllı Fabrika ve IoT",
     "meta_desc": "IoT sensör ağları, yapay zeka tabanlı kalite kontrol, OPC-UA protokolü ve dijital ikiz teknolojileriyle fabrikanızı geleceğe taşıyın.",
     "bc_label": "Endüstri 4.0",
     "hero_tag": "YENİ · Endüstri 4.0 Çözümleri",
@@ -717,10 +851,31 @@
       "ISO 9001 sertifikalı proje yönetimi",
       "Türkçe destek, yerli mühendis ekibi",
       "Prototipten enterprise ölçeğe esnek çözümler"
+    ],
+    "tech_stack_list": [
+      "Siemens S7",
+      "Allen-Bradley",
+      "Fanuc",
+      "OPC-UA",
+      "MQTT",
+      "InfluxDB",
+      "Grafana",
+      "TensorFlow",
+      "SCADA",
+      "AWS IoT"
+    ],
+    "keywords": [
+      "Endüstri 4.0",
+      "Akıllı Fabrika",
+      "IoT entegrasyonu",
+      "Dijital ikiz",
+      "Kestirimci bakım",
+      "Üretim verimliliği",
+      "Akıllı üretim"
     ]
   },
   "SrvBend": {
-    "meta_title": "Abkant Büküm | Sezkon – CNC Press Brake Hizmetleri",
+    "meta_title": "Abkant Büküm – CNC Press Brake Hizmetleri",
     "meta_desc": "CNC abkant pres ile hassas sac büküm hizmetleri. 320 ton kapasiteli preslerde ±0.2° açı toleransı ile tek ve çok operasyonlu büküm.",
     "bc_label": "Abkant Büküm",
     "hero_tag": "CNC & Lazer Kesim",
@@ -774,33 +929,42 @@
       "Koordinasyon kolaylığı",
       "%15 maliyet tasarrufu",
       "Daha hızlı teslimat"
+    ],
+    "keywords": [
+      "abkant büküm",
+      "CNC büküm",
+      "sac büküm",
+      "press brake",
+      "metal şekillendirme",
+      "pres büküm",
+      "sac bükme"
     ]
   },
   "SrvAlum": {
-    "meta_title": "Alüminyum Lazer Kesim | Sezkon – Endüstriyel Lazer İşleme",
-    "meta_desc": "Yüksek hassasiyetli alüminyum lazer kesim hizmetleri. ±0.05mm tolerans, hızlı teslimat ve rekabetçi fiyatlarla endüstriyel alüminyum işleme.",
+    "meta_title": "Alüminyum Lazer Kesim – Yüksek Hassasiyetli İşleme",
+    "meta_desc": "±0.05mm tolerans ile yüksek hassasiyetli alüminyum lazer kesim. Hızlı teslimat, oksitsiz yüzey ve rekabetçi fiyat.",
     "bc_label": "Alüminyum Lazer Kesim",
     "hero_tag": "CNC & Lazer Kesim",
-    "hero_t1": "Alüminyumda",
-    "hero_t2": "Mikron Hassasiyet",
-    "hero_desc": "6000W fiber lazer kesim teknolojimizle alüminyum parçalarınızı ±0.05mm hassasiyetle, oksit serbest yüzey kalitesiyle işliyoruz.",
-    "btn_quote": "Fiyat Teklifi Al",
+    "hero_t1": "Mikron Hassasiyet",
+    "hero_t2": "Alüminyumda",
+    "hero_desc": "6000W fiber lazer teknolojimiz ile alüminyum parçalarınızı ±0.05mm hassasiyet ve oksitsiz yüzey kalitesiyle işliyoruz.",
+    "btn_quote": "Teklif Al",
     "cap_t1": "Neden",
     "cap_t2": "Sezkon Lazer?",
     "mat_tag": "Malzeme Yelpazesi",
     "mat_t1": "Hangi",
     "mat_t2": "Alüminyum Serilerini",
     "mat_t3": "İşliyoruz?",
-    "mat_desc": "Havacılıktan denizcilik sektörüne, yapısal uygulamalardan savunma sanayiine geniş bir alüminyum alaşım yelpazesini işleyebiliyoruz.",
-    "cta_t1": "Tekniğinizi Gönderin,",
-    "cta_t2": "24 Saatte Teklifini Alın.",
+    "mat_desc": "Havacılıktan denizciliğe, yapısal uygulamalardan savunma sanayine kadar geniş alüminyum alaşım yelpazesini işliyoruz.",
+    "cta_t1": "Çiziminizi Gönderin,",
+    "cta_t2": "24 Saatte Teklif Alın.",
     "cta_desc": "DXF, DWG veya STEP dosyanızı ekleyin, mühendislerimiz en uygun çözümü sunsun.",
-    "cta_btn": "Fiyat Teklifi Al",
-    "bc_home": "Anasayfa",
+    "cta_btn": "Teklif Al",
+    "bc_home": "Ana Sayfa",
     "bc_page": "Alüminyum Lazer Kesim",
     "s1_l": "Kesim Hassasiyeti",
     "s1_v": "±0.05mm",
-    "s2_l": "Maks. Plaka Boyutu",
+    "s2_l": "Maks. Sac Ebadı",
     "s2_v": "3000 × 1500mm",
     "s3_l": "Maks. Kalınlık",
     "s3_v": "25mm",
@@ -811,12 +975,29 @@
     "s6_l": "Yüzey Kalitesi",
     "s6_v": "Ra 1.6 – 3.2",
     "c1_t": "Mikron Hassasiyet",
-    "c1_d": "±0.05mm tolerans ile karmaşık geometriler ve ince detaylar dahil mükemmel kesim kalitesi.",
+    "c1_d": "Karmaşık geometriler dahil ±0.05mm toleransla mükemmel kesim kalitesi.",
     "c2_t": "Yüksek Hız",
-    "c2_d": "6000W fiber lazer ile geleneksel yöntemlerin 5 katı hızda kesim. Acil siparişler için öncelikli hat.",
-    "c3_t": "Oksit Serbest Kesim",
-    "c3_d": "Azot gaz kullanımı ile oksit oluşumu önlenir, boya ve kaplama için ideal yüzey kalitesi.",
+    "c2_d": "6000W fiber lazer ile geleneksel yöntemlerden 5 kat daha hızlı kesim.",
+    "c3_t": "Oksitsiz Kesim",
+    "c3_d": "Azot gazı kullanımı sayesinde oksitlenme önlenir; boya ve kaplama için ideal yüzey kalitesi.",
     "c4_t": "Hızlı Teslimat",
-    "c4_d": "Standart siparişler 3–5 iş günü, acil siparişler 24–48 saat içinde teslimata hazır."
+    "c4_d": "Standart siparişler 3-5 iş günü, acil siparişler 24-48 saat içinde teslimata hazır.",
+    "mat_list": [
+      "1000 Serisi (Saf Alüminyum)",
+      "2000 Serisi (Havacılık)",
+      "5000 Serisi (Marine)",
+      "6000 Serisi (Yapısal)",
+      "7000 Serisi (Yüksek Mukavemet)",
+      "Alüminyum Kompozit Panel"
+    ],
+    "keywords": [
+      "alüminyum lazer kesim",
+      "alüminyum işleme",
+      "fiber lazer alüminyum",
+      "hassas alüminyum kesim",
+      "alüminyum sac kesim",
+      "alüminyum profiller",
+      "lazer kesim hizmeti"
+    ]
   }
 }

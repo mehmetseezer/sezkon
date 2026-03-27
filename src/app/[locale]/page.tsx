@@ -11,22 +11,28 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: 'Home' });
   const title = t('meta_title');
   const description = t('meta_desc');
+  const keywords = t.raw('keywords') as string[]; // dil dosyasından dizi olarak al
+
   const alternateLanguages = {
     tr: '/tr',
     en: '/en',
   };
+
   return generateSEO({
     title,
     description,
     canonical: `/${locale}`,
     locale,
     alternateLanguages,
+    keywords, // yeni eklenen alan
   });
 }
 
 export default function Home() {
   const t = useTranslations("Home");
   const contactButtonText = t("carousel_contact_btn");
+
+  // Carousel slides – linkler düzeltildi (mevcut /services/* rotalarına yönlendiriliyor)
   const slides = [
     {
       image: "/images/mobile.png",
@@ -38,7 +44,7 @@ export default function Home() {
         </>
       ),
       desc: t("slide1_desc"),
-      link: "/mobil",
+      link: "/services/mobile-app",     // mobil uygulama sayfası
     },
     {
       image: "/images/desktop.png",
@@ -50,7 +56,7 @@ export default function Home() {
         </>
       ),
       desc: t("slide2_desc"),
-      link: "/masaustu",
+      link: "/services/web-design",     // web tasarım sayfası
     },
     {
       image: "/images/laser-cutting.jpg",
@@ -62,7 +68,7 @@ export default function Home() {
         </>
       ),
       desc: t("slide3_desc"),
-      link: "/lazer-kesim",
+      link: "/services/aluminum-cutting", // lazer kesim sayfası
     },
   ];
 
@@ -170,7 +176,7 @@ export default function Home() {
                 </ul>
                 <div className="mt-auto">
                   <Link
-                    href="/hizmetler/cnc"
+                    href="/services/cnc"                 // düzeltildi
                     className="inline-flex items-center justify-center px-6 py-3 font-semibold text-indigo-600 transition-all duration-300 border border-indigo-200 rounded-full hover:bg-indigo-50 hover:shadow-md hover:-translate-y-0.5"
                   >
                     {t("cnc_btn")}
@@ -204,7 +210,7 @@ export default function Home() {
                 </ul>
                 <div className="mt-auto">
                   <Link
-                    href="/hizmetler/yazilim"
+                    href="/services/software"           // düzeltildi
                     className="inline-flex items-center justify-center px-6 py-3 font-semibold text-indigo-600 bg-white rounded-full transition-all duration-300 hover:bg-indigo-50 hover:shadow-lg hover:-translate-y-0.5"
                   >
                     {t("soft_btn")}
@@ -319,7 +325,7 @@ export default function Home() {
               </div>
               <div className="flex flex-col gap-4 items-start md:items-end">
                 <Link
-                  href="/iletisim"
+                  href="/contact"
                   className="inline-flex items-center justify-center px-10 py-5 text-xl font-bold text-indigo-600 bg-white rounded-full transition-all duration-300 hover:bg-indigo-50 hover:shadow-xl hover:-translate-y-1 gap-3"
                 >
                   {t("cta_btn")}

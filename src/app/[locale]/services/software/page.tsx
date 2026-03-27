@@ -10,48 +10,60 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: 'SrvSoft' });
   const title = t('meta_title');
   const description = t('meta_desc');
+  const keywords = t.raw('keywords') as string[]; // dil dosyasından al
 
   const baseUrl = 'https://www.sezkon.com';
-  const path = '/services/software-development';
+  const path = '/services/software';
   const canonical = `${baseUrl}/${locale}${path}`;
   const alternateLanguages = {
     tr: `${baseUrl}/tr${path}`,
     en: `${baseUrl}/en${path}`,
   };
 
-  const seo = generateSEO({
+  return generateSEO({
     title,
     description,
     canonical,
     locale,
     alternateLanguages,
-    ogImage: '/og-software.jpg', // sayfaya özel görsel varsa kullanın
+    ogImage: '/og-software.jpg',
+    keywords, // yeni eklenen
   });
-
-  return {
-    ...seo,
-    keywords: ['özel yazılım', 'ERP geliştirme', 'CRM yazılımı', 'kurumsal yazılım', 'MES sistemi', 'yazılım geliştirme İstanbul'],
-  };
 }
 
-const features = [
-  { icon: Database, title: 'ERP & CRM Sistemleri', desc: 'Üretim, satış, finans ve insan kaynakları süreçlerini tek platformda yöneten özel ERP/CRM çözümleri.' },
-  { icon: BarChart2, title: 'Gerçek Zamanlı Analitik', desc: 'Canlı dashboard, özelleştirilebilir raporlar ve iş zekası araçları ile veriye dayalı kararlar alın.' },
-  { icon: GitBranch, title: 'API & Entegrasyon', desc: 'Mevcut sistemlerinizle REST/GraphQL API entegrasyonu. Üçüncü taraf servisler ve ERP bağlantıları.' },
-  { icon: Cpu, title: 'MES (Üretim Yürütme)', desc: 'Fabrika zemininden gelen verileri anlık takip eden, iş emirlerini yöneten üretim yazılımı.' },
-  { icon: Shield, title: 'Kurumsal Güvenlik', desc: 'RBAC, çok faktörlü kimlik doğrulama, veri şifreleme ve KVKK uyumlu altyapı.' },
-  { icon: Code, title: 'Modern Teknoloji', desc: 'React, Next.js, Node.js, PostgreSQL ve TypeScript ile ölçeklenebilir, sürdürülebilir kod tabanı.' },
-];
-
-const techStack = [
-  { cat: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'] },
-  { cat: 'Backend', items: ['Node.js', 'Python', 'PostgreSQL', 'Redis'] },
-  { cat: 'Mobil', items: ['React Native', 'iOS', 'Android', 'Expo'] },
-  { cat: 'DevOps', items: ['Docker', 'CI/CD', 'AWS', 'Vercel'] },
-];
+// İkonlar artık sabit, çünkü görsel unsurlar dile bağlı değil
+const iconMap = {
+  Database, BarChart2, GitBranch, Cpu, Shield, Code
+};
 
 export default function SoftwarePage() {
   const t = useTranslations('SrvSoft');
+
+  // Özellikler dil dosyasından alınıyor
+  const features = [
+    { iconKey: 'Database', title: t('feat_1_title'), desc: t('feat_1_desc') },
+    { iconKey: 'BarChart2', title: t('feat_2_title'), desc: t('feat_2_desc') },
+    { iconKey: 'GitBranch', title: t('feat_3_title'), desc: t('feat_3_desc') },
+    { iconKey: 'Cpu', title: t('feat_4_title'), desc: t('feat_4_desc') },
+    { iconKey: 'Shield', title: t('feat_5_title'), desc: t('feat_5_desc') },
+    { iconKey: 'Code', title: t('feat_6_title'), desc: t('feat_6_desc') },
+  ];
+
+  // Teknoloji yığını dil dosyasından alınıyor
+  const techStack = [
+    { cat: t('stack_cat_frontend'), items: t('stack_items_frontend').split(',') },
+    { cat: t('stack_cat_backend'), items: t('stack_items_backend').split(',') },
+    { cat: t('stack_cat_mobile'), items: t('stack_items_mobile').split(',') },
+    { cat: t('stack_cat_devops'), items: t('stack_items_devops').split(',') },
+  ];
+
+  // Süreç adımları dil dosyasından alınıyor
+  const processSteps = [
+    { num: '01', title: t('proc_step_1_title'), desc: t('proc_step_1_desc') },
+    { num: '02', title: t('proc_step_2_title'), desc: t('proc_step_2_desc') },
+    { num: '03', title: t('proc_step_3_title'), desc: t('proc_step_3_desc') },
+  ];
+
   return (
     <main className="flex flex-col items-center overflow-x-hidden bg-white">
       {/* Hero */}
@@ -92,14 +104,19 @@ export default function SoftwarePage() {
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((f, i) => (
-              <div key={i} className="group relative bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-gray-100 hover:border-indigo-200 hover:shadow-2xl transition-all duration-500">
-                <div className="mb-6 p-3 bg-indigo-50 rounded-2xl text-indigo-600 w-fit group-hover:scale-105 transition-transform duration-300"><f.icon size={28} /></div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 tracking-tight">{f.title}</h3>
-                <p className="text-gray-600 leading-relaxed font-light text-sm">{f.desc}</p>
-                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-500 group-hover:w-full rounded-full" />
-              </div>
-            ))}
+            {features.map((f, i) => {
+              const IconComponent = iconMap[f.iconKey as keyof typeof iconMap];
+              return (
+                <div key={i} className="group relative bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-gray-100 hover:border-indigo-200 hover:shadow-2xl transition-all duration-500">
+                  <div className="mb-6 p-3 bg-indigo-50 rounded-2xl text-indigo-600 w-fit group-hover:scale-105 transition-transform duration-300">
+                    <IconComponent size={28} />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 tracking-tight">{f.title}</h3>
+                  <p className="text-gray-600 leading-relaxed font-light text-sm">{f.desc}</p>
+                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-500 group-hover:w-full rounded-full" />
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -142,11 +159,7 @@ export default function SoftwarePage() {
           </div>
           <div className="grid md:grid-cols-3 gap-8 relative">
             <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-indigo-200 to-transparent z-0" />
-            {[
-              { num: '01', title: 'Keşif & Analiz', desc: 'İş süreçlerinizi, teknik kısıtlamaları ve kullanıcı ihtiyaçlarını derinlemesine analiz ediyoruz.' },
-              { num: '02', title: 'Geliştirme Sprintleri', desc: '2 haftalık sprint döngüleriyle somut ilerleme, düzenli demo ve geri bildirim ile şeffaf süreç.' },
-              { num: '03', title: 'Teslim & Destek', desc: 'Test, eğitim, canlı ortam geçişi ve sonrasında süregelen teknik destek.' },
-            ].map((step, i) => (
+            {processSteps.map((step, i) => (
               <div key={i} className="relative z-10 space-y-4 group text-center">
                 <div className="w-24 h-24 rounded-full bg-white/70 backdrop-blur-sm border border-indigo-100 flex items-center justify-center mx-auto transition-all duration-500 group-hover:border-indigo-400 group-hover:shadow-xl group-hover:scale-110">
                   <span className="text-3xl font-black text-gray-300 group-hover:text-indigo-600 transition-colors italic">{step.num}</span>

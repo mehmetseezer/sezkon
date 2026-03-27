@@ -10,6 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: 'SrvInd' });
   const title = t('meta_title');
   const description = t('meta_desc');
+  const keywords = t.raw('keywords') as string[]; // dil dosyasından al
 
   const baseUrl = 'https://www.sezkon.com';
   const path = '/services/industry40';
@@ -19,70 +20,53 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     en: `${baseUrl}/en${path}`,
   };
 
-  const seo = generateSEO({
+  return generateSEO({
     title,
     description,
     canonical,
     locale,
     alternateLanguages,
-    ogImage: '/og-industry40.jpg', // sayfaya özel görsel varsa kullanın
+    ogImage: '/og-industry40.jpg',
+    keywords, // yeni eklenen
   });
-
-  return {
-    ...seo,
-    keywords: ['Endüstri 4.0', 'Akıllı Fabrika', 'IoT entegrasyonu', 'Dijital ikiz', 'Kestirimci bakım', 'Üretim verimliliği'],
-  };
 }
 
-const solutions = [
-  {
-    icon: Wifi,
-    title: 'IoT Sensör Ağı',
-    desc: 'Makine, enerji ve çevre parametrelerini anlık izleyen akıllı sensör altyapısı. OPC-UA ve MQTT protokolleriyle veri toplayın.',
-  },
-  {
-    icon: BarChart2,
-    title: 'Gerçek Zamanlı Dashboard',
-    desc: 'Tüm üretim süreçlerini tek ekranda takip edin. OEE, downtime, kalite ve enerji verilerinizi canlı görün.',
-  },
-  {
-    icon: Bot,
-    title: 'Yapay Zeka Kalite Kontrol',
-    desc: 'Makine öğrenmesi tabanlı görüntü işleme ile 0.1mm\'nin altında hataları insan gözüyle yakalanmadan tespit edin.',
-  },
-  {
-    icon: Factory,
-    title: 'Dijital İkiz',
-    desc: 'Üretim hatlarınızın sanal kopyasını oluşturun. Parametrik simülasyonlarla yatırım kararlarınızı risk almadan test edin.',
-  },
-  {
-    icon: Cpu,
-    title: 'Prediktif Bakım',
-    desc: 'Titreşim, sıcaklık ve akım analiziyle makinelerinizin arızalanmadan önce bakım ihtiyacını tespit edin.',
-  },
-  {
-    icon: Shield,
-    title: 'Siber Güvenlik',
-    desc: 'OT/IT network segmentasyonu, IEC 62443 uyumlu endüstriyel siber güvenlik çözümleri.',
-  },
-];
-
-const benefits = [
-  { value: '%25', label: 'OEE Artışı' },
-  { value: '%70', label: 'Bakım Arızası Azalması' },
-  { value: '%30', label: 'Enerji Tasarrufu' },
-  { value: '0', label: 'Plansız Duruş Hedefi' },
-];
-
-const roadmap = [
-  { phase: 'Faz 1', title: 'Keşif & Değerlendirme', dur: '2–4 Hafta', desc: 'Mevcut sistem analizi, veri kaynakları haritalama ve dijital dönüşüm yol haritası oluşturma.' },
-  { phase: 'Faz 2', title: 'Pilot Uygulama', dur: '4–8 Hafta', desc: 'Bir üretim hattında IoT sensör kurulumu, SCADA entegrasyonu ve dashboard yayına alma.' },
-  { phase: 'Faz 3', title: 'Ölçekleme', dur: '8–16 Hafta', desc: 'Pilot başarısını tüm tesise yaymak, AI modüllerini devreye almak ve ekip eğitimi.' },
-  { phase: 'Faz 4', title: 'Sürekli İyileştirme', dur: 'Süregelen', desc: 'Sistem optimizasyonu, yeni AI modeli geliştirme ve tesisin dijital olgunluğunu artırma.' },
-];
+// İkonlar çözüm sırasına göre eşleşir (s1..s4)
+const solutionIcons = [Wifi, Factory, Bot, Cpu];
 
 export default function Industry40Page() {
   const t = useTranslations('SrvInd');
+
+  // Çözümler – s1_t/s1_d ... s4_t/s4_d
+  const solutions = [
+    { title: t('s1_t'), desc: t('s1_d') },
+    { title: t('s2_t'), desc: t('s2_d') },
+    { title: t('s3_t'), desc: t('s3_d') },
+    { title: t('s4_t'), desc: t('s4_d') },
+  ];
+
+  // Faydalar – ben1_v/ben1_l ... ben4_v/ben4_l
+  const benefits = [
+    { value: t('ben1_v'), label: t('ben1_l') },
+    { value: t('ben2_v'), label: t('ben2_l') },
+    { value: t('ben3_v'), label: t('ben3_l') },
+    { value: t('ben4_v'), label: t('ben4_l') },
+  ];
+
+  // Yol haritası – r1_p/r1_t/r1_u/r1_d ... r4_p/r4_t/r4_u/r4_d
+  const roadmap = [
+    { phase: t('r1_p'), title: t('r1_t'), dur: t('r1_u'), desc: t('r1_d') },
+    { phase: t('r2_p'), title: t('r2_t'), dur: t('r2_u'), desc: t('r2_d') },
+    { phase: t('r3_p'), title: t('r3_t'), dur: t('r3_u'), desc: t('r3_d') },
+    { phase: t('r4_p'), title: t('r4_t'), dur: t('r4_u'), desc: t('r4_d') },
+  ];
+
+  // Teknoloji listesi (dil dosyasına yeni anahtar eklenecek)
+  const techList = t.raw('tech_stack_list') as string[];
+
+  // Neden Sezkon? listesi (why_list)
+  const whyList = t.raw('why_list') as string[];
+
   return (
     <main className="flex flex-col items-center overflow-x-hidden bg-white">
 
@@ -143,22 +127,25 @@ export default function Industry40Page() {
               {t('sol_t1')} <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">{t('sol_t2')}</span>
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {solutions.map((sol, i) => (
-              <div key={i} className="group relative bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-gray-100 hover:border-emerald-200 hover:shadow-2xl transition-all duration-500">
-                <div className="mb-6 p-3 bg-emerald-50 rounded-2xl text-emerald-600 w-fit group-hover:scale-105 transition-transform duration-300"><sol.icon size={28} /></div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 tracking-tight">{sol.title}</h3>
-                <p className="text-gray-600 leading-relaxed font-light text-sm">{sol.desc}</p>
-                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-400 transition-all duration-500 group-hover:w-full rounded-full" />
-              </div>
-            ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {solutions.map((sol, i) => {
+              const Icon = solutionIcons[i];
+              return (
+                <div key={i} className="group relative bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-gray-100 hover:border-emerald-200 hover:shadow-2xl transition-all duration-500">
+                  <div className="mb-6 p-3 bg-emerald-50 rounded-2xl text-emerald-600 w-fit group-hover:scale-105 transition-transform duration-300"><Icon size={28} /></div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 tracking-tight">{sol.title}</h3>
+                  <p className="text-gray-600 leading-relaxed font-light text-sm">{sol.desc}</p>
+                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-400 transition-all duration-500 group-hover:w-full rounded-full" />
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Roadmap */}
       <section className="w-full py-24 bg-gradient-to-b from-white via-neutral-50 to-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-white/0 bg-[url('/grid.svg')] bg-center bg-repeat [mask-image:linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))] mask-repeat-[no-repeat] mask-[linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-white/0 bg-[url('/grid.svg')] bg-center bg-repeat [mask-image:linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))] mask-repeat-no-repeat mask-[linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))]" />
         <div className="container relative mx-auto px-6 max-w-5xl">
           <div className="text-center max-w-3xl mx-auto mb-20 relative z-10">
             <div className="inline-flex items-center rounded-full bg-emerald-50/50 px-4 py-1 text-sm font-semibold text-emerald-400 italic mb-6 backdrop-blur-sm border border-emerald-200/20">{t('road_tag')}</div>
@@ -193,7 +180,7 @@ export default function Industry40Page() {
         <div className="container mx-auto px-6 max-w-5xl">
           <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-8">{t('tech_stack_title')}</p>
           <div className="flex flex-wrap justify-center gap-4">
-            {['Siemens S7', 'Allen-Bradley', 'Fanuc', 'OPC-UA', 'MQTT', 'InfluxDB', 'Grafana', 'TensorFlow', 'SCADA', 'AWS IoT'].map((tech, i) => (
+            {techList.map((tech, i) => (
               <span key={i} className="px-5 py-2 bg-gray-50 border border-gray-200 rounded-full text-sm font-medium text-gray-600 hover:border-emerald-300 hover:text-emerald-600 hover:bg-emerald-50 transition-all">
                 {tech}
               </span>
@@ -217,14 +204,7 @@ export default function Industry40Page() {
               </div>
             </div>
             <div className="space-y-3">
-              {[
-                '10+ yıl üretim sektörü deneyimi',
-                'Kendi fabrikamızda test edilmiş çözümler',
-                'SAP, Oracle ve Siemens entegrasyon deneyimi',
-                'ISO 9001 sertifikalı proje yönetimi',
-                'Türkçe destek, yerli mühendis ekibi',
-                'Prototipten enterprise ölçeğe esnek çözümler',
-              ].map((item, i) => (
+              {whyList.map((item, i) => (
                 <div key={i} className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-gray-100 hover:border-emerald-200 hover:shadow-md transition-all">
                   <CheckCircle2 size={18} className="text-emerald-600 flex-shrink-0" />
                   <span className="font-medium text-gray-800 text-sm">{item}</span>

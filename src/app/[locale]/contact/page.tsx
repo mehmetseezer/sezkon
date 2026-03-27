@@ -12,12 +12,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     tr: '/tr/contact',
     en: '/en/contact',
   };
+  const keywords = t.raw('keywords') as string[]; // dil dosyasından al
   return generateSEO({
     title: t('meta_title'),
     description: t('meta_desc'),
     canonical: `/${locale}/contact`,
     locale,
     alternateLanguages,
+    keywords, // yeni eklenen
   });
 }
 

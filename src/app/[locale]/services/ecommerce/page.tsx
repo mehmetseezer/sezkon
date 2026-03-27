@@ -10,28 +10,25 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: 'SrvEcom' });
   const title = t('meta_title');
   const description = t('meta_desc');
+  const keywords = t.raw('keywords') as string[]; // dil dosyasından al
 
   const baseUrl = 'https://www.sezkon.com';
-  const path = '/services/ecommerce'; // hizmetler klasörüne uygun yol
+  const path = '/services/ecommerce';
   const canonical = `${baseUrl}/${locale}${path}`;
   const alternateLanguages = {
     tr: `${baseUrl}/tr${path}`,
     en: `${baseUrl}/en${path}`,
   };
 
-  const seo = generateSEO({
+  return generateSEO({
     title,
     description,
     canonical,
     locale,
     alternateLanguages,
-    ogImage: '/og-ecommerce.jpg', // sayfaya özel görsel varsa kullanın
+    ogImage: '/og-ecommerce.jpg',
+    keywords, // yeni eklenen
   });
-
-  return {
-    ...seo,
-    keywords: ['e-ticaret sistemi', 'online mağaza', 'B2B e-ticaret', 'ödeme entegrasyonu', 'e-ticaret yazılımı'],
-  };
 }
 
 const getFeatures = (t: any) => [

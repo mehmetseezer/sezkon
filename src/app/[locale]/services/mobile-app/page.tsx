@@ -10,6 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: 'SrvApp' });
   const title = t('meta_title');
   const description = t('meta_desc');
+  const keywords = t.raw('keywords') as string[]; // dil dosyasından al
 
   const baseUrl = 'https://www.sezkon.com';
   const path = '/services/mobile-app';
@@ -19,19 +20,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     en: `${baseUrl}/en${path}`,
   };
 
-  const seo = generateSEO({
+  return generateSEO({
     title,
     description,
     canonical,
     locale,
     alternateLanguages,
-    ogImage: '/og-mobile-app.jpg', // sayfaya özel görsel varsa kullanın
+    ogImage: '/og-mobile-app.jpg',
+    keywords, // yeni eklenen
   });
-
-  return {
-    ...seo,
-    keywords: ['mobil uygulama', 'iOS geliştirme', 'Android uygulama', 'React Native', 'kurumsal mobil uygulama'],
-  };
 }
 
 const getFeatures = (t: any) => [

@@ -20,12 +20,17 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ? 'Endüstri 4.0, yazılım geliştirme ve CNC işleme çözümleri.'
     : 'Industry 4.0, software development and CNC machining solutions.';
 
+  const keywords = locale === 'tr'
+    ? ['Sezkon', 'yazılım', 'CNC', 'lazer kesim', 'abkant büküm', 'Endüstri 4.0', 'akıllı fabrika', 'özel yazılım', 'ERP', 'CRM', 'hassas işleme']
+    : ['Sezkon', 'software', 'CNC', 'laser cutting', 'press brake', 'Industry 4.0', 'smart factory', 'custom software', 'ERP', 'CRM', 'precision machining'];
+
   return {
     title: {
       default: title,
       template: '%s | Sezkon',
     },
     description,
+    keywords,
     metadataBase: new URL('https://www.sezkon.com'),
     openGraph: {
       siteName: 'Sezkon',

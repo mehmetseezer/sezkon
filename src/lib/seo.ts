@@ -8,6 +8,7 @@ interface SEOProps {
   noIndex?: boolean;
   locale?: string;
   alternateLanguages?: Record<string, string>;
+  keywords?: string | string[]; // yeni eklenen opsiyonel alan
 }
 
 export function generateSEO({
@@ -18,10 +19,12 @@ export function generateSEO({
   noIndex = false,
   locale = 'tr',
   alternateLanguages = {},
+  keywords,
 }: SEOProps): Metadata {
   return {
     title,
     description,
+    ...(keywords && { keywords }), // sadece varsa eklenir
     alternates: {
       canonical,
       languages: alternateLanguages,

@@ -10,6 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: 'SrvWeb' });
   const title = t('meta_title');
   const description = t('meta_desc');
+  const keywords = t.raw('keywords') as string[]; // dil dosyasından al
 
   const baseUrl = 'https://www.sezkon.com';
   const path = '/services/web-design';
@@ -19,19 +20,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     en: `${baseUrl}/en${path}`,
   };
 
-  const seo = generateSEO({
+  return generateSEO({
     title,
     description,
     canonical,
     locale,
     alternateLanguages,
-    ogImage: '/og-webdesign.jpg', // sayfaya özel görsel varsa kullanın
+    ogImage: '/og-webdesign.jpg',
+    keywords, // yeni eklenen
   });
-
-  return {
-    ...seo,
-    keywords: ['web tasarım', 'kurumsal web sitesi', 'Next.js', 'React', 'SEO uyumlu web tasarım', 'İstanbul web ajansı'],
-  };
 }
 
 const getFeatures = (t: any) => [
@@ -141,7 +138,7 @@ export default function WebDesignPage() {
             {[
               { name: t('pkg1_n'), price: '₺15,000', desc: t('pkg1_d'), features: (t.raw('pkg1_f') as string[]) || [] },
               { name: t('pkg2_n'), price: '₺35,000', desc: t('pkg2_d'), features: (t.raw('pkg2_f') as string[]) || [], featured: true },
-              { name: t('pkg3_n'), price: 'Özel Teklif', desc: t('pkg3_d'), features: (t.raw('pkg3_f') as string[]) || [] },
+              { name: t('pkg3_n'), price: t('pkg3_p'), desc: t('pkg3_d'), features: (t.raw('pkg3_f') as string[]) || [] },
             ].map((pkg, i) => (
               <div key={i} className={`group relative rounded-3xl p-8 transition-all duration-500 hover:shadow-2xl ${pkg.featured ? 'bg-indigo-950 border border-indigo-800' : 'bg-white/70 backdrop-blur-sm border border-gray-100 hover:border-indigo-200'}`}>
                 {pkg.featured && <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-indigo-500 text-white text-xs font-bold rounded-full">{t('badge_pop')}</div>}
