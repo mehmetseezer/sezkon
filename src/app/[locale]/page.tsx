@@ -35,6 +35,18 @@ export default function Home() {
   // Carousel slides – linkler düzeltildi (mevcut /services/* rotalarına yönlendiriliyor)
   const slides = [
     {
+      image: "/images/multi.png",
+      tag: t("slide0_tag"),
+      title: (
+        <>
+          {t("slide0_t")}<br />
+          <span className="text-indigo-600">{t("slide0_t2")}</span>
+        </>
+      ),
+      desc: t("slide0_desc"),
+      link: "/services/mobile-app",     // mobil uygulama sayfası
+    },
+    {
       image: "/images/mobile.png",
       tag: t("slide1_tag"),
       title: (
@@ -59,7 +71,7 @@ export default function Home() {
       link: "/services/web-design",     // web tasarım sayfası
     },
     {
-      image: "/images/laser-cutting.jpg",
+      image: "/images/laser-cutting.png",
       tag: t("slide3_tag"),
       title: (
         <>

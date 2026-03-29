@@ -7,15 +7,16 @@ import Image from 'next/image';
 
 // Referans Listesi
 const references = [
-  { name: 'Andesan Savunma Sanayi LTD. ŞTİ.', logo: '/logos/andesan_metal.jpeg' },
+  { name: 'ANDESAN Savunma Sanayi LTD. ŞTİ.', logo: '/logos/andesan_metal.jpeg' },
   { name: 'Jeojem Mühendislik', logo: '/logos/jeojem.png' },
   { name: 'KESKA Zemin Yapı Laboratuvarı ve Mühendislik', logo: '/logos/keska.png' },
-  { name: 'Neu Europa Group', logo: '/logos/ne_group.png' },
-  { name: 'Noksi Metal San. ve Dış. Tic. Ltd. Şti.', logo: '/logos/noksi_metal.png' },
-  { name: 'Rivia Mühendislik', logo: '/logos/rivia.png' },
-  { name: 'Teknodrom', logo: '/logos/teknodrom.png' },
-  { name: 'Yeşil Sağlık Tıbbi Cihazlar', logo: '/logos/yesil_saglik.png' },
-  { name: 'Yalçın Trans', logo: '/logos/yalcin_trans.png' },
+  { name: 'Neu Europa Group LTD. ŞTİ.', logo: '/logos/ne_group.png' },
+  { name: 'NOKSİ METAL San. ve Dış. Tic. Ltd. Şti.', logo: '/logos/noksi_metal.png' },
+  { name: 'RİVİA Mühendislik', logo: '/logos/rivia.png' },
+  { name: 'TEKNODROM', logo: '/logos/teknodrom.png' },
+  { name: 'YEŞİL SAĞLIK LTİ. ŞTİ.', logo: '/logos/yesil_saglik.png' },
+  { name: 'YALÇIN TRANS LTD. ŞTİ.', logo: '/logos/yalcin_trans.png' },
+  { name: 'MEGAYOL TRAFİK LTD. ŞTİ.', logo: '/logos/megayol.png' },
 ];
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -126,6 +127,6 @@ export default function ReferencesPage() {
         </div>
       </section>
 
-    </main> 
+    </main>
   );
 }

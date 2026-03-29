@@ -29,7 +29,6 @@ export default function HeroCarousel({
   brandColor = '#007aff',
   contactButtonText,
 }: HeroCarouselProps) {
-  // Statik stil bloğu (sadece CSS değişkeni kullanır)
   const styleTagContent = `
     .hero-pagination .swiper-pagination-bullet {
       background: #cbd5e1 !important;
@@ -61,10 +60,11 @@ export default function HeroCarousel({
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-white"
+      className="relative w-full overflow-hidden bg-white pt-20 md:pt-0"
       style={{ '--brand-color': brandColor } as React.CSSProperties}
     >
       <style dangerouslySetInnerHTML={{ __html: styleTagContent }} />
+
       <Swiper
         modules={[Autoplay, EffectFade, Pagination, Parallax]}
         effect="fade"
@@ -85,10 +85,13 @@ export default function HeroCarousel({
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div className="relative min-h-screen w-full">
-              <div className="mx-auto flex min-h-screen w-full max-w-7xl items-center px-6 py-16 md:px-8 lg:px-12">
-                <div className="grid w-full grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-                  {/* Sol: Metin */}
-                  <div className="order-2 text-center lg:order-1 lg:text-left">
+              <div className="mx-auto flex min-h-screen w-full max-w-7xl items-center px-4 py-8 sm:px-6 sm:py-12 md:px-8 md:py-16 lg:px-12">
+                
+                {/* GRID */}
+                <div className="grid w-full grid-cols-1 items-center gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16">
+                  
+                  {/* TEXT (mobilde üstte) */}
+                  <div className="text-center lg:text-left">
                     <div
                       className="mb-6 inline-block rounded-full bg-indigo-50/80 px-5 py-2 text-[13px] font-semibold tracking-tight text-indigo-600 backdrop-blur-sm"
                       data-swiper-parallax="-100"
@@ -124,29 +127,30 @@ export default function HeroCarousel({
                     </div>
                   </div>
 
-                  {/* Sağ: Kare Görsel */}
-                  <div className="order-1 flex items-center justify-center lg:order-2">
-                    <div className="relative w-full max-w-md lg:max-w-xl">
-                      <div className="group relative overflow-hidden rounded-2xl bg-neutral-100 shadow-xl transition-all duration-500 hover:shadow-2xl">
+                  {/* IMAGE (mobilde altta) */}
+                  <div className="flex items-center justify-center">
+                    <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl">
+                      <div className="group relative overflow-hidden transition-all duration-500">
                         <div className="relative aspect-square w-full">
                           <Image
                             src={slide.image}
                             alt={slide.tag}
                             fill
-                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            className="object-cover transition-transform duration-500 group-hover:scale-110 group-hover:rotate-1"
                             priority={index === 0}
                             sizes="(max-width: 768px) 100vw, 50vw"
-                          // quality prop'u kaldırıldı
                           />
                         </div>
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
           </SwiperSlide>
         ))}
+
         <div className="hero-pagination absolute bottom-8 left-1/2 z-50 flex -translate-x-1/2 gap-2" />
       </Swiper>
     </section>
