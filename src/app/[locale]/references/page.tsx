@@ -14,7 +14,7 @@ const references = [
   { name: 'NOKSİ METAL San. ve Dış. Tic. Ltd. Şti.', logo: '/logos/noksi_metal.png' },
   { name: 'RİVİA Mühendislik', logo: '/logos/rivia.png' },
   { name: 'TEKNODROM', logo: '/logos/teknodrom.png' },
-  { name: 'YEŞİL SAĞLIK LTİ. ŞTİ.', logo: '/logos/yesil_saglik.png' },
+  { name: 'YEŞİL SAĞLIK LTD. ŞTİ.', logo: '/logos/yesil_saglik.png' },
   { name: 'YALÇIN TRANS LTD. ŞTİ.', logo: '/logos/yalcin_trans.png' },
   { name: 'MEGAYOL TRAFİK LTD. ŞTİ.', logo: '/logos/megayol.png' },
 ];
