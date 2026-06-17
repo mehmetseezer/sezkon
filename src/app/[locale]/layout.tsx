@@ -106,6 +106,19 @@ export default async function RootLayout({
     <html lang={locale}>
       <head>
         <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-R570T40X56"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-R570T40X56');
+          `}
+        </Script>
+        <Script
           id="organization-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
