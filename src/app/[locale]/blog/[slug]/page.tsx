@@ -24,21 +24,59 @@ interface Blog {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   try {
-    const rows = await query('SELECT title, excerpt, seo_title, seo_description, seo_keywords FROM blogs WHERE slug = ? AND is_published = 1', [slug]);
+    const rows = await query(
+      'SELECT title, excerpt, seo_title, seo_description, seo_keywords, author, created_at, updated_at FROM blogs WHERE slug = ? AND is_published = 1',
+      [slug]
+    );
     const blog = (rows as Blog[])[0];
     if (!blog) return { title: 'Blog | Sezkon' };
-    
+
+    const title = blog.seo_title || `${blog.title} | Sezkon`;
+    const description = blog.seo_description || blog.excerpt || '';
+    const canonical = `https://www.sezkon.com/${locale}/blog/${slug}`;
+
     return {
-      title: blog.seo_title || `${blog.title} | Sezkon`,
-      description: blog.seo_description || blog.excerpt || '',
+      metadataBase: new URL('https://www.sezkon.com'),
+      title,
+      description,
       keywords: blog.seo_keywords ? blog.seo_keywords.split(',').map((k) => k.trim()) : undefined,
+      authors: [{ name: blog.author || 'Sezkon' }],
+      alternates: {
+        canonical,
+        languages: {
+          tr: `https://www.sezkon.com/tr/blog/${slug}`,
+          en: `https://www.sezkon.com/en/blog/${slug}`,
+        },
+      },
+      openGraph: {
+        title,
+        description,
+        url: canonical,
+        siteName: 'Sezkon',
+        locale,
+        type: 'article',
+        publishedTime: blog.created_at,
+        modifiedTime: blog.updated_at || blog.created_at,
+        authors: [blog.author || 'Sezkon'],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title,
+        description,
+      },
+      robots: {
+        index: true,
+        follow: true,
+        googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
+      },
     };
   } catch {
     return { title: 'Blog | Sezkon' };
   }
 }
+
 
 export default async function BlogDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
@@ -79,9 +117,19 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ loc
     'image': blog.cover_image ? (blog.cover_image.startsWith('http') ? blog.cover_image : `https://www.sezkon.com${blog.cover_image}`) : [],
     'datePublished': blog.created_at,
     'dateModified': blog.updated_at || blog.created_at,
+    'keywords': blog.seo_keywords || blog.focus_keyword || '',
+    'articleSection': blog.category || 'Teknoloji',
+    'wordCount': blog.content ? blog.content.replace(/<[^>]+>/g, '').split(/\s+/).length : undefined,
+    'inLanguage': locale,
+    'url': `https://www.sezkon.com/${locale}/blog/${blog.slug}`,
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': `https://www.sezkon.com/${locale}/blog/${blog.slug}`,
+    },
     'author': {
       '@type': 'Person',
       'name': blog.author || 'Mehmet Sezer',
+      'url': 'https://www.sezkon.com/tr/about',
     },
     'publisher': {
       '@type': 'Organization',
@@ -93,13 +141,44 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ loc
     },
   };
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Ana Sayfa',
+        'item': `https://www.sezkon.com/${locale}`,
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Blog',
+        'item': `https://www.sezkon.com/${locale}/blog`,
+      },
+      {
+        '@type': 'ListItem',
+        'position': 3,
+        'name': blog.title,
+        'item': `https://www.sezkon.com/${locale}/blog/${blog.slug}`,
+      },
+    ],
+  };
+
+
   return (
     <main className="w-full bg-white min-h-screen">
-      {/* Schema.org Structured Data */}
+      {/* BlogPosting + BreadcrumbList Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+
       {/* Hero Banner */}
       <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10 pointer-events-none" />

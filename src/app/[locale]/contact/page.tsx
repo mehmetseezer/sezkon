@@ -60,8 +60,35 @@ export default function ContactPage() {
     },
   ];
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: t('faq_1_q'),
+        acceptedAnswer: { '@type': 'Answer', text: t('faq_1_a') },
+      },
+      {
+        '@type': 'Question',
+        name: t('faq_2_q'),
+        acceptedAnswer: { '@type': 'Answer', text: t('faq_2_a') },
+      },
+      {
+        '@type': 'Question',
+        name: t('faq_3_q'),
+        acceptedAnswer: { '@type': 'Answer', text: t('faq_3_a') },
+      },
+    ],
+  };
+
   return (
     <main className="flex flex-col items-center overflow-x-hidden bg-white">
+      {/* FAQPage JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
 
       {/* Hero */}
       <section className="w-full pt-36 pb-16 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">

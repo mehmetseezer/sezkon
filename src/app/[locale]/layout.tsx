@@ -74,8 +74,12 @@ export default async function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Sezkon',
+    legalName: 'Sezkon Makine ve Yazılım San. Tic. Ltd. Şti.',
     url: 'https://www.sezkon.com',
-    logo: 'https://www.sezkon.com/logo.png',
+    logo: 'https://www.sezkon.com/logos/logo.png',
+    foundingDate: '2013',
+    numberOfEmployees: { '@type': 'QuantitativeValue', value: 15 },
+    areaServed: ['TR', 'DE', 'GB'],
     sameAs: [
       'https://www.linkedin.com/company/sezkon',
       'https://www.instagram.com/sezkon',
@@ -88,12 +92,30 @@ export default async function RootLayout({
       postalCode: '34899',
       addressCountry: 'TR',
     },
-    contactPoint: {
-      '@type': 'ContactPoint',
-      telephone: '+90 (552) 240 37 05',
-      contactType: 'customer service',
-      email: 'info@sezkon.com',
-    },
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: '+905522403705',
+        contactType: 'customer service',
+        email: 'info@sezkon.com',
+        availableLanguage: ['Turkish', 'English'],
+      },
+      {
+        '@type': 'ContactPoint',
+        telephone: '+905343913934',
+        contactType: 'sales',
+        availableLanguage: ['Turkish'],
+      },
+    ],
+    knowsAbout: [
+      'ERP sistemleri',
+      'CRM yazılımı',
+      'Özel yazılım geliştirme',
+      'CNC işleme',
+      'Lazer kesim',
+      'Endüstri 4.0',
+      'MES sistemleri',
+    ],
   };
 
   const websiteSchema = {
@@ -101,12 +123,13 @@ export default async function RootLayout({
     '@type': 'WebSite',
     name: 'Sezkon',
     url: 'https://www.sezkon.com',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: 'https://www.sezkon.com/search?q={search_term_string}',
-      'query-input': 'required name=search_term_string',
+    inLanguage: ['tr-TR', 'en-US'],
+    publisher: {
+      '@type': 'Organization',
+      name: 'Sezkon',
     },
   };
+
 
   return (
     <html lang={locale} className={`${brandFont.variable}`}>

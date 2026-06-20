@@ -1,5 +1,22 @@
 import { query } from '@/lib/db';
 import BlogPageClient from './BlogPageClient';
+import { generateSEO } from '@/lib/seo';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Blog' });
+  const keywords = t.raw('keywords') as string[];
+  return generateSEO({
+    title: t('meta_title'),
+    description: t('meta_desc'),
+    canonical: `/${locale}/blog`,
+    locale,
+    alternateLanguages: { tr: '/tr/blog', en: '/en/blog' },
+    keywords,
+  });
+}
+
 
 interface Blog {
   id: number;
@@ -17,9 +34,12 @@ interface Blog {
 
 export default async function BlogPage({
   searchParams,
+  params,
 }: {
   searchParams: Promise<{ page?: string; search?: string; category?: string }>;
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
   const resolvedSearchParams = await searchParams;
   const page = Math.max(1, parseInt(resolvedSearchParams.page || '1', 10));
   const search = resolvedSearchParams.search || '';
@@ -29,17 +49,17 @@ export default async function BlogPage({
 
   // Build conditions array for query
   const conditions: string[] = ['is_published = 1'];
-  const params: any[] = [];
+  const queryParams: any[] = [];
 
   if (search) {
     conditions.push('(title LIKE ? OR excerpt LIKE ? OR category LIKE ? OR author LIKE ?)');
     const wildcard = `%${search}%`;
-    params.push(wildcard, wildcard, wildcard, wildcard);
+    queryParams.push(wildcard, wildcard, wildcard, wildcard);
   }
 
   if (category) {
     conditions.push('category = ?');
-    params.push(category);
+    queryParams.push(category);
   }
 
   const whereClause = `WHERE ${conditions.join(' AND ')}`;
@@ -50,7 +70,7 @@ export default async function BlogPage({
 
   try {
     // 1. Count total matching elements
-    const countResult = await query(`SELECT COUNT(*) as count FROM blogs ${whereClause}`, params);
+    const countResult = await query(`SELECT COUNT(*) as count FROM blogs ${whereClause}`, queryParams);
     totalRecords = (countResult as any)[0]?.count || 0;
 
     // 2. Fetch paginated elements
@@ -61,7 +81,7 @@ export default async function BlogPage({
       ORDER BY created_at DESC 
       LIMIT ${limit} OFFSET ${offset}
     `;
-    const blogsResult = await query(fetchSql, params);
+    const blogsResult = await query(fetchSql, queryParams);
     blogs = blogsResult as Blog[];
 
     // 3. Fetch unique categories for dynamic filter
@@ -75,18 +95,62 @@ export default async function BlogPage({
 
   const totalPages = Math.ceil(totalRecords / limit);
 
+  const baseUrl = 'https://www.sezkon.com';
+  const pageUrl = `${baseUrl}/${locale}/blog`;
+
+  const collectionJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: locale === 'tr' ? 'Sezkon Blog - Teknoloji ve Üretim Yazıları' : 'Sezkon Blog - Technology & Manufacturing Articles',
+    description: locale === 'tr' ? 'Endüstri 4.0, özel yazılım, CNC işleme ve e-ticaret teknolojileri hakkında güncel içerikler.' : 'Latest insights on Industry 4.0, custom software, CNC machining, and e-commerce technologies.',
+    url: pageUrl,
+    about: {
+      '@type': 'Organization',
+      name: 'Sezkon',
+      url: baseUrl,
+    },
+    hasPart: blogs.map((blog) => ({
+      '@type': 'BlogPosting',
+      '@id': `${baseUrl}/${locale}/blog/${blog.slug}`,
+      name: blog.title,
+      headline: blog.title,
+      description: blog.excerpt,
+      url: `${baseUrl}/${locale}/blog/${blog.slug}`,
+      image: blog.cover_image ? (blog.cover_image.startsWith('http') ? blog.cover_image : `${baseUrl}${blog.cover_image}`) : `${baseUrl}/og-default.jpg`,
+      author: {
+        '@type': 'Person',
+        name: blog.author || 'Sezkon Editor',
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Sezkon',
+        logo: {
+          '@type': 'ImageObject',
+          url: `${baseUrl}/logos/logo.png`,
+        },
+      },
+      datePublished: new Date(blog.created_at).toISOString(),
+    })),
+  };
+
   return (
-    <BlogPageClient
-      initialBlogs={blogs}
-      pagination={{
-        page,
-        limit,
-        total: totalRecords,
-        totalPages,
-      }}
-      categories={categories}
-      initialSearch={search}
-      initialCategory={category}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
+      />
+      <BlogPageClient
+        initialBlogs={blogs}
+        pagination={{
+          page,
+          limit,
+          total: totalRecords,
+          totalPages,
+        }}
+        categories={categories}
+        initialSearch={search}
+        initialCategory={category}
+      />
+    </>
   );
 }

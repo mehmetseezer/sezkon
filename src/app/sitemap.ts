@@ -2,6 +2,8 @@ import { MetadataRoute } from 'next';
 import { routing } from '@/i18n/routing';
 import { query } from '@/lib/db';
 
+export const dynamic = 'force-dynamic'; // Her istekte DB'den taze veri çeker
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.sezkon.com';
 
@@ -18,13 +20,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Hizmet sayfaları (daha yüksek öncelik)
   const serviceRoutes = [
-    'services/software-development',
-    'services/cnc-machining',
-    'services/sheet-metal-cutting',
+    'services/software',
+    'services/cnc',
+    'services/sheet-cutting',
     'services/web-design',
-    'services/e-commerce',
+    'services/ecommerce',
     'services/mobile-app',
-    'services/industry-4-0',
+    'services/industry40',
+    'services/aluminum-cutting',
+    'services/bending',
   ];
 
   const pages: MetadataRoute.Sitemap = [];

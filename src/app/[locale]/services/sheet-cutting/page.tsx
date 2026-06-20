@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Link } from '@/i18n/routing';
 import { ArrowRight, CheckCircle2, Layers, Zap, Target, Clock } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { generateSEO } from '@/lib/seo';
 
@@ -36,6 +36,7 @@ const iconMap = [Layers, Target, Zap, Clock];
 
 export default function SheetCuttingPage() {
   const t = useTranslations('SrvSheet');
+  const locale = useLocale();
 
   // Teknik özellikler (specs) – s1_l/s1_v'den s6_l/s6_v'ye kadar
   const specs = [
@@ -47,7 +48,7 @@ export default function SheetCuttingPage() {
     { label: t('s6_l'), value: t('s6_v') },
   ];
 
-  // Yetenekler (capabilities) – c1_t/c1_d'den c4_t/c4_d'ye kadar
+  // Yetenekler (capabilities) – c1_t/c1_d ile c4_t/c4_d arası
   const capabilities = [
     { title: t('c1_t'), desc: t('c1_d') },
     { title: t('c2_t'), desc: t('c2_d') },
@@ -55,7 +56,7 @@ export default function SheetCuttingPage() {
     { title: t('c4_t'), desc: t('c4_d') },
   ];
 
-  // Malzemeler – mat1_n/mat1_t'den mat6_n/mat6_t'ye kadar
+  // Malzemeler (mat_list array)
   const materials = [
     { name: t('mat1_n'), thickness: t('mat1_t') },
     { name: t('mat2_n'), thickness: t('mat2_t') },
@@ -65,9 +66,74 @@ export default function SheetCuttingPage() {
     { name: t('mat6_n'), thickness: t('mat6_t') },
   ];
 
+  const baseUrl = 'https://www.sezkon.com';
+  const pageUrl = `${baseUrl}/${locale}/services/sheet-cutting`;
+
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: t('hero_t1') + ' ' + t('hero_t2'),
+    description: t('hero_desc'),
+    url: pageUrl,
+    provider: { '@type': 'Organization', name: 'Sezkon', url: baseUrl },
+    serviceType: 'Laser Cutting',
+    areaServed: { '@type': 'Country', name: 'TR' },
+  };
+
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'Sac lazer kesim hassasiyeti nedir?' : 'What is sheet metal laser cutting precision?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? '±0.03mm hassasiyetle kesim yapıyoruz. 12000W fiber lazer gücümüzle 30mm\'ye kadar siyah sac ve 20mm paslanmaz çelik kesim gerçekleştiriyoruz.'
+            : 'We cut with ±0.03mm precision. With our 12000W fiber laser power, we cut black sheet metal up to 30mm and stainless steel up to 20mm.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'Hangi malzemeleri kesebiliyorsunuz?' : 'Which materials can you cut?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Siyah sac (S235/S355), paslanmaz çelik (304/316), galvanizli sac, Hardox, elektro galvaniz ve Aluzinc kaplı malzemeleri kesiyoruz.'
+            : 'We cut carbon steel (S235/S355), stainless steel (304/316), galvanized sheet, Hardox, electro-galvanized and Aluzinc coated materials.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'DXF dosyasıyla teklif alabilir miyim?' : 'Can I get a quote with a DXF file?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Evet, DXF veya DWG dosyanızla iletişime geçin. Mühendislerimiz en verimli kesim planını hazırlayarak size anında teklif sunar.'
+            : 'Yes, contact us with your DXF or DWG file. Our engineers prepare the most efficient cutting plan and offer you an instant quote.',
+        },
+      },
+    ],
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: locale === 'tr' ? 'Ana Sayfa' : 'Home', item: `${baseUrl}/${locale}` },
+      { '@type': 'ListItem', position: 2, name: locale === 'tr' ? 'Hizmetler' : 'Services', item: `${baseUrl}/${locale}/services` },
+      { '@type': 'ListItem', position: 3, name: t('bc_page'), item: pageUrl },
+    ],
+  };
+
   return (
     <main className="flex flex-col items-center overflow-x-hidden bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       {/* Hero */}
+
       <section className="w-full pt-36 pb-24 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-100/60 rounded-full blur-[80px]" />

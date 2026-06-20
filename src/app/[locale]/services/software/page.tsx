@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Link } from '@/i18n/routing';
 import { ArrowRight, CheckCircle2, Code, Database, GitBranch, BarChart2, Shield, Cpu } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { generateSEO } from '@/lib/seo';
 
@@ -38,6 +38,7 @@ const iconMap = {
 
 export default function SoftwarePage() {
   const t = useTranslations('SrvSoft');
+  const locale = useLocale();
 
   // Özellikler dil dosyasından alınıyor
   const features = [
@@ -64,8 +65,85 @@ export default function SoftwarePage() {
     { num: '03', title: t('proc_step_3_title'), desc: t('proc_step_3_desc') },
   ];
 
+  const baseUrl = 'https://www.sezkon.com';
+  const pageUrl = `${baseUrl}/${locale === 'tr' ? 'tr' : 'en'}/services/software`;
+
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: t('hero_t1') + ' ' + t('hero_t2'),
+    description: t('hero_desc'),
+    url: pageUrl,
+    provider: {
+      '@type': 'Organization',
+      name: 'Sezkon',
+      url: baseUrl,
+    },
+    areaServed: { '@type': 'Country', name: 'TR' },
+    serviceType: 'Software Development',
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Yazılım Hizmetleri',
+      itemListElement: features.map((f) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: f.title, description: f.desc },
+      })),
+    },
+  };
+
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'Özel yazılım geliştirme ne kadar sürer?' : 'How long does custom software development take?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Projenin kapsamına göre değişmekle birlikte, temel bir yazılım projesi 2-4 ay, kurumsal ERP/CRM çözümleri ise 4-12 ay arasında tamamlanmaktadır.'
+            : 'Depending on project scope, basic software projects take 2-4 months, while enterprise ERP/CRM solutions take 4-12 months.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'ERP ve CRM sistemleri mevcut altyapımıza entegre edilebilir mi?' : 'Can ERP and CRM systems be integrated with our existing infrastructure?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Evet. REST ve GraphQL API desteğiyle mevcut sistemlerinizle tam entegrasyon sağlıyoruz. Legacy sistem modernizasyonu da sunduğumuz hizmetler arasındadır.'
+            : 'Yes. We provide full integration with your existing systems via REST and GraphQL APIs, including legacy system modernization.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'Yazılım tesliminden sonra destek veriyor musunuz?' : 'Do you provide support after software delivery?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Evet, 7/24 SLA teknik destek hattı sunuyoruz. Yazılım tesliminin ardından bakım, güncelleme ve destek hizmetleri devam eder.'
+            : 'Yes, we offer 24/7 SLA technical support. Maintenance, updates and support services continue after software delivery.',
+        },
+      },
+    ],
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: locale === 'tr' ? 'Ana Sayfa' : 'Home', item: `${baseUrl}/${locale}` },
+      { '@type': 'ListItem', position: 2, name: locale === 'tr' ? 'Hizmetler' : 'Services', item: `${baseUrl}/${locale}/services` },
+      { '@type': 'ListItem', position: 3, name: t('bc_page'), item: pageUrl },
+    ],
+  };
+
   return (
     <main className="flex flex-col items-center overflow-x-hidden bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+
       {/* Hero */}
       <section className="w-full pt-36 pb-24 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />

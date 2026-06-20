@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Link } from '@/i18n/routing';
 import { ArrowRight, CheckCircle2, Monitor, Globe, ShoppingCart, Code } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { generateSEO } from '@/lib/seo';
 
@@ -47,9 +47,76 @@ const getProcess = (t: any) => [
 
 export default function WebDesignPage() {
   const t = useTranslations('SrvWeb');
+  const locale = useLocale();
+
+  const baseUrl = 'https://www.sezkon.com';
+  const pageUrl = `${baseUrl}/${locale}/services/web-design`;
+
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: t('hero_t1') + ' ' + t('hero_t2'),
+    description: t('hero_desc'),
+    url: pageUrl,
+    provider: { '@type': 'Organization', name: 'Sezkon', url: baseUrl },
+    serviceType: 'Web Design',
+    areaServed: { '@type': 'Country', name: 'TR' },
+  };
+
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'Kurumsal web sitesi tasarımı ne kadar sürer?' : 'How long does corporate website design take?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Kurumsal bir web sitesi projesi genellikle 3-6 hafta içinde tamamlanır. Proje kapsamına ve revizyon sayısına göre bu süre değişebilir.'
+            : 'A corporate website project is usually completed within 3-6 weeks. This period may vary based on project scope and the number of revisions.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'Web sitesi SEO uyumlu mu olacak?' : 'Will the website be SEO compliant?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Evet, tüm web sitelerimiz Core Web Vitals uyumlu, hızlı yüklemeli ve arama motoru dostu olarak tasarlanmaktadır. On-page SEO optimizasyonu standarttır.'
+            : 'Yes, all our websites are designed to be Core Web Vitals compliant, fast-loading, and search engine friendly. On-page SEO optimization is standard.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'Mobil uyumlu tasarım yapıyor musunuz?' : 'Do you design mobile-friendly websites?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Evet, tüm tasarımlarımız mobile-first yaklaşımla yapılmakta ve tüm cihaz boyutlarında mükemmel görünecek şekilde optimize edilmektedir.'
+            : 'Yes, all our designs are made with a mobile-first approach and optimized to look perfect on all device sizes.',
+        },
+      },
+    ],
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: locale === 'tr' ? 'Ana Sayfa' : 'Home', item: `${baseUrl}/${locale}` },
+      { '@type': 'ListItem', position: 2, name: locale === 'tr' ? 'Hizmetler' : 'Services', item: `${baseUrl}/${locale}/services` },
+      { '@type': 'ListItem', position: 3, name: t('bc_page'), item: pageUrl },
+    ],
+  };
+
   return (
     <main className="flex flex-col items-center overflow-x-hidden bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       {/* Hero */}
+
       <section className="w-full pt-36 pb-24 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-indigo-100/60 rounded-full blur-[80px]" />

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Link } from '@/i18n/routing';
 import { ArrowRight, CheckCircle2, Zap, Target, Shield, Clock } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { generateSEO } from '@/lib/seo';
 
@@ -36,6 +36,7 @@ const iconMap = [Target, Zap, Shield, Clock];
 
 export default function AluminumCuttingPage() {
   const t = useTranslations('SrvAlum');
+  const locale = useLocale();
 
   // Yetenekleri dil dosyasından al
   const capabilities = [
@@ -48,8 +49,72 @@ export default function AluminumCuttingPage() {
   // Malzeme listesini array olarak al
   const materials = t.raw('mat_list') as string[];
 
+  const baseUrl = 'https://www.sezkon.com';
+  const pageUrl = `${baseUrl}/${locale}/services/aluminum-cutting`;
+
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: t('hero_t1') + ' ' + t('hero_t2'),
+    description: t('hero_desc'),
+    url: pageUrl,
+    provider: { '@type': 'Organization', name: 'Sezkon', url: baseUrl },
+    serviceType: 'Aluminum Cutting',
+    areaServed: { '@type': 'Country', name: 'TR' },
+  };
+
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'Alüminyum kesim hassasiyeti nedir?' : 'What is the aluminum cutting precision?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Alüminyum profil ve sacları ±0.05mm hassasiyetle kesiyoruz. Hem lazer hem de CNC yöntemlerini kullanmaktayız.'
+            : 'We cut aluminum profiles and sheets with ±0.05mm precision, utilizing both laser and CNC methods.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'Hangi alüminyum alaşımlarını işleyebiliyorsunuz?' : 'Which aluminum alloys can you process?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? '1000, 2000, 3000, 5000, 6000 ve 7000 serisi alüminyum alaşımlarını, profilleri ve levhaları işliyoruz.'
+            : 'We process 1000, 2000, 3000, 5000, 6000, and 7000 series aluminum alloys, profiles, and plates.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'Alüminyum kesim siparişi için minimum miktar var mı?' : 'Is there a minimum order quantity for aluminum cutting?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Hayır, prototip üretimden büyük seri üretimlere kadar her talebe karşılık veriyoruz.'
+            : 'No, we meet demands ranging from prototype manufacturing to high-volume series production.',
+        },
+      },
+    ],
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: locale === 'tr' ? 'Ana Sayfa' : 'Home', item: `${baseUrl}/${locale}` },
+      { '@type': 'ListItem', position: 2, name: locale === 'tr' ? 'Hizmetler' : 'Services', item: `${baseUrl}/${locale}/services` },
+      { '@type': 'ListItem', position: 3, name: t('bc_page'), item: pageUrl },
+    ],
+  };
+
   return (
     <main className="flex flex-col items-center overflow-x-hidden bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       {/* Hero */}
       <section className="w-full pt-36 pb-24 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />

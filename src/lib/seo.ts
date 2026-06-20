@@ -8,7 +8,11 @@ interface SEOProps {
   noIndex?: boolean;
   locale?: string;
   alternateLanguages?: Record<string, string>;
-  keywords?: string | string[]; // yeni eklenen opsiyonel alan
+  keywords?: string | string[];
+  type?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
+  authors?: string[];
 }
 
 export function generateSEO({
@@ -20,11 +24,17 @@ export function generateSEO({
   locale = 'tr',
   alternateLanguages = {},
   keywords,
+  type = 'website',
+  publishedTime,
+  modifiedTime,
+  authors,
 }: SEOProps): Metadata {
   return {
+    metadataBase: new URL('https://www.sezkon.com'),
     title,
     description,
-    ...(keywords && { keywords }), // sadece varsa eklenir
+    ...(keywords && { keywords }),
+    ...(authors && { authors: authors.map((name) => ({ name })) }),
     alternates: {
       canonical,
       languages: alternateLanguages,
@@ -35,7 +45,7 @@ export function generateSEO({
       url: canonical,
       siteName: 'Sezkon',
       locale,
-      type: 'website',
+      type,
       images: [
         {
           url: ogImage,
@@ -44,6 +54,11 @@ export function generateSEO({
           alt: title,
         },
       ],
+      ...(type === 'article' && {
+        publishedTime,
+        modifiedTime,
+        authors,
+      }),
     },
     twitter: {
       card: 'summary_large_image',
@@ -57,6 +72,8 @@ export function generateSEO({
       googleBot: {
         index: !noIndex,
         follow: !noIndex,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
     },
   };

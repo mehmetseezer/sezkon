@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Link } from '@/i18n/routing';
 import { ArrowRight, CheckCircle2, Smartphone, Bell, BarChart2, Lock, Zap } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { generateSEO } from '@/lib/seo';
 
@@ -42,9 +42,76 @@ const getFeatures = (t: any) => [
 
 export default function MobileAppPage() {
   const t = useTranslations('SrvApp');
+  const locale = useLocale();
+
+  const baseUrl = 'https://www.sezkon.com';
+  const pageUrl = `${baseUrl}/${locale}/services/mobile-app`;
+
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: t('hero_t1') + ' ' + t('hero_t2'),
+    description: t('hero_desc'),
+    url: pageUrl,
+    provider: { '@type': 'Organization', name: 'Sezkon', url: baseUrl },
+    serviceType: 'Mobile App Development',
+    areaServed: { '@type': 'Country', name: 'TR' },
+  };
+
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'iOS ve Android için aynı anda uygulama geliştirebiliyor musunuz?' : 'Can you develop for iOS and Android at the same time?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Evet, React Native kullanarak tek kod tabanıyla hem iOS hem Android için native kalitesinde uygulamalar geliştiriyoruz.'
+            : 'Yes, we develop native-quality apps for both iOS and Android using React Native with a single codebase.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'Mevcut ERP/CRM sistemimizle entegre mobil uygulama yapılabilir mi?' : 'Can a mobile app be integrated with our existing ERP/CRM system?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Evet, REST API veya GraphQL entegrasyonuyla mevcut sistemlerinize bağlı özel mobil uygulamalar geliştiriyoruz.'
+            : 'Yes, we develop custom mobile apps integrated with your existing systems via REST API or GraphQL.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'Mobil uygulama geliştirme süreci ne kadar sürer?' : 'How long does mobile app development take?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Temel bir mobil uygulama 6-10 haftada, kurumsal özelliklere sahip uygulamalar ise 3-6 ayda tamamlanabilir.'
+            : 'A basic mobile app can be completed in 6-10 weeks, while enterprise-grade apps may take 3-6 months.',
+        },
+      },
+    ],
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: locale === 'tr' ? 'Ana Sayfa' : 'Home', item: `${baseUrl}/${locale}` },
+      { '@type': 'ListItem', position: 2, name: locale === 'tr' ? 'Hizmetler' : 'Services', item: `${baseUrl}/${locale}/services` },
+      { '@type': 'ListItem', position: 3, name: t('bc_page'), item: pageUrl },
+    ],
+  };
+
   return (
     <main className="flex flex-col items-center overflow-x-hidden bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       {/* Hero */}
+
       <section className="w-full pt-36 pb-24 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-indigo-100/60 rounded-full blur-[80px]" />

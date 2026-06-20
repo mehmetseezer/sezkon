@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Link } from '@/i18n/routing';
 import { ArrowRight, CheckCircle2, Cpu, Wifi, BarChart2, Bot, Shield, Zap, Factory } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { generateSEO } from '@/lib/seo';
 
@@ -36,6 +36,7 @@ const solutionIcons = [Wifi, Factory, Bot, Cpu];
 
 export default function Industry40Page() {
   const t = useTranslations('SrvInd');
+  const locale = useLocale();
 
   // Çözümler – s1_t/s1_d ... s4_t/s4_d
   const solutions = [
@@ -67,8 +68,72 @@ export default function Industry40Page() {
   // Neden Sezkon? listesi (why_list)
   const whyList = t.raw('why_list') as string[];
 
+  const baseUrl = 'https://www.sezkon.com';
+  const pageUrl = `${baseUrl}/${locale}/services/industry40`;
+
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: t('hero_t1') + ' ' + t('hero_t2'),
+    description: t('hero_desc'),
+    url: pageUrl,
+    provider: { '@type': 'Organization', name: 'Sezkon', url: baseUrl },
+    serviceType: 'Industry 4.0 / IoT Integration',
+    areaServed: { '@type': 'Country', name: 'TR' },
+  };
+
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'Endüstri 4.0 entegrasyonu mevcut makine parkurumuzla uyumlu mu?' : 'Is Industry 4.0 integration compatible with our existing machinery park?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Evet. Fanuc, Siemens, Allen-Bradley gibi tüm lider PLC markalarıyla Modbus, OPC-UA ve MQTT protokolleri üzerinden entegrasyon sağlıyoruz.'
+            : 'Yes. We provide integration with all leading PLC brands like Fanuc, Siemens, Allen-Bradley via Modbus, OPC-UA and MQTT protocols.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'OEE (Genel Ekipman Verimliliği) nasıl artırılır?' : 'How is OEE (Overall Equipment Effectiveness) increased?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Makinelerinizden anlık IoT verisi toplayarak duruş sürelerini, fire oranlarını ve üretim hızını analiz ediyoruz. MES entegrasyonuyla OEE oranlarını %90 üzerine çıkarmanıza yardımcı oluyoruz.'
+            : 'We collect real-time IoT data from your machines to analyze downtime, scrap rates, and production speeds, helping you raise OEE rates above 90% via MES integration.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'Bulut tabanlı mı yoksa on-premise çözüm müdür?' : 'Is it a cloud-based or on-premise solution?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Her iki seçeneği de sunuyoruz. Verilerinizin güvenliği için şifrelenmiş on-premise kurulum veya Azure/AWS üzerinde bulut tabanlı çözüm tercih edebilirsiniz.'
+            : 'We offer both options. You can choose a secure, encrypted on-premise installation or a cloud-based solution on Azure/AWS.',
+        },
+      },
+    ],
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: locale === 'tr' ? 'Ana Sayfa' : 'Home', item: `${baseUrl}/${locale}` },
+      { '@type': 'ListItem', position: 2, name: locale === 'tr' ? 'Hizmetler' : 'Services', item: `${baseUrl}/${locale}/services` },
+      { '@type': 'ListItem', position: 3, name: t('bc_page'), item: pageUrl },
+    ],
+  };
+
   return (
     <main className="flex flex-col items-center overflow-x-hidden bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
       {/* Hero */}
       <section className="w-full pt-36 pb-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">

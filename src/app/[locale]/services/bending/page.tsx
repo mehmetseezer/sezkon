@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Link } from '@/i18n/routing';
 import { ArrowRight, CheckCircle2, Layers, Target, Zap, Settings } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { generateSEO } from '@/lib/seo';
 
@@ -36,6 +36,7 @@ const iconMap = [Target, Layers, Settings, Zap];
 
 export default function BendingPage() {
   const t = useTranslations('SrvBend');
+  const locale = useLocale();
 
   // Teknik özellikler (s1_l/s1_v ... s6_l/s6_v)
   const specs = [
@@ -61,8 +62,72 @@ export default function BendingPage() {
   // CTA fayda listesi (cta_list array)
   const ctaBenefits = t.raw('cta_list') as string[];
 
+  const baseUrl = 'https://www.sezkon.com';
+  const pageUrl = `${baseUrl}/${locale}/services/bending`;
+
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: t('hero_t1') + ' ' + t('hero_t2'),
+    description: t('hero_desc'),
+    url: pageUrl,
+    provider: { '@type': 'Organization', name: 'Sezkon', url: baseUrl },
+    serviceType: 'CNC Bending and Folding',
+    areaServed: { '@type': 'Country', name: 'TR' },
+  };
+
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'CNC büküm hassasiyeti nedir?' : 'What is the CNC bending precision?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'CNC abkant büküm makinelerimizle sac ve profilleri ±0.1 derece açısal hassasiyetle büküyoruz. Her parça kalite kontrol aşamasından geçer.'
+            : 'We bend sheets and profiles with ±0.1 degree angular precision using our CNC press brakes. Every part passes through quality control.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'Hangi kalınlıktaki sacları bükebiliyorsunuz?' : 'What thickness of sheets can you bend?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Malzeme türüne bağlı olarak 0.5mm\'den 15mm kalınlığa kadar sacları abkant büküm makinelerimizde yüksek hassasiyetle işleyebiliyoruz.'
+            : 'Depending on the material type, we process sheets from 0.5mm to 15mm thickness with high precision on our press brakes.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'Maksimum büküm uzunluğu nedir?' : 'What is the maximum bending length?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Makinelerimizle tek seferde maksimum 3000mm (3 metre) uzunluğa kadar olan sac parçaları bükebilmekteyiz.'
+            : 'We can bend sheet metal parts up to a maximum length of 3000mm (3 meters) in a single pass with our machinery.',
+        },
+      },
+    ],
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: locale === 'tr' ? 'Ana Sayfa' : 'Home', item: `${baseUrl}/${locale}` },
+      { '@type': 'ListItem', position: 2, name: locale === 'tr' ? 'Hizmetler' : 'Services', item: `${baseUrl}/${locale}/services` },
+      { '@type': 'ListItem', position: 3, name: t('bc_page'), item: pageUrl },
+    ],
+  };
+
   return (
     <main className="flex flex-col items-center overflow-x-hidden bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       {/* Hero */}
       <section className="w-full pt-36 pb-24 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />

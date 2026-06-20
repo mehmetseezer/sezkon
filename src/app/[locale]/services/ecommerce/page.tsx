@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Link } from '@/i18n/routing';
 import { ArrowRight, CheckCircle2, ShoppingCart, CreditCard, TrendingUp, Shield, Package, Smartphone } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { generateSEO } from '@/lib/seo';
 
@@ -42,8 +42,74 @@ const getFeatures = (t: any) => [
 
 export default function EcommercePage() {
   const t = useTranslations('SrvEcom');
+  const locale = useLocale();
+
+  const baseUrl = 'https://www.sezkon.com';
+  const pageUrl = `${baseUrl}/${locale}/services/ecommerce`;
+
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: t('hero_t1') + ' ' + t('hero_t2'),
+    description: t('hero_desc'),
+    url: pageUrl,
+    provider: { '@type': 'Organization', name: 'Sezkon', url: baseUrl },
+    serviceType: 'E-commerce Development',
+    areaServed: { '@type': 'Country', name: 'TR' },
+  };
+
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'E-ticaret sitesi kurulumu ne kadar sürer?' : 'How long does e-commerce website setup take?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Temel e-ticaret siteleri 4-6 hafta, çok satıcılı (marketplace) veya özel ERP entegrasyonlu büyük projeler ise 2-4 ay arasında tamamlanmaktadır.'
+            : 'Basic e-commerce sites take 4-6 weeks, while large marketplace projects or custom ERP-integrated solutions take 2-4 months.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'Hangi ödeme altyapılarını entegre ediyorsunuz?' : 'Which payment gateways do you integrate?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'iYZiCO, PayTR, Garanti BBVA, Akbank gibi tüm yerel banka sanal POS altyapılarının yanı sıra global projeler için Stripe ve PayPal entegrasyonu yapıyoruz.'
+            : 'We integrate Stripe, PayPal, and all local banking virtual POS infrastructures like iYZiCO, PayTR, Garanti BBVA, and Akbank.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: locale === 'tr' ? 'ERP veya ön muhasebe sistemimle entegrasyon yapılabilir mi?' : 'Can it be integrated with my ERP or accounting system?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: locale === 'tr'
+            ? 'Evet. Logo, Zirve, Paraşüt gibi popüler ön muhasebe ve ERP programlarıyla stok, sipariş ve fatura süreçlerinizi tam otomatik olarak entegre ediyoruz.'
+            : 'Yes. We fully automate stock, order, and invoicing processes by integrating popular accounting and ERP software like Logo, Zirve, and Paraşüt.',
+        },
+      },
+    ],
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: locale === 'tr' ? 'Ana Sayfa' : 'Home', item: `${baseUrl}/${locale}` },
+      { '@type': 'ListItem', position: 2, name: locale === 'tr' ? 'Hizmetler' : 'Services', item: `${baseUrl}/${locale}/services` },
+      { '@type': 'ListItem', position: 3, name: t('bc_page'), item: pageUrl },
+    ],
+  };
+
   return (
     <main className="flex flex-col items-center overflow-x-hidden bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       {/* Hero */}
       <section className="w-full pt-36 pb-24 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
