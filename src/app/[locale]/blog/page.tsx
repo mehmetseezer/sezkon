@@ -1,127 +1,92 @@
-import type { Metadata } from 'next';
-import { Link } from '@/i18n/routing';
-import { ArrowRight, Sparkles, Home } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
-import { generateSEO } from '@/lib/seo';
+import { query } from '@/lib/db';
+import BlogPageClient from './BlogPageClient';
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Blog' });
-  const title = t('meta_title');
-  const description = t('meta_desc');
-  const keywords = t.raw('keywords') as string[]; // dil dosyasından al
-
-  const alternateLanguages = {
-    tr: '/tr/blog',
-    en: '/en/blog',
-  };
-
-  return generateSEO({
-    title,
-    description,
-    canonical: `/${locale}/blog`,
-    locale,
-    alternateLanguages,
-    keywords,
-  });
+interface Blog {
+  id: number;
+  title: string;
+  slug: string;
+  excerpt: string;
+  cover_image: string | null;
+  category: string;
+  author: string;
+  read_time: string;
+  is_featured: number;
+  is_published: number;
+  created_at: string;
 }
 
-export default function BlogPage() {
-  const t = useTranslations('Blog');
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string; search?: string; category?: string }>;
+}) {
+  const resolvedSearchParams = await searchParams;
+  const page = Math.max(1, parseInt(resolvedSearchParams.page || '1', 10));
+  const search = resolvedSearchParams.search || '';
+  const category = resolvedSearchParams.category || '';
+  const limit = 5;
+  const offset = (page - 1) * limit;
+
+  // Build conditions array for query
+  const conditions: string[] = ['is_published = 1'];
+  const params: any[] = [];
+
+  if (search) {
+    conditions.push('(title LIKE ? OR excerpt LIKE ? OR category LIKE ? OR author LIKE ?)');
+    const wildcard = `%${search}%`;
+    params.push(wildcard, wildcard, wildcard, wildcard);
+  }
+
+  if (category) {
+    conditions.push('category = ?');
+    params.push(category);
+  }
+
+  const whereClause = `WHERE ${conditions.join(' AND ')}`;
+
+  let totalRecords = 0;
+  let blogs: Blog[] = [];
+  let categories: string[] = [];
+
+  try {
+    // 1. Count total matching elements
+    const countResult = await query(`SELECT COUNT(*) as count FROM blogs ${whereClause}`, params);
+    totalRecords = (countResult as any)[0]?.count || 0;
+
+    // 2. Fetch paginated elements
+    const fetchSql = `
+      SELECT id, title, slug, excerpt, cover_image, category, author, read_time, is_featured, created_at 
+      FROM blogs 
+      ${whereClause} 
+      ORDER BY created_at DESC 
+      LIMIT ${limit} OFFSET ${offset}
+    `;
+    const blogsResult = await query(fetchSql, params);
+    blogs = blogsResult as Blog[];
+
+    // 3. Fetch unique categories for dynamic filter
+    const categoriesResult = await query(
+      'SELECT DISTINCT category FROM blogs WHERE is_published = 1 AND category IS NOT NULL AND category != ""'
+    );
+    categories = (categoriesResult as any[]).map((row) => row.category);
+  } catch (error) {
+    console.error('Blog fetch error:', error);
+  }
+
+  const totalPages = Math.ceil(totalRecords / limit);
 
   return (
-    <main className="flex flex-col items-center overflow-x-hidden bg-white">
-
-      {/* Hero Section - Mevcut tasarım korundu */}
-      <section className="w-full pt-36 pb-16 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-indigo-100/60 rounded-full blur-[80px]" />
-        <div className="container relative mx-auto px-6 max-w-5xl text-center">
-          <div className="inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-sm font-semibold text-indigo-600 italic mb-6">
-            {t('hero_tag')}
-          </div>
-          <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-gray-900 leading-[1.05] mb-8">
-            {t('hero_t1')}{' '}
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              {t('hero_t2')}
-            </span>{' '}
-            {t('hero_t3')}
-          </h1>
-          <p className="text-xl text-gray-500 font-light leading-relaxed max-w-3xl mx-auto">
-            {t('hero_desc')}
-          </p>
-        </div>
-      </section>
-
-      {/* Çok Yakında (Coming Soon) Placeholder Section */}
-      <section className="w-full py-20 bg-white">
-        <div className="container mx-auto px-6 max-w-4xl">
-          <div className="relative group bg-neutral-50 rounded-[3rem] p-12 md:p-20 overflow-hidden border border-gray-100 text-center">
-            {/* Arka plan dekoratif icon */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] group-hover:scale-110 transition-transform duration-700 pointer-events-none">
-              <Sparkles size={400} />
-            </div>
-
-            <div className="relative z-10 flex flex-col items-center">
-              <div className="w-20 h-20 bg-indigo-100 rounded-3xl flex items-center justify-center text-indigo-600 mb-8 animate-pulse">
-                <Sparkles size={40} />
-              </div>
-
-              <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight mb-6 italic">
-                {t('soon_title')}
-              </h2>
-
-              <p className="text-lg text-gray-500 font-light max-w-lg mb-12 leading-relaxed">
-                {t('soon_desc')}
-              </p>
-
-              <div className="flex flex-wrap justify-center gap-4">
-                <Link
-                  href="/"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 text-white font-bold rounded-full hover:bg-black transition-all shadow-lg"
-                >
-                  <Home size={18} /> {t('back_home')}
-                </Link>
-                <a
-                  href="#newsletter"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white text-indigo-600 border border-indigo-100 font-bold rounded-full hover:bg-indigo-50 transition-all shadow-sm"
-                >
-                  {t('notify_me')}
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter Section - Form işlevini koruduk */}
-      <section id="newsletter" className="w-full py-24 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center bg-repeat bg-white [mask-image:linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))]" />
-        <div className="container relative mx-auto px-6 max-w-3xl text-center">
-          <div className="inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-sm font-semibold text-indigo-600 italic mb-6">
-            {t('nl_tag')}
-          </div>
-          <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-gray-900 mb-6">
-            {t('nl_t1')}{' '}
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              {t('nl_t2')}
-            </span>
-          </h2>
-          <p className="text-gray-500 font-light mb-10 text-lg">{t('nl_desc')}</p>
-
-          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder={t('nl_ph')}
-              className="flex-1 px-6 py-4 rounded-full border border-gray-200 focus:outline-none focus:border-indigo-400 text-gray-800 font-medium"
-            />
-            <button className="px-8 py-4 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 transition-colors whitespace-nowrap sm:w-auto w-full">
-              {t('nl_btn')}
-            </button>
-          </div>
-        </div>
-      </section>
-    </main>
+    <BlogPageClient
+      initialBlogs={blogs}
+      pagination={{
+        page,
+        limit,
+        total: totalRecords,
+        totalPages,
+      }}
+      categories={categories}
+      initialSearch={search}
+      initialCategory={category}
+    />
   );
 }

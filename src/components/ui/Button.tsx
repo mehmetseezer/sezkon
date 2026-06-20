@@ -18,7 +18,7 @@ export const Button = ({
 }: ButtonProps) => {
   const baseClasses = 'inline-flex items-center justify-center font-semibold rounded-full transition-all duration-300 hover:shadow-md hover:-translate-y-0.5';
   const sizeClasses = {
-    sm: 'px-4 py-2 text-sm',
+    sm: 'px-4 py-2 text-sm md:text-base',
     md: 'px-6 py-3 text-base',
     lg: 'px-8 py-4 text-lg',
   };

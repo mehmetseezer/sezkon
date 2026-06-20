@@ -53,16 +53,16 @@ export default function WebDesignPage() {
       <section className="w-full pt-36 pb-24 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-indigo-100/60 rounded-full blur-[80px]" />
-        <div className="container relative mx-auto px-6 max-w-5xl">
+        <div className="container relative mx-auto px-6 max-w-[1550px]">
           <div className="flex items-center gap-2 mb-6">
-            <Link href="/" className="text-sm text-gray-400 hover:text-indigo-600 transition-colors">{t('bc_home')}</Link>
+            <Link href="/" className="text-sm md:text-base text-gray-400 hover:text-indigo-600 transition-colors">{t('bc_home')}</Link>
             <span className="text-gray-300">/</span>
             <Link href="/services/web-design" className="text-sm text-gray-600 font-medium">{t('bc_page')}</Link>
           </div>
           <div className="inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-sm font-semibold text-indigo-600 italic mb-6">{t('hero_tag')}</div>
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-gray-900 leading-[1.05] mb-8">
             {t('hero_t1')}{' '}
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">{t('hero_t2')}</span>
+            <span className="bg-gradient-to-r from-[#6191c4] to-[#8b5cf6] bg-clip-text text-transparent">{t('hero_t2')}</span>
           </h1>
           <p className="text-xl text-gray-500 font-light leading-relaxed max-w-3xl mb-10">
             {t('hero_desc')}
@@ -80,10 +80,10 @@ export default function WebDesignPage() {
 
       {/* Features */}
       <section className="w-full py-24 bg-white relative">
-        <div className="container mx-auto px-6 max-w-6xl">
+        <div className="container mx-auto px-6 max-w-[1550px]">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-gray-900 mb-4">
-              {t('feat_t1')} <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">{t('feat_t2')}</span>
+              {t('feat_t1')} <span className="bg-gradient-to-r from-[#6191c4] to-[#8b5cf6] bg-clip-text text-transparent">{t('feat_t2')}</span>
             </h2>
             <p className="text-gray-500 font-light text-lg">{t('feat_desc')}</p>
           </div>
@@ -103,11 +103,11 @@ export default function WebDesignPage() {
       {/* Process */}
       <section className="w-full py-24 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-        <div className="container relative mx-auto px-6 max-w-5xl">
+        <div className="container relative mx-auto px-6 max-w-[1550px]">
           <div className="text-center mb-20">
             <div className="inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-sm font-semibold text-indigo-600 italic mb-6">{t('proc_tag')}</div>
             <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-gray-900">
-              {t('proc_t1')} <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">{t('proc_t2')}</span>
+              {t('proc_t1')} <span className="bg-gradient-to-r from-[#6191c4] to-[#8b5cf6] bg-clip-text text-transparent">{t('proc_t2')}</span>
             </h2>
           </div>
           <div className="grid md:grid-cols-4 gap-8 relative">
@@ -127,11 +127,11 @@ export default function WebDesignPage() {
 
       {/* Packages */}
       <section className="w-full py-24 bg-white">
-        <div className="container mx-auto px-6 max-w-5xl">
+        <div className="container mx-auto px-6 max-w-[1550px]">
           <div className="text-center mb-20">
             <div className="inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-sm font-semibold text-indigo-600 italic mb-6">{t('pkg_tag')}</div>
             <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-gray-900">
-              {t('pkg_t1')} <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">{t('pkg_t2')}</span>
+              {t('pkg_t1')} <span className="bg-gradient-to-r from-[#6191c4] to-[#8b5cf6] bg-clip-text text-transparent">{t('pkg_t2')}</span>
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">

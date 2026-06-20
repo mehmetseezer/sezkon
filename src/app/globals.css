@@ -1,30 +1,71 @@
 @import "tailwindcss";
 
 :root {
-  /* Apple'ın meşhur "Off-White" arka planı ve derin siyahı */
-  --background: #fbfbfd;
-  --foreground: #1d1d1f;
+  /* Kurumsal Açık Renk Tema (Light Mode) */
+  --background: #fafbfc; /* Yumuşak kurumsal açık gri/beyaz */
+  --foreground: #090d16; /* Çok koyu lacivert/siyah, yüksek okunabilirlik */
   
-  /* Yardımcı renkler */
-  --secondary: #86868b;
-  --accent-blue: #0066cc;
+  /* Birincil Marka Renkleri */
+  --primary: #102a43; /* Derin kurumsal lacivert */
+  --primary-hover: #0b1d33;
+  --accent: #2b6cb0; /* Canlı teknoloji mavisi */
+  --accent-hover: #2b5c8f;
+  --accent-light: #ebf8ff;
+  
+  /* Kart ve Grid Arayüzü */
+  --neutral-bg: #ffffff;
+  --border-color: #e2e8f0;
+  
+  /* Yazı Tipi */
+  --font-brand: var(--font-brand-family);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-secondary: var(--secondary);
-  --color-accent: var(--accent-blue);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-light: var(--accent-light);
+  --color-neutral-bg: var(--neutral-bg);
+  --color-border: var(--border-color);
   
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-sans: var(--font-brand), system-ui, -apple-system, sans-serif;
+  
+  /* Animasyonlar */
+  --animate-shimmer: shimmer 2.5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 @layer base {
   body {
-    /* bg-background diyerek yukarıdaki #fbfbfd'yi zorunlu kılıyoruz */
-    @apply bg-background text-foreground font-sans antialiased m-0 p-0;
+    @apply bg-background text-foreground font-sans antialiased m-0 p-0 text-[17px] md:text-[18px] lg:text-[19px] leading-relaxed;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Editoryal Tipografi Hiyerarşisi */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-primary font-bold tracking-tight;
+  }
+}
+
+@layer utilities {
+  /* Yapısal Editoryal Kılavuz Çizgileri */
+  .grid-lines {
+    background-image: linear-gradient(var(--border-color) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center;
   }
 }

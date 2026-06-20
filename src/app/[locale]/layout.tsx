@@ -1,7 +1,9 @@
-import { Inter } from 'next/font/google';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import "../globals.css";
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
+import Header from '../../components/layout/Header';
+import Footer from '../../components/layout/Footer';
+import MobileStickyCTA from '../../components/ui/MobileStickyCTA';
+import BackToTop from '../../components/ui/BackToTop';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -11,18 +13,22 @@ export async function generateStaticParams() {
   return [{ locale: 'tr' }, { locale: 'en' }];
 }
 
-const inter = Inter({ subsets: ['latin'] });
+const brandFont = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-brand-family',
+});
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const title = locale === 'tr' ? 'Sezkon – Yazılım & CNC Üretim' : 'Sezkon – Software & CNC Manufacturing';
+  const title = locale === 'tr' ? 'Sezkon – Kurumsal ERP & CRM Yazılım Çözümleri' : 'Sezkon – Enterprise ERP & CRM Software Solutions';
   const description = locale === 'tr'
-    ? 'Endüstri 4.0, yazılım geliştirme ve CNC işleme çözümleri.'
-    : 'Industry 4.0, software development and CNC machining solutions.';
+    ? 'Kurumsal ERP, CRM, özel yazılım geliştirme ve sistem entegrasyonu çözümleri.'
+    : 'Enterprise ERP, CRM, custom software development, and system integration solutions.';
 
   const keywords = locale === 'tr'
-    ? ['Sezkon', 'yazılım', 'CNC', 'lazer kesim', 'abkant büküm', 'Endüstri 4.0', 'akıllı fabrika', 'özel yazılım', 'ERP', 'CRM', 'hassas işleme']
-    : ['Sezkon', 'software', 'CNC', 'laser cutting', 'press brake', 'Industry 4.0', 'smart factory', 'custom software', 'ERP', 'CRM', 'precision machining'];
+    ? ['Sezkon', 'yazılım', 'kurumsal yazılım', 'ERP sistemleri', 'CRM sistemleri', 'özel yazılım geliştirme', 'sistem entegrasyonu', 'mobil uygulama', 'web yazılım']
+    : ['Sezkon', 'software', 'enterprise software', 'ERP systems', 'CRM systems', 'custom software development', 'system integration', 'mobile application', 'web development'];
 
   return {
     title: {
@@ -103,7 +109,7 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={`${brandFont.variable}`}>
       <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-R570T40X56"
@@ -129,15 +135,17 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body className={`${inter.className} min-h-screen flex flex-col`}>
+      <body className="min-h-screen flex flex-col font-sans bg-background text-foreground">
         <NextIntlClientProvider messages={messages} locale={locale}>
-          <Navbar />
+          <Header />
           <main className="flex-1">
             {children}
           </main>
           <Footer />
+          <MobileStickyCTA />
+          <BackToTop />
         </NextIntlClientProvider>
       </body>
     </html>
   );
-}
+}

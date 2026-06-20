@@ -56,15 +56,15 @@ export default function ContactForm() {
           <div className="w-24 h-24 rounded-full bg-green-50 flex items-center justify-center shadow-inner">
             <CheckCircle2 size={48} className="text-green-500" />
           </div>
-          <h3 className="text-3xl font-black text-gray-900 tracking-tight">
+          <h3 className="text-4xl font-black text-gray-900 tracking-tight">
             {t('succ_title')}
           </h3>
-          <p className="text-gray-500 font-light max-w-sm leading-relaxed">
+          <p className="text-lg text-gray-600 font-medium max-w-md leading-relaxed">
             {t('succ_desc')}
           </p>
           <button
             onClick={() => setSubmitted(false)}
-            className="mt-6 px-10 py-4 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 hover:shadow-lg transition-all active:scale-95"
+            className="mt-6 px-10 py-5 bg-indigo-600 text-white font-extrabold text-lg rounded-2xl hover:bg-indigo-700 hover:shadow-lg transition-all active:scale-95 cursor-pointer"
           >
             {t('succ_btn')}
           </button>
@@ -79,18 +79,18 @@ export default function ContactForm() {
       {/* Arkaplan Süslemesi */}
       <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-50/50 rounded-full -mr-16 -mt-16 blur-3xl" />
       
-      <h2 className="text-3xl font-black text-gray-900 tracking-tight mb-2">
+      <h2 className="text-4xl font-black text-gray-900 tracking-tight mb-2">
         {t('form_title')}
       </h2>
-      <p className="text-gray-500 font-light mb-8 italic">
+      <p className="text-lg text-gray-600 font-medium mb-8 italic">
         {t('form_desc')}
       </p>
-
-      <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+      
+      <form onSubmit={handleSubmit} className="space-y-6 relative z-10 text-left">
         {/* İsim & Email Satırı */}
         <div className="grid md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label className="text-sm font-bold text-gray-700 ml-1">{t('lbl_name')}</label>
+            <label className="text-lg md:text-xl font-black text-gray-800 ml-1">{t('lbl_name')}</label>
             <input
               type="text"
               required
@@ -98,11 +98,11 @@ export default function ContactForm() {
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               placeholder={t('ph_name')}
-              className="w-full px-5 py-4 rounded-2xl border border-gray-200 focus:ring-4 focus:ring-indigo-50 focus:border-indigo-400 outline-none transition-all placeholder:text-gray-300 disabled:opacity-50"
+              className="w-full px-6 py-5 rounded-2xl border border-gray-200 bg-white/90 text-lg md:text-xl font-medium focus:ring-2 focus:ring-[#6191c4] focus:border-[#6191c4] outline-none transition-all placeholder:text-gray-400 disabled:opacity-50"
             />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-bold text-gray-700 ml-1">{t('lbl_email')}</label>
+            <label className="text-lg md:text-xl font-black text-gray-800 ml-1">{t('lbl_email')}</label>
             <input
               type="email"
               required
@@ -110,7 +110,7 @@ export default function ContactForm() {
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               placeholder="example@company.com"
-              className="w-full px-5 py-4 rounded-2xl border border-gray-200 focus:ring-4 focus:ring-indigo-50 focus:border-indigo-400 outline-none transition-all placeholder:text-gray-300 disabled:opacity-50"
+              className="w-full px-6 py-5 rounded-2xl border border-gray-200 bg-white/90 text-lg md:text-xl font-medium focus:ring-2 focus:ring-[#6191c4] focus:border-[#6191c4] outline-none transition-all placeholder:text-gray-400 disabled:opacity-50"
             />
           </div>
         </div>
@@ -118,24 +118,24 @@ export default function ContactForm() {
         {/* Şirket & Hizmet Satırı */}
         <div className="grid md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label className="text-sm font-bold text-gray-700 ml-1">{t('lbl_company')}</label>
+            <label className="text-lg md:text-xl font-black text-gray-800 ml-1">{t('lbl_company')}</label>
             <input
               type="text"
               disabled={isSubmitting}
               value={form.company}
               onChange={(e) => setForm({ ...form, company: e.target.value })}
               placeholder={t('ph_company')}
-              className="w-full px-5 py-4 rounded-2xl border border-gray-200 focus:ring-4 focus:ring-indigo-50 focus:border-indigo-400 outline-none transition-all placeholder:text-gray-300 disabled:opacity-50"
+              className="w-full px-6 py-5 rounded-2xl border border-gray-200 bg-white/90 text-lg md:text-xl font-medium focus:ring-2 focus:ring-[#6191c4] focus:border-[#6191c4] outline-none transition-all placeholder:text-gray-400 disabled:opacity-50"
             />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-bold text-gray-700 ml-1">{t('lbl_service')}</label>
+            <label className="text-lg md:text-xl font-black text-gray-800 ml-1">{t('lbl_service')}</label>
             <select
               required
               disabled={isSubmitting}
               value={form.service}
               onChange={(e) => setForm({ ...form, service: e.target.value })}
-              className="w-full px-5 py-4 rounded-2xl border border-gray-200 focus:ring-4 focus:ring-indigo-50 focus:border-indigo-400 outline-none transition-all bg-white appearance-none cursor-pointer disabled:opacity-50"
+              className="w-full px-6 py-5 rounded-2xl border border-gray-200 bg-white/90 text-lg md:text-xl font-bold text-gray-800 focus:ring-2 focus:ring-[#6191c4] focus:border-[#6191c4] outline-none transition-all appearance-none cursor-pointer disabled:opacity-50"
             >
               <option value="" disabled>{t('ph_service')}</option>
               {serviceKeys.map((key) => (
@@ -149,7 +149,7 @@ export default function ContactForm() {
 
         {/* Mesaj Alanı */}
         <div className="space-y-2">
-          <label className="text-sm font-bold text-gray-700 ml-1">{t('lbl_msg')}</label>
+          <label className="text-lg md:text-xl font-black text-gray-800 ml-1">{t('lbl_msg')}</label>
           <textarea
             required
             rows={4}
@@ -157,7 +157,7 @@ export default function ContactForm() {
             value={form.message}
             onChange={(e) => setForm({ ...form, message: e.target.value })}
             placeholder={t('ph_msg')}
-            className="w-full px-5 py-4 rounded-2xl border border-gray-200 focus:ring-4 focus:ring-indigo-50 focus:border-indigo-400 outline-none transition-all resize-none placeholder:text-gray-300 disabled:opacity-50"
+            className="w-full px-6 py-5 rounded-2xl border border-gray-200 bg-white/90 text-lg md:text-xl font-medium focus:ring-2 focus:ring-[#6191c4] focus:border-[#6191c4] outline-none transition-all resize-none placeholder:text-gray-400 disabled:opacity-50"
           />
         </div>
 
@@ -173,7 +173,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full inline-flex items-center justify-center gap-3 px-8 py-5 bg-indigo-600 text-white font-black rounded-2xl hover:bg-indigo-700 hover:shadow-2xl hover:shadow-indigo-200 hover:-translate-y-1 transition-all duration-300 text-lg disabled:bg-gray-400 disabled:translate-y-0 disabled:shadow-none"
+          className="w-full inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#6191c4] hover:bg-[#4b77a5] text-white font-black rounded-2xl hover:shadow-lg hover:scale-102 transition-all duration-300 text-lg md:text-xl disabled:bg-gray-400 disabled:scale-100 disabled:shadow-none cursor-pointer"
         >
           {isSubmitting ? (
             <>

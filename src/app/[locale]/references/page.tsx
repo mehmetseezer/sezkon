@@ -55,12 +55,12 @@ export default function ReferencesPage() {
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
         <div className="absolute -top-24 -left-24 w-96 h-96 bg-indigo-100/60 rounded-full blur-[80px]" />
         <div className="container relative mx-auto px-6 max-w-5xl text-center">
-          <div className="inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-sm font-semibold text-indigo-600 italic mb-6">
+          <div className="inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-sm md:text-base font-semibold text-indigo-600 italic mb-6">
             {t('hero_tag')}
           </div>
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-gray-900 leading-[1.05] mb-8">
             {t('hero_t1')}{' '}
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#6191c4] to-[#8b5cf6] bg-clip-text text-transparent">
               {t('hero_t2')}
             </span>
           </h1>
@@ -72,7 +72,7 @@ export default function ReferencesPage() {
 
       {/* Logo Grid - Grayscale kaldırıldı */}
       <section className="w-full py-24 bg-white">
-        <div className="container mx-auto px-6 max-w-6xl">
+        <div className="container mx-auto px-6 max-w-[1550px]">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {references.map((ref, i) => (
               <div

@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
 import { routing } from '@/i18n/routing';
+import { query } from '@/lib/db';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.sezkon.com';
 
   // Statik rotalar (ana sayfa dahil)
@@ -28,6 +29,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const pages: MetadataRoute.Sitemap = [];
 
+  // Fetch blogs from DB for dynamic sitemap
+  let blogs: { slug: string; updated_at: Date }[] = [];
+  try {
+    const rows = await query('SELECT slug, updated_at FROM blogs WHERE is_published = 1');
+    blogs = rows as { slug: string; updated_at: Date }[];
+  } catch (error) {
+    console.error('Error fetching blogs for sitemap:', error);
+  }
+
   for (const locale of routing.locales) {
     // Statik sayfalar
     for (const route of staticRoutes) {
@@ -47,6 +57,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(),
         changeFrequency: 'weekly',
         priority: 0.9,
+      });
+    }
+
+    // Dinamik blog sayfaları
+    for (const blog of blogs) {
+      pages.push({
+        url: `${baseUrl}/${locale}/blog/${blog.slug}`,
+        lastModified: blog.updated_at ? new Date(blog.updated_at) : new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.8,
       });
     }
   }

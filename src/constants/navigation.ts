@@ -1,5 +1,5 @@
 // src/constants/navigation.ts
-import { Code, Scissors, Factory } from 'lucide-react';
+import { Layers, Database, ShieldAlert, Cpu, Laptop, Smartphone, GitMerge, Settings, Scissors, Wrench } from 'lucide-react';
 
 export const NAV_LINKS = [
   { name: 'Anasayfa', href: '/' },
@@ -10,33 +10,37 @@ export const NAV_LINKS = [
 ];
 
 export const SERVICES_CONTENT = {
-  software: {
-    t_title: 'soft_title',
-    t_desc: 'soft_desc',
-    icon: Code,
+  enterprise: {
+    t_title: 'nav_enterprise_systems', // ERP, CRM, Integrations
+    t_desc: 'nav_enterprise_desc',
     items: [
-      { t_label: 'soft_web', href: '/services/web-design' },
-      { t_label: 'soft_ecom', href: '/services/ecommerce' },
-      { t_label: 'soft_mob', href: '/services/mobile-app' },
-      { t_label: 'soft_custom', href: '/services/software' },
+      { t_label: 'nav_erp', href: '/services/software', icon: Layers },
+      { t_label: 'nav_crm', href: '/services/software', icon: Database },
+      { t_label: 'nav_integrations', href: '/services/industry40', icon: GitMerge },
     ],
   },
-  cnc: {
-    t_title: 'cnc_title',
-    t_desc: 'cnc_desc',
-    icon: Scissors,
+  custom: {
+    t_title: 'nav_custom_dev', // Custom software, Web, Mobile
+    t_desc: 'nav_custom_desc',
     items: [
-      { t_label: 'cnc_alum', href: '/services/aluminum-cutting' },
-      { t_label: 'cnc_sheet', href: '/services/sheet-cutting' },
-      { t_label: 'cnc_bend', href: '/services/bending' },
-      { t_label: 'cnc_mill', href: '/services/cnc' },
+      { t_label: 'nav_custom_soft', href: '/services/software', icon: Cpu },
+      { t_label: 'nav_mobile_apps', href: '/services/mobile-app', icon: Smartphone },
+      { t_label: 'nav_web_solutions', href: '/services/web-design', icon: Laptop },
+    ],
+  },
+  manufacturing: {
+    t_title: 'nav_manufacturing', // CNC, Laser, Bending
+    t_desc: 'nav_manufacturing_desc',
+    items: [
+      { t_label: 'nav_cnc', href: '/services/cnc', icon: Settings },
+      { t_label: 'nav_laser_cutting', href: '/services/sheet-cutting', icon: Scissors },
+      { t_label: 'nav_bending', href: '/services/bending', icon: Wrench },
     ],
   },
   featured: {
-    t_title: 'feat_title',
-    t_desc: 'feat_desc',
-    t_tag: 'feat_tag',
-    href: '/services/industry40',
-    icon: Factory,
+    t_title: 'nav_feat_title',
+    t_desc: 'nav_feat_desc',
+    t_tag: 'nav_feat_tag',
+    href: '/services/software',
   },
 };

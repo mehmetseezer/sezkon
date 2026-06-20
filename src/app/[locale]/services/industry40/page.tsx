@@ -75,9 +75,9 @@ export default function Industry40Page() {
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
         <div className="absolute top-0 left-0 w-80 h-80 bg-emerald-300/30 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-teal-300/30 rounded-full blur-[100px] pointer-events-none" />
-        <div className="container relative mx-auto px-6 max-w-5xl">
+        <div className="container relative mx-auto px-6 max-w-[1550px]">
           <div className="flex items-center gap-2 mb-6">
-            <Link href="/" className="text-sm text-gray-500 hover:text-gray-700 transition-colors">{t('bc_home')}</Link>
+            <Link href="/" className="text-sm md:text-base text-gray-500 hover:text-gray-700 transition-colors">{t('bc_home')}</Link>
             <span className="text-gray-400">/</span>
             <span className="text-sm text-gray-700 font-medium">{t('bc_page')}</span>
           </div>
@@ -106,7 +106,7 @@ export default function Industry40Page() {
 
       {/* Benefits */}
       <section className="w-full py-16 bg-white border-b border-gray-100">
-        <div className="container mx-auto px-6 max-w-5xl">
+        <div className="container mx-auto px-6 max-w-[1550px]">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {benefits.map((b, i) => (
               <div key={i} className="group">
@@ -120,7 +120,7 @@ export default function Industry40Page() {
 
       {/* Solutions */}
       <section className="w-full py-24 bg-white">
-        <div className="container mx-auto px-6 max-w-6xl">
+        <div className="container mx-auto px-6 max-w-[1550px]">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <div className="inline-flex items-center rounded-full bg-emerald-50 px-4 py-1 text-sm font-semibold text-emerald-600 italic mb-6">{t('sol_tag')}</div>
             <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-gray-900 mb-4">
@@ -146,7 +146,7 @@ export default function Industry40Page() {
       {/* Roadmap */}
       <section className="w-full py-24 bg-gradient-to-b from-white via-neutral-50 to-white relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-white/0 bg-[url('/grid.svg')] bg-center bg-repeat [mask-image:linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))] mask-repeat-no-repeat mask-[linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))]" />
-        <div className="container relative mx-auto px-6 max-w-5xl">
+        <div className="container relative mx-auto px-6 max-w-[1550px]">
           <div className="text-center max-w-3xl mx-auto mb-20 relative z-10">
             <div className="inline-flex items-center rounded-full bg-emerald-50/50 px-4 py-1 text-sm font-semibold text-emerald-400 italic mb-6 backdrop-blur-sm border border-emerald-200/20">{t('road_tag')}</div>
             <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-gray-900 mb-4">
@@ -177,7 +177,7 @@ export default function Industry40Page() {
 
       {/* Partners / Tech Stack */}
       <section className="w-full py-16 bg-white border-y border-gray-100">
-        <div className="container mx-auto px-6 max-w-5xl">
+        <div className="container mx-auto px-6 max-w-[1550px]">
           <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-8">{t('tech_stack_title')}</p>
           <div className="flex flex-wrap justify-center gap-4">
             {techList.map((tech, i) => (
@@ -191,7 +191,7 @@ export default function Industry40Page() {
 
       {/* Why us */}
       <section className="w-full py-24 bg-white">
-        <div className="container mx-auto px-6 max-w-5xl">
+        <div className="container mx-auto px-6 max-w-[1550px]">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="inline-flex items-center rounded-full bg-emerald-50 px-4 py-1 text-sm font-semibold text-emerald-600 italic mb-6">{t('why_tag')}</div>

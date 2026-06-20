@@ -18,7 +18,7 @@ export const Card = ({ image, title, description, link, tag }: CardProps) => {
           <Image src={image} alt={title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
         </div>
       )}
-      {tag && <span className="text-sm font-medium text-indigo-600 mb-2">{tag}</span>}
+      {tag && <span className="text-sm md:text-base font-medium text-indigo-600 mb-2">{tag}</span>}
       <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
       <p className="text-gray-600 leading-relaxed text-sm flex-grow">{description}</p>
       {link && (

@@ -85,7 +85,7 @@ export default function HeroCarousel({
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div className="relative min-h-screen w-full">
-              <div className="mx-auto flex min-h-screen w-full max-w-7xl items-center px-4 py-8 sm:px-6 sm:py-12 md:px-8 md:py-16 lg:px-12">
+              <div className="mx-auto flex min-h-screen w-full max-w-[1550px] items-center px-4 py-8 sm:px-6 sm:py-12 md:px-8 md:py-16 lg:px-12">
                 
                 {/* GRID */}
                 <div className="grid w-full grid-cols-1 items-center gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16">

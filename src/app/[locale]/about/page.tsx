@@ -60,21 +60,22 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-indigo-100/60 rounded-full blur-[80px]" />
         <div className="container relative mx-auto px-6 max-w-5xl">
-          <div className="inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-sm font-semibold text-indigo-600 italic mb-6">
+          <div className="inline-flex items-center rounded-full bg-accent/10 px-4 py-1 text-sm md:text-base font-bold text-accent mb-6">
             {t('hero_tag')}
           </div>
-          <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-gray-900 leading-[1.05] mb-8">
-            {t('hero_t1')}{' '}
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              {t('hero_t2')}
-            </span>
-          </h1>
+          <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[1.05] mb-8">
+  <span className="text-black">{t('hero_t1')}</span>{' '}
+  <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">{t('hero_t2')}</span>
+</h1>
+
+
+
           <p className="text-xl text-gray-500 font-light leading-relaxed max-w-3xl mb-10">
             {t('hero_desc')}
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-indigo-200"
+            className="inline-flex items-center gap-3 px-10 py-5 text-xl font-bold bg-[#6191c4] text-white rounded-full"
           >
             {t('hero_btn')} <ArrowRight size={18} />
           </Link>
@@ -99,7 +100,7 @@ export default function AboutPage() {
 
       {/* Mission */}
       <section className="w-full py-24 bg-white relative">
-        <div className="container mx-auto px-6 max-w-6xl">
+        <div className="container mx-auto px-6 max-w-[1550px]">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-sm font-semibold text-indigo-600 italic mb-6">
@@ -107,7 +108,7 @@ export default function AboutPage() {
               </div>
               <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-gray-900 leading-[1.1] mb-6">
                 {t('mis_t1')}{' '}
-                <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#6191c4] to-[#8b5cf6] bg-clip-text text-transparent">
                   {t('mis_t2')}
                 </span>
               </h2>
@@ -133,14 +134,14 @@ export default function AboutPage() {
       {/* Values */}
       <section className="w-full py-24 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center bg-repeat bg-white [mask-image:linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))] mask-repeat-[no-repeat] mask-[linear-gradient(180deg,rgba(255,255,255,0),white,rgba(255,255,255,0))]" />
-        <div className="container relative mx-auto px-6 max-w-6xl">
+        <div className="container relative mx-auto px-6 max-w-[1550px]">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <div className="inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-sm font-semibold text-indigo-600 italic mb-6">
               {t('val_tag')}
             </div>
             <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-gray-900">
               {t('val_t1')}{' '}
-              <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 {t('val_t2')}
               </span>
             </h2>
@@ -161,30 +162,35 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="w-full py-24 bg-white">
+      <section className="w-full py-24 bg-slate-50 border-b border-slate-200">
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="text-center mb-20">
-            <div className="inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-sm font-semibold text-indigo-600 italic mb-6">
+            <div className="inline-flex items-center rounded-full bg-accent/10 px-4 py-1 text-sm font-bold text-accent mb-6">
               {t('time_tag')}
             </div>
-            <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-gray-900">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-primary">
               {t('time_t1')}{' '}
-              <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-accent">
                 {t('time_t2')}
               </span>
             </h2>
           </div>
           <div className="relative">
-            <div className="absolute left-[3.75rem] top-0 bottom-0 w-px bg-gradient-to-b from-indigo-200 via-indigo-300 to-transparent hidden md:block" />
+            {/* Kılavuz çizgisi mobilde sola çekildi */}
+            <div className="absolute left-6 md:left-[3.75rem] top-0 bottom-0 w-px bg-gradient-to-b from-accent/30 via-accent/10 to-transparent" />
             <div className="space-y-12">
               {timeline.map((item, i) => (
-                <div key={i} className="flex gap-8 group">
-                  <div className="flex-shrink-0 w-28 text-right">
-                    <span className="text-2xl font-black text-gray-200 group-hover:text-indigo-600 transition-colors duration-300">{item.year}</span>
+                <div key={i} className="flex flex-col md:flex-row gap-4 md:gap-8 group relative pl-12 md:pl-0">
+                  
+                  {/* Mobilde solda beliren kronolojik yuvarlak */}
+                  <div className="absolute left-[1.15rem] top-2.5 w-3 h-3 rounded-full bg-accent border-2 border-white shadow-[0_0_8px_rgba(43,108,176,0.5)] md:hidden z-10" />
+                  
+                  <div className="flex-shrink-0 w-full md:w-28 text-left md:text-right">
+                    <span className="text-2xl font-black text-accent md:text-slate-300 group-hover:text-accent transition-colors duration-300">{item.year}</span>
                   </div>
-                  <div className="relative flex-1 bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-100 hover:border-indigo-200 hover:shadow-lg transition-all duration-300">
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                    <p className="text-gray-600 font-light leading-relaxed">{item.desc}</p>
+                  <div className="relative flex-1 bg-white rounded-2xl p-6 border border-slate-200 hover:border-slate-300 hover:shadow-lg transition-all duration-300 text-left">
+                    <h3 className="text-lg font-bold text-primary mb-2">{item.title}</h3>
+                    <p className="text-slate-500 font-light leading-relaxed text-sm">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -202,7 +208,7 @@ export default function AboutPage() {
             </div>
             <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-gray-900">
               {t('team_t1')}{' '}
-              <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 {t('team_t2')}
               </span>
             </h2>
