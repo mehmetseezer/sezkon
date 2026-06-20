@@ -1,6 +1,6 @@
 import { Link } from '@/i18n/routing';
 import { ArrowRight, Target, Zap, Award, Users, CheckCircle2, Shield } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { generateSEO } from '@/lib/seo';
 
@@ -24,6 +24,32 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default function AboutPage() {
   const t = useTranslations('About');
+  const locale = useLocale();
+
+  const baseUrl = 'https://www.sezkon.com';
+  const pageUrl = `${baseUrl}/${locale}/about`;
+
+  const aboutJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    '@id': pageUrl,
+    'url': pageUrl,
+    'name': t('meta_title'),
+    'description': t('meta_desc'),
+    'mainEntity': {
+      '@type': 'Organization',
+      '@id': 'https://www.sezkon.com/#organization',
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      { '@type': 'ListItem', 'position': 1, 'name': locale === 'tr' ? 'Ana Sayfa' : 'Home', 'item': `${baseUrl}/${locale}` },
+      { '@type': 'ListItem', 'position': 2, 'name': locale === 'tr' ? 'Hakkımızda' : 'About Us', 'item': pageUrl },
+    ],
+  };
 
   const timeline = [
     { year: t('t1_y'), title: t('t1_t'), desc: t('t1_d') },
@@ -54,6 +80,8 @@ export default function AboutPage() {
 
   return (
     <main className="flex flex-col items-center overflow-x-hidden bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
       {/* Hero */}
       <section className="w-full pt-36 pb-24 bg-white relative overflow-hidden">

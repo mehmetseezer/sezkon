@@ -37,6 +37,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
+    '@id': 'https://www.sezkon.com/#localbusiness',
     name: 'Sezkon',
     description:
       locale === 'tr'
@@ -48,6 +49,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     telephone: '+905522403705',
     email: 'info@sezkon.com',
     foundingDate: '2013',
+    parentOrganization: {
+      '@type': 'Organization',
+      '@id': 'https://www.sezkon.com/#organization',
+    },
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Pera Residence, Yeşilbağlar Mah. D100 Bulvarı No:20, A Blok Kat:6 Ofis:29',

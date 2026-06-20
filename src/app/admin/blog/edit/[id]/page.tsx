@@ -18,6 +18,9 @@ import {
   Settings,
   Globe,
   UploadCloud,
+  Sparkles,
+  Copy,
+  Check,
 } from 'lucide-react';
 
 const RichTextEditor = dynamic(() => import('@/components/admin/RichTextEditor'), {
@@ -73,6 +76,53 @@ export default function EditBlogPage({ params }: { params: Promise<{ id: string 
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const [uploadingCover, setUploadingCover] = useState(false);
   const [activeTab, setActiveTab] = useState<'content' | 'seo'>('content');
+  const [copiedPrompt, setCopiedPrompt] = useState(false);
+
+  const getGeoPrompt = () => {
+    const topic = form.title || 'Seçtiğiniz Konu Başlığı';
+    return `GEO OPTIMIZED CONTENT PROMPT
+
+You are an expert Generative Engine Optimization (GEO) content writer.
+Your task is to create content that is highly likely to be cited by AI systems such as ChatGPT, Perplexity, Gemini, and Claude.
+
+Follow these rules strictly:
+
+Start with a clear, encyclopedic definition of the topic in the first paragraph.
+Use structured headings (H2, H3) with semantic clarity.
+Include entity-based references (companies, tools, technologies, frameworks) naturally in the text.
+Prioritize factual, verifiable, and widely accepted information.
+Use short, extractable sentences that AI systems can easily quote.
+Include at least one comparison table if relevant.
+Add a dedicated FAQ section with 5–10 questions.
+Avoid marketing language, hype, or subjective claims.
+Write in a neutral, Wikipedia-like tone.
+Ensure each section can stand alone as a source snippet.
+
+Additional GEO optimization rules:
+
+Each paragraph should contain at least one “AI-extractable fact”.
+Prefer structured data over narrative storytelling.
+Use explicit definitions like “X is defined as…”
+When possible, include numbers, steps, or lists.
+Ensure content is semantically dense (high information per sentence).
+
+Topic: ${topic}
+
+Output format:
+
+Title
+Definition (first paragraph, must be direct)
+H2 Sections (at least 4)
+Comparison Table (if applicable)
+FAQ Section (5–10 questions)
+Summary (2–3 sentences)`;
+  };
+
+  const handleCopyPrompt = () => {
+    navigator.clipboard.writeText(getGeoPrompt());
+    setCopiedPrompt(true);
+    setTimeout(() => setCopiedPrompt(false), 2000);
+  };
 
   const [form, setForm] = useState({
     title: '',
@@ -874,6 +924,39 @@ export default function EditBlogPage({ params }: { params: Promise<{ id: string 
                   className="w-5 h-5 rounded border-slate-300 text-[#6191c4] focus:ring-[#6191c4] cursor-pointer"
                 />
               </label>
+            </div>
+
+            {/* AI GEO Prompt Card */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6 space-y-4">
+              <h3 className="font-extrabold text-slate-900 text-sm border-b border-slate-100 pb-2 flex items-center gap-2">
+                <Sparkles size={16} className="text-[#6191c4]" />
+                Yapay Zeka (GEO) Sihirbazı
+              </h3>
+              <p className="text-xs text-slate-500 leading-relaxed font-medium">
+                ChatGPT, Perplexity ve Gemini gibi motorlar için tam optimize edilmiş ve alıntı puanını artıran makale taslağı üreten prompt.
+              </p>
+              
+              <div className="bg-slate-50 rounded-xl p-3 border border-slate-100 font-mono text-[10px] text-slate-600 max-h-32 overflow-y-auto whitespace-pre-wrap select-all leading-normal">
+                {getGeoPrompt()}
+              </div>
+
+              <button
+                type="button"
+                onClick={handleCopyPrompt}
+                className="w-full flex items-center justify-center gap-1.5 py-2.5 px-4 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl transition-all shadow-sm cursor-pointer"
+              >
+                {copiedPrompt ? (
+                  <>
+                    <Check size={14} className="text-green-400" />
+                    Kopyalandı!
+                  </>
+                ) : (
+                  <>
+                    <Copy size={14} />
+                    Promptu Kopyala
+                  </>
+                )}
+              </button>
             </div>
 
           </div>

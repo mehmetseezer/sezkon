@@ -1,7 +1,7 @@
 import { generateSEO } from "@/lib/seo";
 import { Link } from '@/i18n/routing';
 import { ArrowRight, Star, Quote } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 
@@ -46,9 +46,42 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default function ReferencesPage() {
   const t = useTranslations('Ref');
+  const locale = useLocale();
+
+  const baseUrl = 'https://www.sezkon.com';
+  const pageUrl = `${baseUrl}/${locale}/references`;
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      { '@type': 'ListItem', 'position': 1, 'name': locale === 'tr' ? 'Ana Sayfa' : 'Home', 'item': `${baseUrl}/${locale}` },
+      { '@type': 'ListItem', 'position': 2, 'name': locale === 'tr' ? 'Referanslar' : 'References', 'item': pageUrl },
+    ],
+  };
+
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    'name': locale === 'tr' ? 'Sezkon Müşteri Referansları ve İş Ortakları' : 'Sezkon Client References and Partners',
+    'description': t('meta_desc'),
+    'url': pageUrl,
+    'numberOfItems': references.length,
+    'itemListElement': references.map((ref, i) => ({
+      '@type': 'ListItem',
+      'position': i + 1,
+      'item': {
+        '@type': 'Organization',
+        'name': ref.name,
+        'logo': `${baseUrl}${ref.logo}`,
+      },
+    })),
+  };
 
   return (
     <main className="flex flex-col items-center overflow-x-hidden bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }} />
 
       {/* Hero - Orijinal Tasarım */}
       <section className="w-full pt-36 pb-24 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">

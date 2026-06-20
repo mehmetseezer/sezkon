@@ -76,8 +76,7 @@ export default function SoftwarePage() {
     url: pageUrl,
     provider: {
       '@type': 'Organization',
-      name: 'Sezkon',
-      url: baseUrl,
+      '@id': 'https://www.sezkon.com/#organization',
     },
     areaServed: { '@type': 'Country', name: 'TR' },
     serviceType: 'Software Development',

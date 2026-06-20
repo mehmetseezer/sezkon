@@ -75,7 +75,7 @@ export default function CNCPage() {
     name: t('hero_t1') + ' ' + t('hero_t2'),
     description: t('hero_desc'),
     url: pageUrl,
-    provider: { '@type': 'Organization', name: 'Sezkon', url: baseUrl },
+    provider: { '@type': 'Organization', '@id': 'https://www.sezkon.com/#organization' },
     serviceType: 'CNC Machining',
     areaServed: { '@type': 'Country', name: 'TR' },
   };

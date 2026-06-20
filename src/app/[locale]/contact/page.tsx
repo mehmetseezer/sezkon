@@ -1,6 +1,6 @@
 import { Link } from '@/i18n/routing';
 import { MapPin, Phone, Mail, Clock, ArrowRight } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { generateSEO } from '@/lib/seo';
 import ContactForm from './ContactForm'; // client component
@@ -25,6 +25,32 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default function ContactPage() {
   const t = useTranslations('Contact');
+  const locale = useLocale();
+
+  const baseUrl = 'https://www.sezkon.com';
+  const pageUrl = `${baseUrl}/${locale}/contact`;
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      { '@type': 'ListItem', 'position': 1, 'name': locale === 'tr' ? 'Ana Sayfa' : 'Home', 'item': `${baseUrl}/${locale}` },
+      { '@type': 'ListItem', 'position': 2, 'name': locale === 'tr' ? 'İletişim' : 'Contact', 'item': pageUrl },
+    ],
+  };
+
+  const contactPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    '@id': pageUrl,
+    'url': pageUrl,
+    'name': t('meta_title'),
+    'description': t('meta_desc'),
+    'mainEntity': {
+      '@type': 'Organization',
+      '@id': 'https://www.sezkon.com/#organization',
+    },
+  };
 
   const contactInfo = [
     {
@@ -84,10 +110,18 @@ export default function ContactPage() {
 
   return (
     <main className="flex flex-col items-center overflow-x-hidden bg-white">
-      {/* FAQPage JSON-LD */}
+      {/* FAQPage + ContactPage + BreadcrumbList JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       {/* Hero */}
