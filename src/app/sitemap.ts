@@ -32,10 +32,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch blogs from DB for dynamic sitemap
   let blogs: { slug: string; updated_at: Date }[] = [];
   try {
+    console.log('[Sitemap] DB bağlantısı deneniyor...');
+    console.log('[Sitemap] HOST:', process.env.DATABASE_HOST || 'localhost');
+    console.log('[Sitemap] PORT:', process.env.DATABASE_PORT || '3306');
+    console.log('[Sitemap] USER:', process.env.DATABASE_USER || 'root');
+    console.log('[Sitemap] NAME:', process.env.DATABASE_NAME || 'sezkon');
     const rows = await query('SELECT slug, updated_at FROM blogs WHERE is_published = 1');
     blogs = rows as { slug: string; updated_at: Date }[];
-  } catch (error) {
-    console.error('Error fetching blogs for sitemap:', error);
+    console.log(`[Sitemap] ✅ ${blogs.length} blog yüklendi.`);
+  } catch (error: any) {
+    console.error('[Sitemap] ❌ DB bağlantı hatası!');
+    console.error('[Sitemap] Hata kodu:', error?.code);
+    console.error('[Sitemap] Hata mesajı:', error?.message);
+    console.error('[Sitemap] SQL State:', error?.sqlState);
   }
 
   for (const locale of routing.locales) {
