@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { query } from '@/lib/db';
 import { getSession } from '@/lib/auth';
+import { analyzeSEO } from '@/lib/seo-analyzer';
 
 // GET /api/blog - Public & Admin: List published or all blogs with pagination and search
 export async function GET(request: NextRequest) {
@@ -69,7 +70,7 @@ export async function GET(request: NextRequest) {
     
     // Interpolating limit and offset is 100% safe here because they are guaranteed clean integers
     const fetchSql = `
-      SELECT id, title, slug, excerpt, cover_image, category, author, read_time, is_featured, is_published, created_at, updated_at, seo_title, seo_description, focus_keyword, seo_keywords 
+      SELECT id, title, slug, excerpt, content, cover_image, category, author, read_time, is_featured, is_published, created_at, updated_at, seo_title, seo_description, focus_keyword, seo_keywords 
       FROM blogs 
       ${whereClause} 
       ORDER BY ${sortColumn} ${sortOrder} 
@@ -81,18 +82,31 @@ export async function GET(request: NextRequest) {
     let stats = null;
     let activityLogs: any[] = [];
     if (all) {
+      // Calculate true average SEO score using analyzeSEO helper
+      const allBlogsForSeo = await query(`
+        SELECT title, content, excerpt, seo_title, seo_description, focus_keyword
+        FROM blogs
+      `) as any[];
+      
+      let totalSeoScore = 0;
+      allBlogsForSeo.forEach((b) => {
+        totalSeoScore += analyzeSEO({
+          title: b.title || '',
+          content: b.content || '',
+          excerpt: b.excerpt || '',
+          seo_title: b.seo_title,
+          seo_description: b.seo_description,
+          focus_keyword: b.focus_keyword,
+        }).score;
+      });
+      const avgSeo = allBlogsForSeo.length > 0 ? Math.round(totalSeoScore / allBlogsForSeo.length) : 0;
+
       const statsSql = `
         SELECT 
           COUNT(*) as total,
           SUM(CASE WHEN is_published = 1 THEN 1 ELSE 0 END) as published,
           SUM(CASE WHEN is_published = 0 THEN 1 ELSE 0 END) as drafts,
-          SUM(CASE WHEN is_featured = 1 THEN 1 ELSE 0 END) as featured,
-          ROUND(COALESCE(AVG(
-            CASE WHEN seo_title IS NOT NULL AND seo_title != '' THEN 30 ELSE 0 END +
-            CASE WHEN seo_description IS NOT NULL AND seo_description != '' THEN 30 ELSE 0 END +
-            CASE WHEN focus_keyword IS NOT NULL AND focus_keyword != '' THEN 25 ELSE 0 END +
-            CASE WHEN seo_keywords IS NOT NULL AND seo_keywords != '' THEN 15 ELSE 0 END
-          ), 0)) as avg_seo
+          SUM(CASE WHEN is_featured = 1 THEN 1 ELSE 0 END) as featured
         FROM blogs
       `;
       const statsResult = await query(statsSql);
@@ -102,7 +116,7 @@ export async function GET(request: NextRequest) {
         published: Number(statsRow.published || 0),
         drafts: Number(statsRow.drafts || 0),
         featured: Number(statsRow.featured || 0),
-        avgSeo: Number(statsRow.avg_seo || 0),
+        avgSeo: avgSeo,
       };
 
       // Fetch dynamic database activity logs based on actual updates

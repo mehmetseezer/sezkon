@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { analyzeSEO } from '@/lib/seo-analyzer';
 import {
   Plus,
   Edit3,
@@ -43,6 +44,7 @@ interface Blog {
   is_published: number;
   created_at: string;
   updated_at: string;
+  content: string;
   seo_title: string | null;
   seo_description: string | null;
   focus_keyword: string | null;
@@ -257,14 +259,16 @@ export default function AdminDashboard() {
     }
   };
 
-  // Calculate SEO score based on filled fields (0 if nothing filled)
+  // Calculate SEO score based on content (uses shared analyzeSEO helper)
   const getSeoScore = (blog: Blog) => {
-    let score = 0;
-    if (blog.seo_title) score += 30;
-    if (blog.seo_description) score += 30;
-    if (blog.focus_keyword) score += 25;
-    if (blog.seo_keywords) score += 15;
-    return Math.min(100, score);
+    return analyzeSEO({
+      title: blog.title || '',
+      content: blog.content || '',
+      excerpt: blog.excerpt || '',
+      seo_title: blog.seo_title,
+      seo_description: blog.seo_description,
+      focus_keyword: blog.focus_keyword,
+    }).score;
   };
 
   const getPageNumbers = () => {
